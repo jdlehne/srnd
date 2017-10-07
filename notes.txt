@@ -1,0 +1,22 @@
+
+
+Remember to npm install, I know it's obvious...
+
+=//----=========================-IMPORTANTE !!!--===========================---//
+
+MySQL is fucked, so make sure you go into the config.json file and change all the
+database passwords to 'null' or whatever yours may be, mine is set to 1234 after a long
+class of playing WTF is wrong with my sql.
+
+//=============================================================================//
+
+I also installed a few different packages that may or may not get used, so if we decide
+it's angular and not handlebars we can strip that out, or anything other we decide
+not to use.  I'm assembling this with mostly recycled code, just to have something to build from
+so if anything looks unnecessary, bloated, wrong - whatever, delete, change, fix -
+it won't hurt my feelings.
+
+//===Basic insert starter seeds for adding to DB for testing, working ATM====//
+
+INSERT INTO `drink_list`.`drinks` (`id`, `drink_name`, `added_by`, `ingredient_1`, `ing_qty_1`, `ingredient_2`, `ing_qty_2`, `ingredient_3`, `ing_qty_3`, `description`, `createdAt`, `updatedAt`) VALUES ('1', 'manhattan', 'drinkBot', 'bourbon', '3', 'sweet vermouth', '1', 'dash bitters', '3', 'combine all over ice, shake, strain into martini glass', '00:00:00:00', '00:00:00:00');
+INSERT INTO `drink_list`.`drinks` (`id`, `drink_name`, `added_by`, `ingredient_1`, `ing_qty_1`, `ingredient_2`, `ing_qty_2`, `ingredient_3`, `ing_qty_3`, `description`, `createdAt`, `updatedAt`) VALUES ('2', 'margarita', 'drinkbot', 'tequila', '2', 'triple sec', '1', 'sweet and sour', '3', 'combine all ingredients over ice, serve with or without salt and a lime', '00:00:00:00', '00:00:00:00');
