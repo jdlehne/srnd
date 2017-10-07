@@ -1,11 +1,8 @@
 // *********************************************************************************
 // api-routes.js - this file offers a set of routes for displaying and saving data to the db
 // *********************************************************************************
-
 // Dependencies
-
 var db = require("../models");
-
 // Routes
 // ======================================
 module.exports = function(app) {
@@ -19,32 +16,10 @@ module.exports = function(app) {
   // POST route for saving a new drink
   app.post("/api/drinks", function(req, res) {
     db.Drinks.create({
-      burger_name: req.body.burger_name,
-      devoured: false
     }).then(function(dbDrinks) {
       res.json(dbDrinks);
     });
   });
 
-
-  app.get("/all", function(req, res) {
-    res.json(dbDrinks); //----------exported from friends.js PeopleData object array
-  });
 
 };
-
-/*  // PUT route for updating drinks.
-  app.put("/api/drinks/:id", function(req, res) {
-    db.Drinks.update({
-      //drink_name: req.body.drink_name,
-      devoured:true
-    }, {
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbDrinks) {
-      res.json(dbDrinks);
-    });
-  });
-
-};*/
