@@ -26,7 +26,13 @@ module.exports = function(app) {
     });
   });
 
+
+  app.get("/all", function(req, res) {
+    res.json(dbDrinks); //----------exported from friends.js PeopleData object array
+  });
+
 };
+
 /*  // PUT route for updating drinks.
   app.put("/api/drinks/:id", function(req, res) {
     db.Drinks.update({
