@@ -1,4 +1,13 @@
+//==================================================================================
 
+May need to remove from config.json file to work locally(localhost):
+
+"production": {
+ "use_env_variable": "JAWSDB_URL",
+ "dialect": "mysql"
+}
+
+//================================================================================
 
 Remember to npm install, I know it's obvious...
 
