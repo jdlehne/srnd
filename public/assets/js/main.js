@@ -15,5 +15,5 @@ function ingredientAdd() {
 }
 
 function removeIngredient(rid) {
-    $('.ingredient' + rid).remove();
+    $('#ingredient' + rid).remove();
 }
