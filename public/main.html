@@ -57,17 +57,18 @@
       <!--CREATE A DRINK TAB-->
       <div class="tab-pane" id="2a">
         <h3>Add your own shitty drink!</h3>
+        <br>
         <form id="addForm" method="post" class="form-horizontal">
 
           <div class="form-group">
-            <label class="col-xs-1 control-label">Drink Name</label>
+            <label class="col-xs-2 control-label">Drink Name</label>
             <div class="col-xs-9">
               <input type="text" class="form-control" name="question" placeholder="What is you drink called?" />
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-xs-1 control-label">Added By</label>
+            <label class="col-xs-2 control-label">Added By</label>
             <div class="col-xs-9">
               <input type="text" class="form-control" name="question" placeholder="you are?" />
             </div>
@@ -78,7 +79,7 @@
           <div id="ingredient_field">
           </div>
           <div class="form-group">
-            <label class="col-xs-1 control-label">Ingredient</label>
+            <label class="col-xs-2 control-label">Ingredient</label>
             <div class="col-xs-5">
               <input type="text" class="form-control" id="ingredName" name="ingredName[]" value="" placeholder="Ingredient">
             </div>
@@ -90,7 +91,13 @@
                 <button class="btn btn-success" type="button" onclick="ingredient_field();"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button>
               </div>
             </div>
-        
+          </div>
+
+          <div class="form-group">
+            <label class="col-xs-2 control-label">Directions</label>
+            <div class="col-lg-9">
+              <textarea class="form-control" rows="3" id="desrctiption" placeholder="Describe how to make your beverage in 255 characters or less."></textarea>
+            </div>
           </div>
 
 
