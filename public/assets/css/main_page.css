@@ -1,11 +1,14 @@
 body {
-  margin-top: 30px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background: url("../images/background.jpg") no-repeat center;
-  /*bg image if we want*/
-  background-size: cover;
-  background-position: unset;
+  background: red;
+  /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, lightblue, white);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, lightblue, white);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, lightblue, white);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, lightblue, white);
+  /* Standard syntax */
 }
 
 #exTab1 .tab-content {
