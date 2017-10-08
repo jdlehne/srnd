@@ -1,4 +1,4 @@
-var ingredient = 1;
+var ingredient = 0;
 
 function ingredientAdd() {
 
