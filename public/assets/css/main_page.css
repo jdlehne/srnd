@@ -1,34 +1,41 @@
 body {
-  padding : 10px ;
-
+  margin-top: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background: url("../images/background.jpg") no-repeat center;
+  /*bg image if we want*/
+  background-size: cover;
+  background-position: unset;
 }
 
 #exTab1 .tab-content {
-  color : white;
+  color: white;
   background-color: #428bca;
-  padding : 5px 15px;
+  padding: 5px 15px;
 }
 
 #exTab2 h3 {
-  color : white;
+  color: white;
   background-color: #428bca;
-  padding : 5px 15px;
+  padding: 5px 15px;
 }
+
 
 /* remove border radius for the tab */
 
-#exTab1 .nav-pills > li > a {
+#exTab1 .nav-pills>li>a {
   border-radius: 0;
 }
 
+
 /* change border radius for the tab , apply corners on top*/
 
-#exTab3 .nav-pills > li > a {
-  border-radius: 4px 4px 0 0 ;
+#exTab3 .nav-pills>li>a {
+  border-radius: 4px 4px 0 0;
 }
 
 #exTab3 .tab-content {
-  color : white;
+  color: white;
   background-color: #428bca;
-  padding : 5px 15px;
+  padding: 5px 15px;
 }
