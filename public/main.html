@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>S R n Dr</title>
   <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/assets/css/main_page.css" />
 </head>
@@ -55,53 +57,52 @@
       <!--CREATE A DRINK TAB-->
       <div class="tab-pane" id="2a">
         <h3>Add your own shitty drink!</h3>
+        <br>
         <form id="addForm" method="post" class="form-horizontal">
 
           <div class="form-group">
-            <label class="col-xs-1 control-label">Drink Name</label>
+            <label class="col-xs-2 control-label">Drink Name</label>
             <div class="col-xs-9">
-              <input type="text" class="form-control" name="question" placeholder="What is you drink called?"/>
+              <input type="text" class="form-control" name="question" placeholder="What is you drink called?" />
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-xs-1 control-label">Added By</label>
+            <label class="col-xs-2 control-label">Added By</label>
             <div class="col-xs-9">
-              <input type="text" class="form-control" name="question"  placeholder="you are?" />
+              <input type="text" class="form-control" name="question" placeholder="you are?" />
             </div>
           </div>
 
+          <!-- Add ingredient in create field -->
+
+          <div id="ingredient_field">
+          </div>
           <div class="form-group">
-            <label class="col-xs-1 control-label">Ingredient</label>
+            <label class="col-xs-2 control-label">Ingredient</label>
             <div class="col-xs-5">
-              <input type="text" class="form-control" name="option[]" placeholder="spirit/ingredient"/>
+              <input type="text" class="form-control" id="ingredName" name="ingredName[]" value="" placeholder="Ingredient">
             </div>
             <div class="col-xs-2">
-              <input type="text" class="form-control" name="qty[]" placeholder="oz"/>
+              <input type="text" class="form-control" id="qty" name="qty[]" value="" placeholder="qty">
             </div>
-            <div class="col-xs-2">
-              <button type="button" class="btn btn-default addButton">Add More Ingredients <span class="glyphicon glyphicon-plus"></span></button>
-            </div>
-          </div>
-
-          <!-- The option field template containing an option field and a Remove button -->
-          <div class="form-group hide" id="optionTemplate">
-            <div class="col-xs-offset-3 col-xs-5">
-              <input class="form-control" type="text" name="option[]" />
-            </div>
-            <div class="col-xs-4">
-              <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+            <div class="input-group">
+              <div class="input-group-btn">
+                <button class="btn btn-success" type="button" onclick="ingredient_field();"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button>
+              </div>
             </div>
           </div>
 
           <div class="form-group">
-            <div class="col-xs-5 col-xs-offset-3">
-              <button type="submit" class="btn btn-default">Validate</button>
+            <label class="col-xs-2 control-label">Directions</label>
+            <div class="col-lg-9">
+              <textarea class="form-control" rows="3" id="desrctiption" placeholder="Describe how to make your beverage in 255 characters or less."></textarea>
             </div>
           </div>
+
+
         </form>
       </div>
-
 
       <!--END OF CREATE A DRINK TAB-->
 
@@ -122,7 +123,6 @@
 
 </body>
 <script src="/assets/js/main_page.js" type="text/javascript"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
 
 </html>

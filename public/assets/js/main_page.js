@@ -1,106 +1,20 @@
+var ingred = 1;
 
-$(document).ready(function() {
-    // The maximum number of options
-    var MAX_OPTIONS = 5;
-    var MAX_QTY = 5;
+function ingredient_field() {
 
-    $('#AddForm')
-        .formValidation({
-            framework: 'bootstrap',
-            icon: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                question: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The question required and cannot be empty'
-                        }
-                    }
-                },
-                'option[]': {
-                    validators: {
-                        notEmpty: {
-                            message: 'The option required and cannot be empty'
-                        },
-                        stringLength: {
-                            max: 100,
-                            message: 'The option must be less than 100 characters long'
-                        }
-                    }
-                },
-                'qty[]': {
-                    validators: {
-                        notEmpty: {
-                            message: 'The quantity required and cannot be empty'
-                        },
-                        stringLength: {
-                            max: 4,
-                            message: 'The quantity must be less than 4 numbers long'
-                        }
-                    }
-                },
-            }
-        })
+  if (ingred < 5) {
+    ingred++;
+    var objTo = document.getElementById('ingredient_field');
+    var added_ingredient = document.createElement("div");
+    added_ingredient.setAttribute("id", "addedIng" + ingred);
+    var rdiv = 'addedIng' + ingred;
+    added_ingredient.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-5"><input type="text" class="form-control" id="ingredName" name="ingredName[]" value="" placeholder="Ingredient"></div><div class="col-xs-2"><input type="text" class="form-control" id="qty" name="qty[]" value="" placeholder="qty"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="remove_ingredient_field(' + ingred + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
 
-        // Add button click handler
-        .on('click', '.addButton', function() {
-            var $template = $('#optionTemplate'),
-                $clone    = $template
-                                .clone()
-                                .removeClass('hide')
-                                .removeAttr('id')
-                                .insertBefore($template),
-                $option   = $clone.find('[name="option[]"]');
-                $qty   = $clone.find('[name="qty[]"]');
+    objTo.appendChild(added_ingredient);
+  }
 
-            // Add new field
-            $('#addForm').formValidation('addField', $option, $qty);
-        })
+}
 
-        // Remove button click handler
-        .on('click', '.removeButton', function() {
-            var $row    = $(this).parents('.form-group'),
-                $option = $row.find('[name="option[]"]');
-                $qty = $row.find('[name="qty[]"]');
-
-            // Remove element containing the option
-            $row.remove();
-
-            // Remove field
-            $('#addForm').formValidation('removeField', $option);
-        })
-
-        // Called after adding new field
-        .on('added.field.fv', function(e, data) {
-
-            if (data.field === 'option[]') {
-                if ($('#addForm').find(':visible[name="option[]"]').length >= MAX_OPTIONS) {
-                    $('#addForm').find('.addButton').attr('disabled', 'disabled');
-                }
-            }
-
-
-        if (data.field === 'qty[]') {
-            if ($('#addForm').find(':visible[name="qty[]"]').length >= MAX_QTY) {
-                $('#addForm').find('.addButton').attr('disabled', 'disabled');
-            }
-        }
-    })
-
-        // Called after removing the field
-        .on('removed.field.fv', function(e, data) {
-           if (data.field === 'option[]') {
-                if ($('#addForm').find(':visible[name="option[]"]').length < MAX_OPTIONS) {
-                    $('#addForm').find('.addButton').removeAttr('disabled');
-                }
-            }
-            if (data.field === 'qty[]') {
-                 if ($('#addForm').find(':visible[name="qty[]"]').length < MAX_QTY) {
-                     $('#addForm').find('.addButton').removeAttr('disabled');
-                 }
-             }
-        });
-});
+function remove_ingredient_field(rid) {
+  $('#addedIng' + rid).remove();
+}
