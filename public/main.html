@@ -51,27 +51,59 @@
         </form>
       </div>
 
+
+      <!--CREATE A DRINK TAB-->
       <div class="tab-pane" id="2a">
         <h3>Add your own shitty drink!</h3>
-        <form>
+        <form id="addForm" method="post" class="form-horizontal">
+
           <div class="form-group">
-            <label for="drinkToAdd">Drink Name</label>
-            <input type="text" class="form-control" id="drinkName" placeholder="what's your drink called?">
+            <label class="col-xs-1 control-label">Drink Name</label>
+            <div class="col-xs-9">
+              <input type="text" class="form-control" name="question" placeholder="What is you drink called?"/>
+            </div>
           </div>
+
           <div class="form-group">
-            <label for="creatorToAdd">Added By (your name or alias)</label>
-            <input type="text" class="form-control" id="addedBy" placeholder="you are?">
+            <label class="col-xs-1 control-label">Added By</label>
+            <div class="col-xs-9">
+              <input type="text" class="form-control" name="question"  placeholder="you are?" />
+            </div>
           </div>
+
           <div class="form-group">
-            <label for="ingredOne">Ingredient 1</label>
-            <input type="text" class="form-control" id="ingredient1" placeholder="base spirit">
+            <label class="col-xs-1 control-label">Ingredient</label>
+            <div class="col-xs-5">
+              <input type="text" class="form-control" name="option[]" placeholder="spirit/ingredient"/>
+            </div>
+            <div class="col-xs-2">
+              <input type="text" class="form-control" name="qty[]" placeholder="oz"/>
+            </div>
+            <div class="col-xs-2">
+              <button type="button" class="btn btn-default addButton">Add More Ingredients <span class="glyphicon glyphicon-plus"></span></button>
+            </div>
           </div>
+
+          <!-- The option field template containing an option field and a Remove button -->
+          <div class="form-group hide" id="optionTemplate">
+            <div class="col-xs-offset-3 col-xs-5">
+              <input class="form-control" type="text" name="option[]" />
+            </div>
+            <div class="col-xs-4">
+              <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+            </div>
+          </div>
+
           <div class="form-group">
-            <label for="quantityOne">we can hide these with buttons</label>
-            <input type="text" class="form-control" id="quantity1" placeholder="qauntity in oz.">
+            <div class="col-xs-5 col-xs-offset-3">
+              <button type="submit" class="btn btn-default">Validate</button>
+            </div>
           </div>
         </form>
       </div>
+
+
+      <!--END OF CREATE A DRINK TAB-->
 
       <div class="tab-pane" id="3a">
         <h3>This button would return a drink based on a Math.random roll for an id from DB?</h3>
@@ -89,6 +121,7 @@
   </div>
 
 </body>
+<script src="/assets/js/main_page.js" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
