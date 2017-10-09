@@ -1,4 +1,5 @@
 $(document).on("submit", "#addForm", addDrink);//----on click to grab drink in create---
+var add_form = $("#addForm")[0]
 
 //------Add ingredient field-----///
 var ingred = 1;
@@ -45,5 +46,6 @@ function addDrink(event) {
 
   $.post("/api/drinks", drink);
   console.log(drink);
+  add_form.reset();
 }
 //-----------end Post function------------------///
