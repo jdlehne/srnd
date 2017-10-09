@@ -39,29 +39,10 @@ module.exports = function(app) {
     });
   });
 
-  /*app.get("/main", function(req, res) {
+  app.get("/api/random/", function(req, res) {
     db.Drinks.count({}).then(function(count) {
       var totalEntries = count
-      console.log("total entries = " + totalEntries);
-      var randomDrinkID = Math.floor((Math.random() * totalEntries) + 1);
-      console.log("Random Drink ID: " + randomDrinkID);
-      res.json(count);
-    });
-  });
-
-  app.get("/api/random", function(req, res) {
-    db.Drinks.findOne({
-      id: Math.floor((Math.random() * db.Drinks) + 1)
-    }).then(function(random) {
-     res.json(random);
-      console.log(random);
-    });
-  });*/
-
-  app.get("/api/random", function(req, res) {
-    db.Drinks.count({}).then(function(count) {
-      var totalEntries = count
-      console.log("total entries = " + totalEntries);
+      //console.log("total entries = " + totalEntries);
       var randomDrinkID = Math.floor((Math.random() * totalEntries) + 1);
       db.Drinks.findOne({
         where: {
@@ -69,7 +50,7 @@ module.exports = function(app) {
         }
       }).then(function(random) {
         res.json(random);
-        console.log(random);
+        //console.log(random);
       });
     });
   });

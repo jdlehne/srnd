@@ -57,5 +57,16 @@ function addDrink(event) {
 
 function randomDrink(){
   console.log("random clicked");
-  console.log("looking for drink with ID " + randomDrinkID);
+  $.ajax({
+      method: "GET",
+      url: "/api/random",
+    }).then(function(random){
+      console.log("random Drink: " + random.id);
+      console.log("random Drink: " + random.drink_name);
+      $("#randomName").html("Drink: " + random.drink_name);
+      $("#randomAuthor").html("Added By: " + random.added_by);
+      $("#randoIngOne").html("Ingredient 1: " + random.ingredient_1);
+      $("#randoQtyOne").html("Quantity in (oz): " + random.ing_qty_1);
+      $("#randoDescription").html("Directions: " + random.description);
+    });
 }
