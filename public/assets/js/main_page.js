@@ -1,5 +1,8 @@
 $(document).on("submit", "#addForm", addDrink);//----on click to grab drink in create---
-var add_form = $("#addForm")[0]
+var add_form = $("#addForm")[0]//-----grab addform for reset at end of addDrink function
+
+$(document).on("click", "#randomBtn", randomDrink);
+
 
 //------Add ingredient field-----///
 var ingred = 1;
@@ -49,3 +52,10 @@ function addDrink(event) {
   add_form.reset();
 }
 //-----------end Post function------------------///
+
+//---------Random Drink generator----------------///
+
+function randomDrink(){
+  console.log("random clicked");
+  console.log("looking for drink with ID " + randomDrinkID);
+}
