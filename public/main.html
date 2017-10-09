@@ -6,7 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>S R n Dr</title>
-
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
     crossorigin="anonymous">
@@ -83,25 +85,59 @@
                                                   -->
 
 
+
+      <!--CREATE A DRINK TAB-->
       <div class="tab-pane" id="2a">
         <h3>Add your own shitty drink!</h3>
-        <form>
+        <br>
+        <form id="addForm" method="post" class="form-horizontal">
+
           <div class="form-group">
-            <label for="formGroupExampleInput">Information</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+            <label class="col-xs-2 control-label">Drink Name</label>
+            <div class="col-xs-9">
+              <input type="text" id="drinkName" class="form-control" name="question" placeholder="What is you drink called?" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-xs-2 control-label">Added By</label>
+            <div class="col-xs-9">
+              <input type="text" id="addedBy" class="form-control" name="question" placeholder="you are?" />
+            </div>
+          </div>
+
+          <!-- Add ingredient in create field -->
+
+          <div id="ingredient_field">
           </div>
           <div class="form-group">
-            <label for="formGroupExampleInput2">More info</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+            <label class="col-xs-2 control-label">Ingredient</label>
+            <div class="col-xs-5">
+              <input type="text" class="form-control" id="ingredName" name="ingredName[]" value="" placeholder="Ingredient">
+            </div>
+            <div class="col-xs-2">
+              <input type="text" class="form-control" id="qty" name="qty[]" value="" placeholder="quantity in oz">
+            </div>
+            <div class="input-group">
+              <div class="input-group-btn">
+                <button class="btn btn-success" type="button" onclick="ingredient_field();"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button>
+              </div>
+            </div>
           </div>
+
           <div class="form-group">
-            <label for="formGroupExampleInput">still going</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+            <label class="col-xs-2 control-label">Directions</label>
+            <div class="col-lg-9">
+              <textarea class="form-control" rows="3" id="description" placeholder="Describe how to make your beverage in 255 characters or less."></textarea>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="formGroupExampleInput2">we can hide these with buttons</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+
+          <div class="input-group-btn">
+            <p class="col-xs-2">Add Drink</p>
+            <button type="submit" class="btn btn-default" id="addBtn">Add Drink</button>
           </div>
+
+
         </form>
       </div>
       <!-- 
@@ -114,9 +150,63 @@
                                                                      
                                                                       -->
 
+      <!--END OF CREATE A DRINK TAB-->
+
+
+      <!--Random Drink tab-->
+
       <div class="tab-pane" id="3a">
-        <h3>This button would return a drink based on a Math.random roll for an id from DB?</h3>
+
+        <h3>Click the button to see a random recipe</h3>
+        <div class="input-group-btn">
+          <p class="col-xs-2">Random Drink</p>
+          <button class="btn btn-default" id="randomBtn">Random Drink Recipe</button>
+        </div>
+        <div class="containter" id="random_container">
+            <div class="row">
+              <div class="col-md-6">
+                <h3 id="randomName"></h3>
+              </div>
+              <div class="col-md-6">
+                <h3 id="randomAuthor"></h3>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-3">
+                <h4 id="randoIngOne"></h4>
+                <h4 id="randoQtyOne"></h4>
+              </div>
+              <div class="col-md-3">
+                <h4 id="randoIngTwo"></h4>
+                <h4 id="randoQtyTwo"></h4>
+              </div>
+              <div class="col-md-3">
+                <h4 id="randoIngThree"></h4>
+                <h4 id="randoQtyThree"></h4>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-3">
+                <h4 id="randoIngFour"></h4>
+                <h4 id="randoQtyFour"></h4>
+              </div>
+              <div class="col-md-3">
+                <h4 id="randoIngFive"></h4>
+                <h4 id="randoQtyFive"></h4>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-8">
+                <h3 id="randoDescription"></h3>
+              </div>
+            </div>
+
+        </div>
       </div>
+
       <!-- 
       
            _                 _      _____           _   _             
@@ -127,6 +217,10 @@
  /_/    \_\_.__/ \___/ \__,_|\__| |_____/ \___|\___|\__|_|\___/|_| |_|
                                                                       
                                                                        -->
+
+      <!--END RANDOM TAB-->
+
+
 
       <div class="tab-pane" id="4a">
         <h3>Project #2 created for the KU coding bootcamp.</h3>
@@ -150,8 +244,12 @@
   </div>
 
 </body>
+
 <script src="/assets/js/main.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+=======
+<script src="/assets/js/main_page.js" type="text/javascript"></script>
+
 
 </html>

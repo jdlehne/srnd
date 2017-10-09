@@ -45,7 +45,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: true,
       validate: {
-        min: 1,
+        min: 0,
         max: 40
       }
     },
@@ -57,7 +57,31 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: true,
       validate: {
-        min: 1,
+        min: 0,
+        max: 40
+      }
+    },
+    ingredient_4: {
+      type: DataTypes.STRING(25),
+      allownull: true
+    },
+    ing_qty_4: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      validate: {
+        min: 0,
+        max: 40
+      }
+    },
+    ingredient_5: {
+      type: DataTypes.STRING(25),
+      allownull: true
+    },
+    ing_qty_5: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      validate: {
+        min: 0,
         max: 40
       }
     },
