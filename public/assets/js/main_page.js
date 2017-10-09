@@ -27,9 +27,9 @@ function addDrink(event) {
   console.log("Adding Drink");
   event.preventDefault();
   var drink = {
-    drink_name: $('#drinkName').val().trim(),
+     drink_name: $('#drinkName').val().trim(),
      added_by: $('#addedBy').val().trim(),
-     indredient_1: $('#ingredName').val().trim(),
+     ingredient_1: $('#ingredName').val().trim(),
      ing_qty_1: $('#qty').val().trim(),
      description: $('#description').val().trim(),
   };
