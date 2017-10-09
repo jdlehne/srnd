@@ -58,43 +58,45 @@ function addDrink(event) {
 
 function randomDrink() {
   console.log("random clicked");
+  //$("#randoIngTwo").empty();
 
-  $.ajax({
-    method: "GET",
-    url: "/api/random",
-  }).then(function(random) {
-    console.log("random Drink: " + random.drink_name);
-    console.log(JSON.stringify(random));
-    $("#randomName").html("Drink: " + random.drink_name);
-    $("#randomAuthor").html("Added By: " + random.added_by);
-    $("#randoIngOne").html("Ingredient 1: " + random.ingredient_1);
-    $("#randoQtyOne").html("Quantity in (oz): " + random.ing_qty_1);
-    if (random.ingredient_2 !== "" || null) {
-      $("#randoIngTwo").html("Ingredient 2: " + random.ingredient_2);
-    }
-    if (random.ing_qty_2 !== 0 || null) {
-      $("#randoQtyTwo").html("Quantity in (oz): " + random.ing_qty_2);
-    }
-    if (random.ingredient_3 !== "" || null) {
-      $("#randoIngThree").html("Ingredient 3: " + random.ingredient_3);
-    }
-    if (random.ing_qty_3 !== 0 || null) {
-      $("#randoQtyThree").html("Quantity in (oz): " + random.ing_qty_3);
-    }
-    if (random.ingredient_4 !== "" || null) {
-      $("#randoIngFour").html("Ingredient 4: " + random.ingredient_4);
-    }
-    if (random.ing_qty_4 !== 0 || null) {
-      $("#randoQtyFour").html("Quantity in (oz): " + random.ing_qty_4);
-    }
-    if (random.ingredient_5 !== "" || null) {
-      $("#randoIngFive").html("Ingredient 5: " + random.ingredient_5);
-    }
-    if (random.ing_qty_5 !== 0 || null) {
-      $("#randoQtyFive").html("Quantity in (oz): " + random.ing_qty_5);
-    }
-    $("#randoDescription").html("Directions: " + random.description);
-  });
+    $.ajax({
+      method: "GET",
+      url: "/api/random",
+    }).then(function(random) {
+      console.log("random Drink: " + random.drink_name);
+      console.log(JSON.stringify(random));
+      $("#randomName").html("Drink: " + random.drink_name);
+      $("#randomAuthor").html("Added By: " + random.added_by);
+      $("#randoIngOne").html("Ingredient 1: " + random.ingredient_1);
+      $("#randoQtyOne").html("Quantity in (oz): " + random.ing_qty_1);
+      if (random.ingredient_2 !== "" || null) {
+        $("#randoIngTwo").html("Ingredient 2: " + random.ingredient_2);
+      }
+      if (random.ing_qty_2 !== 0 || null) {
+        $("#randoQtyTwo").html("Quantity in (oz): " + random.ing_qty_2);
+      }
+      if (random.ingredient_3 !== "" || null) {
+        $("#randoIngThree").html("Ingredient 3: " + random.ingredient_3);
+      }
+      if (random.ing_qty_3 !== 0 || null) {
+        $("#randoQtyThree").html("Quantity in (oz): " + random.ing_qty_3);
+      }
+      if (random.ingredient_4 !== "" || null) {
+        $("#randoIngFour").html("Ingredient 4: " + random.ingredient_4);
+      }
+      if (random.ing_qty_4 !== 0 || null) {
+        $("#randoQtyFour").html("Quantity in (oz): " + random.ing_qty_4);
+      }
+      if (random.ingredient_5 !== "" || random.ingredient_5) {
+        $("#randoIngFive").html("Ingredient 5: " + random.ingredient_5);
+      }
+      if (random.ing_qty_5 !== 0 || null) {
+        $("#randoQtyFive").html("Quantity in (oz): " + random.ing_qty_5);
+      }
+      $("#randoDescription").html("Directions: " + random.description);
+    });
+
 
 }
 //-------------------END RANDOM DRINK FUNCTION-------------------------///
