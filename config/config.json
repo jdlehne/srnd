@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "1234",
-    "database": "drink_list",
-    "host": "127.0.0.1",
+    "username": "drwdr3mzq70j61on",
+    "password": "ld8vx9zachypeo87",
+    "database": "crp7bh3rej8nwllj",
+    "host": "edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "test": {

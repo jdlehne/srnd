@@ -1,14 +1,17 @@
 /* Space out content a bit */
 
 body {
-  margin-top: 30px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background: url("photo") no-repeat center;/*bg image if we want*/
-  background-size: cover;
-  background-position: unset;
+  background: lightblue;
+  /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, lightblue, white);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, lightblue, white);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, lightblue, white);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, lightblue, white);
+  /* Standard syntax */
 }
-
 
 .header,
 .marketing,
@@ -18,8 +21,7 @@ body {
 }
 
 .container {
-
-  background-color: rgba(238,238,238,0.95);
+  background-color: rgba(238, 238, 238, 0.95);
 }
 
 .header {
@@ -34,9 +36,10 @@ body {
 }
 
 .nope {
-  float:left;
+  float: left;
   padding-right: 10px;
 }
+
 .yes {
   float: right;
   padding-left: 10px;
@@ -47,7 +50,7 @@ p {
   font-size: 16px;
 }
 
-h4{
+h4 {
   font-style: bold;
 }
 
@@ -57,15 +60,15 @@ h4{
   border-top: 1px solid #e5e5e5;
 }
 
-
-
 /* Customize container */
+
 @media (min-width: 768px) {
   .container {
     max-width: 730px;
   }
 }
-.container-narrow > hr {
+
+.container-narrow>hr {
   margin: 30px 0;
 }
 
@@ -73,14 +76,16 @@ h4{
   margin-top: 30px;
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
-
 }
+
 .jumbotron .btn {
   font-size: 21px;
   padding: 14px 24px;
 }
 
+
 /* Responsive: Portrait tablets and up */
+
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */
   .header,
