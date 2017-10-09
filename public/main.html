@@ -70,7 +70,7 @@
           <div class="form-group">
             <label class="col-xs-2 control-label">Added By</label>
             <div class="col-xs-9">
-              <input type="text" id ="addedBy" class="form-control" name="question" placeholder="you are?" />
+              <input type="text" id="addedBy" class="form-control" name="question" placeholder="you are?" />
             </div>
           </div>
 
@@ -102,7 +102,7 @@
 
           <div class="input-group-btn">
             <p class="col-xs-2">Add Drink</p>
-            <button type="submit" class="btn btn-default"id="addBtn">Add Drink</button>
+            <button type="submit" class="btn btn-default" id="addBtn">Add Drink</button>
           </div>
 
 
@@ -111,13 +111,62 @@
 
       <!--END OF CREATE A DRINK TAB-->
 
+
+      <!--Random Drink tab-->
+
       <div class="tab-pane" id="3a">
-        <h3>This button would return a drink based on a Math.random roll for an id from DB?</h3>
+
+        <h3>Click the button to see a random recipe</h3>
         <div class="input-group-btn">
-          <p class="col-xs-2">Add Drink</p>
-          <button class="btn btn-default"id="randomBtn">Random Drink Recipe</button>
+          <p class="col-xs-2">Random Drink</p>
+          <button class="btn btn-default" id="randomBtn">Random Drink Recipe</button>
+        </div>
+        <div class="containter" id="random_container">
+            <div class="row">
+              <div class="col-md-6">
+                <h3 id="randomName"></h3>
+              </div>
+              <div class="col-md-6">
+                <h3 id="randomAuthor"></h3>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-3">
+                <h4 id="randoIngOne"></h4>
+                <h4 id="randoQtyOne"></h4>
+              </div>
+              <div class="col-md-3">
+                <h4 id="randoIngTwo"></h4>
+                <h4 id="randoQtyTwo"></h4>
+              </div>
+              <div class="col-md-3">
+                <h4 id="randoIngThree"></h4>
+                <h4 id="randoQtyThree"></h4>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-3">
+                <h4 id="randoIngFour"></h4>
+                <h4 id="randoQtyFour"></h4>
+              </div>
+              <div class="col-md-3">
+                <h4 id="randoIngFive"></h4>
+                <h4 id="randoQtyFive"></h4>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-8">
+                <h3 id="randoDescription"></h3>
+              </div>
+            </div>
+
         </div>
       </div>
+      <!--END RANDOM TAB-->
+
 
       <div class="tab-pane" id="4a">
         <h3>blah blah blah</h3>
