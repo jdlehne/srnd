@@ -1,5 +1,5 @@
 $(document).on("submit", "#addForm", addDrink);//----on click to grab drink in create---
-var add_form = $("#addForm")[0]
+var add_form = $("#addForm")[0]//-----grab addform for reset at end of addDrink function
 
 //------Add ingredient field-----///
 var ingred = 1;
