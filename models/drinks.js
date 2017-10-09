@@ -51,7 +51,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     ingredient_3: {
       type: DataTypes.STRING(25),
-      allownull: true
+      allowNull: true,
     },
     ing_qty_3: {
       type: DataTypes.INTEGER,
@@ -75,7 +75,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     ingredient_5: {
       type: DataTypes.STRING(25),
-      allownull: true
+      allowNull: true,
     },
     ing_qty_5: {
       type: DataTypes.INTEGER,
