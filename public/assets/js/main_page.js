@@ -67,6 +67,14 @@ function randomDrink(){
       $("#randomAuthor").html("Added By: " + random.added_by);
       $("#randoIngOne").html("Ingredient 1: " + random.ingredient_1);
       $("#randoQtyOne").html("Quantity in (oz): " + random.ing_qty_1);
+      $("#randoIngTwo").html("Ingredient 2: " + random.ingredient_2);
+      $("#randoQtyTwo").html("Quantity in (oz): " + random.ing_qty_2);
+      $("#randoIngThree").html("Ingredient 3: " + random.ingredient_3);
+      $("#randoQtyThree").html("Quantity in (oz): " + random.ing_qty_3);
+      $("#randoIngFour").html("Ingredient 4: " + random.ingredient_4);
+      $("#randoQtyFour").html("Quantity in (oz): " + random.ing_qty_4);
+      $("#randoIngFive").html("Ingredient 5: " + random.ingredient_5);
+      $("#randoQtyFive").html("Quantity in (oz): " + random.ing_qty_5);
       $("#randoDescription").html("Directions: " + random.description);
     });
 }
