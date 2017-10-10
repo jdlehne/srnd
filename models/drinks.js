@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1, 30]
+        len: [1, 100]
       }
     },
     added_by: {
@@ -51,7 +51,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     ingredient_3: {
       type: DataTypes.STRING(25),
-      allowNull: true
+      allowNull: true,
     },
     ing_qty_3: {
       type: DataTypes.INTEGER,
