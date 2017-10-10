@@ -11,40 +11,40 @@ $(document).on("click", "#randomBtn", randomDrink);
 // \__/\___|\__,_|_|  \___|_| |_| \/    \__,_|\__, |\___|
 //                                            |___/      
 
-var ingredient = 0;
+var ingredient = 1;
 
 function ingredientAdd() {
 
   ingredient++;
   var objTo = document.getElementById('additionalIngredients');
   var newIngredientDiv = document.createElement("div");
-  // newIngredientDiv.setAttribute("class", "form-group");
-  // newIngredientDiv.setAttribute("id", "ingredient[" + ingredient + "]");
-  var rdiv = 'ingredient' + ingredient;
-  newIngredientDiv.innerHTML = '<div class="form-group"><input type="text" id="ingredient[' + ingredient + ']" class="form-control" placeholder="Ingredient"></div><button class="btn btn-danger" type="button" onclick="removeIngredient(' + ingredient + ');"><span class="fa fa-minus" aria-hidden="true"> Remove Ingredient</span></button><br><br><div class="clear"></div';
+  newIngredientDiv.setAttribute("id", "ingredient" + ingredient);
+
+  newIngredientDiv.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-7"><input type="text" class="form-control" id="ingredient' + ingredient + '" placeholder="Ingredient"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="removeIngredient(' + ingredient + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
 
   objTo.appendChild(newIngredientDiv)
 
 }
 
 function removeIngredient(rid) {
-  $('#ingredient' + rid).remove();
+
+  $("#ingredient" + rid).remove();
+  ingredient--;
 }
 
-
-function searchDrinks() {
-
+function findDrink() {
   var drinkSearch = {
-    drink_name: $("#drinkName").val(),
-    ingredient_1: $("#ingredient[1]").val(),
-    ingredient_2: $("#ingredient[2]").val(),
-    ingredient_3: $("#ingredient[3]").val(),
-    ingredient_4: $("#ingredient[4]").val(),
-    ingredient_5: $("#ingredient[5]").val()
+    drink_name: $('#drinkName').val(),
+    ingredient_1: $('#ingredient[1]').val() || null,
+    ingredient_2: $('#ingredient[2]').val() || null,
+    ingredient_3: $('#ingredient[3]').val() || null,
+    ingredient_4: $('#ingredient[4]').val() || null,
+    ingredient_5: $('#ingredient[5]').val() || null
+
   };
 
   console.log(drinkSearch);
-}
+};
 
 //    __          _   __                     _         ___                 
 //   /__\ __   __| | / _\ ___  __ _ _ __ ___| |__     / _ \__ _  __ _  ___ 
@@ -63,7 +63,6 @@ function ingredient_field() {
     var objTo = document.getElementById('ingredient_field');
     var added_ingredient = document.createElement("div");
     added_ingredient.setAttribute("id", "addedIng" + ingred);
-    var rdiv = 'addedIng' + ingred;
     added_ingredient.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-5"><input type="text" class="form-control" id="ingredName' + ingred + '" name="ingredName[]" value="" placeholder="Ingredient"></div><div class="col-xs-2"><input type="text" class="form-control" id="qty' + ingred + '" name="qty[]" value="" placeholder="quantity in oz"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="remove_ingredient_field(' + ingred + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
 
     objTo.appendChild(added_ingredient);
