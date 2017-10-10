@@ -3,6 +3,14 @@ var add_form = $("#addForm")[0] //-----grab addform for reset at end of addDrink
 
 $(document).on("click", "#randomBtn", randomDrink);
 
+
+//  __                     _         ___                 
+// / _\ ___  __ _ _ __ ___| |__     / _ \__ _  __ _  ___ 
+// \ \ / _ \/ _` | '__/ __| '_ \   / /_)/ _` |/ _` |/ _ \
+// _\ \  __/ (_| | | | (__| | | | / ___/ (_| | (_| |  __/
+// \__/\___|\__,_|_|  \___|_| |_| \/    \__,_|\__, |\___|
+//                                            |___/      
+
 var ingredient = 0;
 
 function ingredientAdd() {
@@ -11,9 +19,9 @@ function ingredientAdd() {
   var objTo = document.getElementById('additionalIngredients');
   var newIngredientDiv = document.createElement("div");
   // newIngredientDiv.setAttribute("class", "form-group");
-  newIngredientDiv.setAttribute("id", "ingredient" + ingredient);
+  // newIngredientDiv.setAttribute("id", "ingredient[" + ingredient + "]");
   var rdiv = 'ingredient' + ingredient;
-  newIngredientDiv.innerHTML = '<div class="form-group"><input type="text" class="form-control" placeholder="Ingredient"></div><button class="btn btn-danger" type="button" onclick="removeIngredient(' + ingredient + ');"><span class="fa fa-minus" aria-hidden="true"> Remove Ingredient</span></button><br><br><div class="clear"></div';
+  newIngredientDiv.innerHTML = '<div class="form-group"><input type="text" id="ingredient[' + ingredient + ']" class="form-control" placeholder="Ingredient"></div><button class="btn btn-danger" type="button" onclick="removeIngredient(' + ingredient + ');"><span class="fa fa-minus" aria-hidden="true"> Remove Ingredient</span></button><br><br><div class="clear"></div';
 
   objTo.appendChild(newIngredientDiv)
 
@@ -24,54 +32,76 @@ function removeIngredient(rid) {
 }
 
 
+function searchDrinks() {
+
+  var drinkSearch = {
+    drink_name: $("#drinkName").val(),
+    ingredient_1: $("#ingredient[1]").val(),
+    ingredient_2: $("#ingredient[2]").val(),
+    ingredient_3: $("#ingredient[3]").val(),
+    ingredient_4: $("#ingredient[4]").val(),
+    ingredient_5: $("#ingredient[5]").val()
+  };
+
+  console.log(drinkSearch);
+}
+
+//    __          _   __                     _         ___                 
+//   /__\ __   __| | / _\ ___  __ _ _ __ ___| |__     / _ \__ _  __ _  ___ 
+//  /_\| '_ \ / _` | \ \ / _ \/ _` | '__/ __| '_ \   / /_)/ _` |/ _` |/ _ \
+// //__| | | | (_| | _\ \  __/ (_| | | | (__| | | | / ___/ (_| | (_| |  __/
+// \__/|_| |_|\__,_| \__/\___|\__,_|_|  \___|_| |_| \/    \__,_|\__, |\___|
+//                                                            |___/      
+
+
 //------Add ingredient field-----///
 var ingred = 1;
 
 function ingredient_field() {
-if (ingred < 5) {
-  ingred++;
-  var objTo = document.getElementById('ingredient_field');
-  var added_ingredient = document.createElement("div");
-  added_ingredient.setAttribute("id", "addedIng" + ingred);
-  var rdiv = 'addedIng' + ingred;
-  added_ingredient.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-5"><input type="text" class="form-control" id="ingredName' + ingred + '" name="ingredName[]" value="" placeholder="Ingredient"></div><div class="col-xs-2"><input type="text" class="form-control" id="qty' + ingred + '" name="qty[]" value="" placeholder="quantity in oz"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="remove_ingredient_field(' + ingred + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
+  if (ingred < 5) {
+    ingred++;
+    var objTo = document.getElementById('ingredient_field');
+    var added_ingredient = document.createElement("div");
+    added_ingredient.setAttribute("id", "addedIng" + ingred);
+    var rdiv = 'addedIng' + ingred;
+    added_ingredient.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-5"><input type="text" class="form-control" id="ingredName' + ingred + '" name="ingredName[]" value="" placeholder="Ingredient"></div><div class="col-xs-2"><input type="text" class="form-control" id="qty' + ingred + '" name="qty[]" value="" placeholder="quantity in oz"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="remove_ingredient_field(' + ingred + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
 
-  objTo.appendChild(added_ingredient);
-}
+    objTo.appendChild(added_ingredient);
+  }
 
 }
 
 function remove_ingredient_field(rid) {
-ingred--;
-$('#addedIng' + rid).remove();
+  ingred--;
+  $('#addedIng' + rid).remove();
 }
 //----------------end Add Ing----------------------------///
 
 
 //--------------Post function to add to DB-----///
 function addDrink(event) {
-console.log("Adding Drink");
-event.preventDefault();
+  console.log("Adding Drink");
+  event.preventDefault();
 
-var drink = {
-  drink_name: $('#drink_Name').val().trim(),
-  added_by: $('#addedBy').val().trim(),
-  ingredient_1: $('#ingredName').val().trim(),
-  ing_qty_1: $('#qty').val().trim(),
-  ingredient_2: $('#ingredName2').val() || null,
-  ing_qty_2: $('#qty2').val() || 0,
-  ingredient_3: $('#ingredName3').val() || null,
-  ing_qty_3: $('#qty3').val() || 0,
-  ingredient_4: $('#ingredName4').val() || null,
-  ing_qty_4: $('#qty4').val() || 0,
-  ingredient_5: $('#ingredName5').val() || null,
-  ing_qty_5: $('#qty5').val() || 0,
-  description: $('#description').val(),
-};
+  var drink = {
+    drink_name: $('#drink_Name').val().trim(),
+    added_by: $('#addedBy').val().trim(),
+    ingredient_1: $('#ingredName').val().trim(),
+    ing_qty_1: $('#qty').val().trim(),
+    ingredient_2: $('#ingredName2').val() || null,
+    ing_qty_2: $('#qty2').val() || 0,
+    ingredient_3: $('#ingredName3').val() || null,
+    ing_qty_3: $('#qty3').val() || 0,
+    ingredient_4: $('#ingredName4').val() || null,
+    ing_qty_4: $('#qty4').val() || 0,
+    ingredient_5: $('#ingredName5').val() || null,
+    ing_qty_5: $('#qty5').val() || 0,
+    description: $('#description').val(),
+  };
 
-$.post("/api/drinks", drink);
-console.log(drink);
-add_form.reset();
+  $.post("/api/drinks", drink);
+  console.log(drink);
+  add_form.reset();
 }
 //-----------end Post function------------------///
 
@@ -79,13 +109,13 @@ add_form.reset();
 //---------Random Drink generator----------------///
 
 function randomDrink() {
-console.log("random clicked");
-$(".randoDump").empty();
+  console.log("random clicked");
+  $(".randoDump").empty();
 
   $.ajax({
     method: "GET",
     url: "/api/random",
-  }).then(function(random) {
+  }).then(function (random) {
     console.log("random Drink: " + random.drink_name);
     console.log(JSON.stringify(random));
     $("#randomName").html("Drink: " + random.drink_name);
