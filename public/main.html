@@ -53,21 +53,23 @@
     -->
     <div class="tab-content clearfix">
       <div class="tab-pane active" id="1a">
-        <h3>Search for a drink by name, an ingredient, or any combo! </h3>
-        <form id="searchForm" action="/api/search" method="get" class="form-horiztonal">
+        <h3>Search for a drink by name, an ingredient, or any combo!</h3>
+        <br>
+        <form id="searchForm" action="/api/search" method="get" class="form-horizontal">
           <div class="form-group">
             <label class="col-xs-2 control-label">Drink Name</label>
-            <div class="col-xs-10">
+            <div class="col-xs-5">
               <input type="text" class="form-control" id="drinkName" placeholder="Drink Name" />
               <br>
             </div>
-            <div id="additionalIngredients"></div>
-            <div class="form-group">
-              <label class="col-xs-2 control-label">Ingredient</label>
-              <div class="col-xs-7">
-                <input type="text" class="form-control" id="ingredient[1]" placeholder="Ingredient" />
-              </div>
+          </div>
+          <div id="additionalIngredients"></div>
+          <div class="form-group">
+            <label class="col-xs-2 control-label">Ingredient</label>
+            <div class="col-xs-5">
+              <input type="text" class="form-control" id="ingredient[1]" placeholder="Ingredient" />
             </div>
+
             <div class="input-group">
               <div class="input-group-btn">
                 <button class="btn btn-info" type="button" onclick="ingredientAdd();">
@@ -75,10 +77,12 @@
                 </button>
               </div>
             </div>
-            <button type="button" id="searchBtn" class="btn btn-primary" onclick="findDrink();">Search</button>
           </div>
+          <button type="button" id="searchBtn" class="btn btn-primary" onclick="findDrink();">Search</button>
+
         </form>
       </div>
+
       <!--
               _     _   _____       _       _
      /\      | |   | | |  __ \     (_)     | |
