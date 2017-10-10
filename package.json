@@ -17,7 +17,7 @@
     "mysql",
     "sequelize"
   ],
-  "author": "atchison, french, lehne, mcfall",
+  "author": "atchinson, french, lehne, mcfall",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jdlehne/srnd/issues"
