@@ -11,6 +11,25 @@ body {
   /* Standard syntax */
 }
 
+@keyframes titlechange {
+  0% {
+    text-shadow: 2px 2px #e90000;
+    text-align: left;
+  }
+  50% {
+    text-shadow: 2px 2px #e900ca;
+    text-align: center;
+  }
+  100% {
+    text-shadow: 2px 2px #18e029;
+    text-align: right;
+  }
+}
+
+.mainTitle {
+  animation: titlechange 1s infinite alternate;
+}
+
 #exTab1 .tab-content {
   color: white;
   background-color: #428bca;
@@ -40,15 +59,15 @@ body {
 #exTab3 .tab-content {
   color: white;
   background-color: #428bca;
-
   padding: 5px 15px;
 }
 
 
 /*-----CREATE A DRINK TAB----*/
 
-#2a{
-  padding:20px;
+#2a {
+  padding: 20px;
 }
+
 
 /*----END CREATE A DRINK TAB---*/

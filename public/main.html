@@ -25,9 +25,8 @@
  |_| \_|\__,_| \_/   |____/ \__,_|_|
 
                                         -->
-
   <div class="container">
-    <h1>Here is an idea for keeping Everything on one page </h1>
+    <h1 class="mainTitle">Shake, Rattle, and Drink!</h1>
   </div>
   <div id="exTab1" class="container">
     <ul class="nav nav-pills">
@@ -44,7 +43,6 @@
         <a href="#4a" data-toggle="tab">About Section!</a>
       </li>
     </ul>
-
     <!--
    _____                     _        _____           _   _
   / ____|                   | |      / ____|         | | (_)
@@ -53,28 +51,39 @@
   ____) |  __/ (_| | | | (__| | | |  ____) |  __/ (__| |_| | (_) | | | |
  |_____/ \___|\__,_|_|  \___|_| |_| |_____/ \___|\___|\__|_|\___/|_| |_|
     -->
-
     <div class="tab-content clearfix">
       <div class="tab-pane active" id="1a">
-        <h3>Search for a drink by name, an ingredient, or any combo! </h3>
-        <form>
+        <h3>Search for a drink by name, an ingredient, or any combo!</h3>
+        <br>
+        <form id="searchForm" action="/api/search" method="get" class="form-horizontal">
           <div class="form-group">
-            <label for="drink-Name">Drink Name: </label>
-            <input type="text" class="form-control" id="drinkName" placeholder="Drink Name">
-          </div>
-          <div class="form-group">
-            <button class="btn btn-info" type="button" onclick="ingredientAdd();">
-              <span class="fa fa-plus" aria-hidden="true">Add Ingredient</span>
-            </button>
+            <label class="col-xs-2 control-label">Drink Name</label>
+            <div class="col-xs-5">
+              <input type="text" class="form-control" id="drinkName" placeholder="Drink Name" />
+              <br>
+            </div>
           </div>
           <div id="additionalIngredients"></div>
-          <br \>
           <div class="form-group">
-            <button class="btn btn-primary" id="searchBtn" type="button">Search</button>
+            <label class="col-xs-2 control-label">Ingredient</label>
+            <div class="col-xs-5">
+              <input type="text" class="form-control" id="ingredient[1]" placeholder="Ingredient" />
+            </div>
+
+            <div class="input-group">
+              <div class="input-group-btn">
+                <button class="btn btn-info" type="button" onclick="ingredientAdd();">
+                  <span class="fa fa-plus" aria-hidden="true">Add Ingredient</span>
+                </button>
+              </div>
+            </div>
+
           </div>
+          <button type="button" id="searchBtn" class="btn btn-primary" onclick="findDrink();">Search</button>
 
         </form>
       </div>
+
       <!--
               _     _   _____       _       _
      /\      | |   | | |  __ \     (_)     | |
@@ -84,30 +93,24 @@
  /_/    \_\__,_|\__,_| |_____/|_|  |_|_| |_|_|\_\
                                                   -->
 
-
-
       <!--CREATE A DRINK TAB-->
       <div class="tab-pane" id="2a">
         <h3>Add your own shitty drink!</h3>
         <br>
         <form id="addForm" method="post" class="form-horizontal">
-
           <div class="form-group">
             <label class="col-xs-2 control-label">Drink Name</label>
             <div class="col-xs-9">
               <input type="text" id="drink_Name" class="form-control" name="question" placeholder="What is you drink called?" />
             </div>
           </div>
-
           <div class="form-group">
             <label class="col-xs-2 control-label">Added By</label>
             <div class="col-xs-9">
               <input type="text" id="addedBy" class="form-control" name="question" placeholder="you are?" />
             </div>
           </div>
-
           <!-- Add ingredient in create field -->
-
           <div id="ingredient_field">
           </div>
           <div class="form-group">
@@ -120,23 +123,21 @@
             </div>
             <div class="input-group">
               <div class="input-group-btn">
-                <button class="btn btn-success" type="button" onclick="ingredient_field();"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Another Ingredient</button>
+                <button class="btn btn-success" type="button" onclick="ingredient_field();">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Another Ingredient</button>
               </div>
             </div>
           </div>
-
           <div class="form-group">
             <label class="col-xs-2 control-label">Directions</label>
             <div class="col-lg-9">
               <textarea class="form-control" rows="3" id="description" placeholder="Describe how to make your beverage in 255 characters or less."></textarea>
             </div>
           </div>
-
           <div class="input-group-btn">
             <p class="col-xs-2">Add Drink</p>
             <button type="submit" class="btn btn-default" id="addBtn">Add Drink</button>
           </div>
-
         </form>
       </div>
       <!--
@@ -148,89 +149,68 @@
  |_|  \_\__,_|_| |_|\__,_|\___/|_| |_| |_| |_____/|_|  |_|_| |_|_|\_\
 
                                                                       -->
-
-      <!--END OF CREATE A DRINK TAB-->
-
-
-      <!--Random Drink tab-->
-
       <div class="tab-pane" id="3a">
-
         <h3>Click the button to see a random recipe</h3>
         <div class="input-group-btn">
           <p class="col-xs-2">Random Drink</p>
           <button class="btn btn-default" id="randomBtn">Random Drink Recipe</button>
         </div>
         <div class="containter" id="random_container">
-            <div class="row">
-              <div class="col-md-6">
-                <h3 id="randomName"></h3>
-              </div>
-              <div class="col-md-6">
-                <h3 id="randomAuthor"></h3>
-              </div>
+          <div class="row">
+            <div class="col-md-6">
+              <h3 id="randomName"></h3>
             </div>
-
-            <div class="row">
-              <div class="col-md-3">
-                <h4 id="randoIngOne"></h4>
-                <h4 id="randoQtyOne"></h4>
-              </div>
-              <div class="col-md-3">
-                <h4 class="randoDump" id="randoIngTwo"></h4>
-                <h4 class="randoDump" id="randoQtyTwo"></h4>
-              </div>
-              <div class="col-md-3">
-                <h4 class ="randoDump" id="randoIngThree"></h4>
-                <h4 class ="randoDump" id="randoQtyThree"></h4>
-              </div>
+            <div class="col-md-6">
+              <h3 id="randomAuthor"></h3>
             </div>
-
-            <div class="row">
-              <div class="col-md-3">
-                <h4 class ="randoDump" id="randoIngFour"></h4>
-                <h4 class ="randoDump" id="randoQtyFour"></h4>
-              </div>
-              <div class="col-md-3">
-                <h4 class ="randoDump" id="randoIngFive"></h4>
-                <h4 class ="randoDump" id="randoQtyFive"></h4>
-              </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <h4 id="randoIngOne"></h4>
+              <h4 id="randoQtyOne"></h4>
             </div>
-
-            <div class="row">
-              <div class="col-md-8">
-                <h3 id="randoDescription"></h3>
-              </div>
+            <div class="col-md-3">
+              <h4 class="randoDump" id="randoIngTwo"></h4>
+              <h4 class="randoDump" id="randoQtyTwo"></h4>
             </div>
-
+            <div class="col-md-3">
+              <h4 class="randoDump" id="randoIngThree"></h4>
+              <h4 class="randoDump" id="randoQtyThree"></h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <h4 class="randoDump" id="randoIngFour"></h4>
+              <h4 class="randoDump" id="randoQtyFour"></h4>
+            </div>
+            <div class="col-md-3">
+              <h4 class="randoDump" id="randoIngFive"></h4>
+              <h4 class="randoDump" id="randoQtyFive"></h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8">
+              <h3 id="randoDescription"></h3>
+            </div>
+          </div>
         </div>
       </div>
-
       <!--
-
            _                 _      _____           _   _
      /\   | |               | |    / ____|         | | (_)
     /  \  | |__   ___  _   _| |_  | (___   ___  ___| |_ _  ___  _ __
    / /\ \ | '_ \ / _ \| | | | __|  \___ \ / _ \/ __| __| |/ _ \| '_ \
   / ____ \| |_) | (_) | |_| | |_   ____) |  __/ (__| |_| | (_) | | | |
  /_/    \_\_.__/ \___/ \__,_|\__| |_____/ \___|\___|\__|_|\___/|_| |_|
-
                                                                        -->
-
-      <!--END RANDOM TAB-->
-
-
-
       <div class="tab-pane" id="4a">
-        <h3>Project #2 created for the KU coding bootcamp.</h3>
+        <h1>Project #2 created for the KU coding bootcamp.</h1>
         <h2>Kyle Atchison
           <br \> Josh Lehne
           <br \> Chris McFall
           <br \> Julian French</h2>
       </div>
-
     </div>
-
     <h4>
       <a href="/api/drinks">Api List maybe...</a>
     </h4>
@@ -241,7 +221,6 @@
       <a href="/">Home</a>
     </h4>
   </div>
-
 </body>
 
 <script src="/assets/js/main.js"></script>

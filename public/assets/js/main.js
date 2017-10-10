@@ -4,26 +4,56 @@ var add_form = $("#addForm")[0] //-----grab addform for reset at end of addDrink
 $(document).on("click", "#randomBtn", randomDrink);
 //$(document).on("click", "#searchBtn", searchDrinks);
 
-var ingredient = 0;
+
+//  __                     _         ___                 
+// / _\ ___  __ _ _ __ ___| |__     / _ \__ _  __ _  ___ 
+// \ \ / _ \/ _` | '__/ __| '_ \   / /_)/ _` |/ _` |/ _ \
+// _\ \  __/ (_| | | | (__| | | | / ___/ (_| | (_| |  __/
+// \__/\___|\__,_|_|  \___|_| |_| \/    \__,_|\__, |\___|
+//                                            |___/      
+
+var ingredient = 1;
 
 function ingredientAdd() {
 
   ingredient++;
   var objTo = document.getElementById('additionalIngredients');
   var newIngredientDiv = document.createElement("div");
-  // newIngredientDiv.setAttribute("class", "form-group");
   newIngredientDiv.setAttribute("id", "ingredient" + ingredient);
-  var rdiv = 'ingredient' + ingredient;
-  newIngredientDiv.innerHTML = '<div class="form-group"><input type="text" class="form-control" placeholder="Ingredient"></div><button class="btn btn-danger" type="button" onclick="removeIngredient(' + ingredient + ');"><span class="fa fa-minus" aria-hidden="true"> Remove Ingredient</span></button><br><br><div class="clear"></div';
+
+  newIngredientDiv.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-7"><input type="text" class="form-control" id="ingredient' + ingredient + '" placeholder="Ingredient"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="removeIngredient(' + ingredient + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
 
   objTo.appendChild(newIngredientDiv)
 
 }
 
 function removeIngredient(rid) {
+
   ingredient--;
   $('#ingredient' + rid).remove();
-}
+
+
+
+function findDrink() {
+  var drinkSearch = {
+    drink_name: $('#drinkName').val(),
+    ingredient_1: $('#ingredient[1]').val() || null,
+    ingredient_2: $('#ingredient[2]').val() || null,
+    ingredient_3: $('#ingredient[3]').val() || null,
+    ingredient_4: $('#ingredient[4]').val() || null,
+    ingredient_5: $('#ingredient[5]').val() || null
+
+  };
+
+  console.log(drinkSearch);
+};
+
+//    __          _   __                     _         ___                 
+//   /__\ __   __| | / _\ ___  __ _ _ __ ___| |__     / _ \__ _  __ _  ___ 
+//  /_\| '_ \ / _` | \ \ / _ \/ _` | '__/ __| '_ \   / /_)/ _` |/ _` |/ _ \
+// //__| | | | (_| | _\ \  __/ (_| | | | (__| | | | / ___/ (_| | (_| |  __/
+// \__/|_| |_|\__,_| \__/\___|\__,_|_|  \___|_| |_| \/    \__,_|\__, |\___|
+//                                                            |___/      
 
 
 //------Add ingredient field-----///
@@ -87,7 +117,7 @@ function randomDrink() {
   $.ajax({
     method: "GET",
     url: "/api/random",
-  }).then(function(random) {
+  }).then(function (random) {
     console.log("random Drink: " + random.drink_name);
     console.log(JSON.stringify(random));
     $("#randomName").html("Drink: " + random.drink_name);
@@ -140,3 +170,6 @@ function searchDrinks() {
   //  $("#drink_Name").html("Drink: " + result.drink_name);
   });
 }
+
+//-------------------END RANDOM DRINK FUNCTION--------------------------///
+
