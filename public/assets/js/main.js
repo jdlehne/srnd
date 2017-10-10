@@ -80,7 +80,7 @@ add_form.reset();
 
 function randomDrink() {
 console.log("random clicked");
-//$("#randoIngTwo").empty();
+$(".randoDump").empty();
 
   $.ajax({
     method: "GET",
