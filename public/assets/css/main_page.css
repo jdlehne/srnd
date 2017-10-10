@@ -12,11 +12,15 @@ body {
 }
 
 @keyframes titlechange {
-  from {
+  0% {
     text-shadow: 2px 2px #e90000;
     text-align: left;
   }
-  to {
+  50% {
+    text-shadow: 2px 2px #e900ca;
+    text-align: center;
+  }
+  100% {
     text-shadow: 2px 2px #18e029;
     text-align: right;
   }

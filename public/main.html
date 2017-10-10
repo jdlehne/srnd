@@ -57,20 +57,30 @@
     <div class="tab-content clearfix">
       <div class="tab-pane active" id="1a">
         <h3>Search for a drink by name, an ingredient, or any combo! </h3>
-        <form>
+
+        <form id="searchForm" action="/api/search" method="get" class="form-horiztonal">
+
           <div class="form-group">
-            <label for="drinkName">Drink Name: </label>
-            <input type="text" class="form-control" id="drinkName" placeholder="Drink Name">
-          </div>
-          <div class="form-group">
-            <button class="btn btn-info" type="button" onclick="ingredientAdd();">
-              <span class="fa fa-plus" aria-hidden="true">Add Ingredient</span>
-            </button>
-          </div>
-          <div id="additionalIngredients"></div>
-          <br \>
-          <div class="form-group">
-            <button class="btn btn-primary">Search</button>
+            <label class="col-xs-2 control-label">Drink Name</label>
+            <div class="col-xs-10">
+              <input type="text" class="form-control" id="drinkName" placeholder="Drink Name" />
+              <br>
+            </div>
+            <div id="additionalIngredients"></div>
+            <div class="form-group">
+              <label class="col-xs-2 control-label">Ingredient</label>
+              <div class="col-xs-7">
+                <input type="text" class="form-control" id="ingredient[1]" placeholder="Ingredient" />
+              </div>
+            </div>
+            <div class="input-group">
+              <div class="input-group-btn">
+                <button class="btn btn-info" type="button" onclick="ingredientAdd();">
+                  <span class="fa fa-plus" aria-hidden="true">Add Ingredient</span>
+                </button>
+              </div>
+            </div>
+            <button type="button" id="searchBtn" class="btn btn-primary" onclick="findDrink();">Search</button>
           </div>
 
         </form>
