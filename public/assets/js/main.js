@@ -32,18 +32,19 @@ function removeIngredient(rid) {
   ingredient--;
 }
 
+
 function findDrink() {
-  var drinkSearch = {
-    drink_name: $('#drinkName').val(),
-    ingredient_1: $('#ingredient[1]').val() || null,
-    ingredient_2: $('#ingredient[2]').val() || null,
-    ingredient_3: $('#ingredient[3]').val() || null,
-    ingredient_4: $('#ingredient[4]').val() || null,
-    ingredient_5: $('#ingredient[5]').val() || null
+  var drinkSearch = $("#drinkName").val();
+  console.log("search for drink: " + drinkSearch);
+  $.ajax({
+    method: "GET",
+    url: "/api/search"
+  }).then(function (results) {
 
-  };
+    console.log(results);
+  })
 
-  console.log(drinkSearch);
+
 };
 
 //    __          _   __                     _         ___                 

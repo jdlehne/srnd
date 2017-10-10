@@ -58,18 +58,14 @@ module.exports = function (app) {
   });
 
   app.get("/api/search", function (req, res) {
-    db.Drinks.findAll({
-      where: {
-        drink_name: req.body.drink_name,
-        ingredient_1: req.body.ingredient_1,
-        ingredient_2: req.body.ingredient_2,
-        ingredient_3: req.body.ingredient_3,
-        ingredient_4: req.body.ingredient_4,
-        ingredient_5: req.body.ingredient_5
 
+    db.Drinks.findOne({
+      where: {
+        drink_name: req.param.drink_name
       }
     }).then(function (results) {
       res.json(results);
+      console.log(results);
     })
   })
 
