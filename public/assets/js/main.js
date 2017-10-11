@@ -10,20 +10,20 @@ $(document).on("click", "#randomBtn", randomDrink);
 // \__/\___|\__,_|_|  \___|_| |_| \/    \__,_|\__, |\___|
 //                                            |___/
 
-
 var ingredient = 1;
 
 function ingredientAdd() {
 
-  ingredient++;
-  var objTo = document.getElementById('additionalIngredients');
-  var newIngredientDiv = document.createElement("div");
-  newIngredientDiv.setAttribute("id", "ingredient" + ingredient);
+  if (ingredient < 5) {
+    ingredient++;
+    var objTo = document.getElementById('additionalIngredients');
+    var newIngredientDiv = document.createElement("div");
+    newIngredientDiv.setAttribute("id", "ingredient" + ingredient);
 
-  newIngredientDiv.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-9"><input type="text" class="form-control" id="ingredient' + ingredient + '" placeholder="Ingredient"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="removeIngredient(' + ingredient + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
+    newIngredientDiv.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-5"><input type="text" class="form-control" id="ingredient' + ingredient + '" name=""ingredName[]"" value="" placeholder="Ingredient"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="removeIngredient(' + ingredient + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
 
-  objTo.appendChild(newIngredientDiv)
-
+    objTo.appendChild(newIngredientDiv)
+  }
 }
 
 function removeIngredient(rid) {
@@ -101,7 +101,7 @@ function randomDrink() {
   $.ajax({
     method: "GET",
     url: "/api/random",
-  }).then(function (random) {
+  }).then(function(random) {
     console.log("random Drink: " + random.drink_name);
     console.log(JSON.stringify(random));
     $("#randomName").html("Drink: " + random.drink_name);
@@ -146,11 +146,10 @@ function searchDrink() {
   console.log("searching for " + drinkToFind);
   $.ajax({
     method: "GET",
-    url: "/api/"+ drinkToFind,
-  }).then(function (result) {
+    url: "/api/" + drinkToFind,
+  }).then(function(result) {
     console.log(JSON.stringify(result));
     console.log(result.drink_name);
   });
 
 }
-
