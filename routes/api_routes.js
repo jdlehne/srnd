@@ -5,6 +5,7 @@
 var db = require("../models");
 // Routes
 // ======================================
+
 var randomDrinkID;
 
 //----Count method to track total entries, that number to be applied to random drink generator--//
@@ -42,6 +43,7 @@ module.exports = function (app) {
   app.get("/api/random/", function (req, res) {
     db.Drinks.count({}).then(function (count) {
       var totalEntries = count
+      //console.log("total entries = " + totalEntries);
       var randomDrinkID = Math.floor((Math.random() * totalEntries) + 1);
       db.Drinks.findOne({
         where: {
@@ -76,3 +78,4 @@ module.exports = function (app) {
   });
 
 };
+

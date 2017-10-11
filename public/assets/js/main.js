@@ -12,7 +12,7 @@ function ingredientAdd() {
   var newIngredientDiv = document.createElement("div");
   newIngredientDiv.setAttribute("id", "ingredient" + ingredient);
 
-  newIngredientDiv.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-7"><input type="text" class="form-control" id="ingredient' + ingredient + '" placeholder="Ingredient"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="removeIngredient(' + ingredient + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
+  newIngredientDiv.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-9"><input type="text" class="form-control" id="ingredient' + ingredient + '" placeholder="Ingredient"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="removeIngredient(' + ingredient + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
 
   objTo.appendChild(newIngredientDiv)
 
@@ -37,6 +37,28 @@ function findDrink() {
   //console.log("Client side JSON below");
   //console.log(drinkSearch);
 };
+
+
+function findDrink() {
+  var drinkSearch = $("#drinkName").val();
+  console.log("search for drink: " + drinkSearch);
+  $.ajax({
+    method: "GET",
+    url: "/api/search"
+  }).then(function (results) {
+
+    console.log(results);
+  })
+
+
+};
+
+//    __          _   __                     _         ___                 
+//   /__\ __   __| | / _\ ___  __ _ _ __ ___| |__     / _ \__ _  __ _  ___ 
+//  /_\| '_ \ / _` | \ \ / _ \/ _` | '__/ __| '_ \   / /_)/ _` |/ _` |/ _ \
+// //__| | | | (_| | _\ \  __/ (_| | | | (__| | | | / ___/ (_| | (_| |  __/
+// \__/|_| |_|\__,_| \__/\___|\__,_|_|  \___|_| |_| \/    \__,_|\__, |\___|
+//                                                            |___/      
 
 
 //------Add ingredient field-----///
@@ -134,6 +156,7 @@ function randomDrink() {
   });
 
 
+
 }
 //-------------------END RANDOM DRINK FUNCTION--------------------------///
 
@@ -152,3 +175,4 @@ function searchDrink() {
   });
 
 }
+//-------------------END RANDOM DRINK FUNCTION--------------------------///
