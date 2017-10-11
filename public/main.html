@@ -10,8 +10,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-    crossorigin="anonymous">
+
   <link rel="stylesheet" type="text/css" href="/assets/css/main_page.css" />
 </head>
 
@@ -55,25 +54,24 @@
       <div class="tab-pane active" id="1a">
         <h3>Search for a drink by name, an ingredient, or any combo!</h3>
         <br>
-        <form id="searchForm" action="/api/search" method="get" class="form-horizontal">
+        <form id="searchForm" class="form-horizontal">
           <div class="form-group">
             <label class="col-xs-2 control-label">Drink Name</label>
-            <div class="col-xs-5">
+            <div class="col-xs-9">
               <input type="text" class="form-control" id="drinkName" placeholder="Drink Name" />
-              <br>
             </div>
           </div>
           <div id="additionalIngredients"></div>
           <div class="form-group">
             <label class="col-xs-2 control-label">Ingredient</label>
-            <div class="col-xs-5">
+            <div class="col-xs-9">
               <input type="text" class="form-control" id="ingredient[1]" placeholder="Ingredient" />
             </div>
 
             <div class="input-group">
               <div class="input-group-btn">
                 <button class="btn btn-info" type="button" onclick="ingredientAdd();">
-                  <span class="fa fa-plus" aria-hidden="true">Add Ingredient</span>
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </button>
               </div>
             </div>
@@ -205,26 +203,28 @@
                                                                        -->
       <div class="tab-pane" id="4a">
         <h1>Project #2 created for the KU coding bootcamp.</h1>
-        <h2>Kyle Atchison
+        <h3>Kyle Atchison
           <br \> Josh Lehne
           <br \> Chris McFall
-          <br \> Julian French</h2>
+          <br \> Julian French</h3>
+        <h4>
+          <button class="btn btn-primary" type="button" onclick="location.href='https://github.com/jdlehne/srnd';">GitHub</button>
+        </h4>
+        <h4>
+          <button class="btn btn-primary" type="button" onclick="location.href='/api/drinks';">API List</button>
+        </h4>
       </div>
     </div>
+
     <h4>
-      <a href="/api/drinks">Api List maybe...</a>
-    </h4>
-    <h4>
-      <a href="https://github.com/jdlehne/srnd">GitHub</a>
-    </h4>
-    <h4>
-      <a href="/">Home</a>
+      <button class="btn btn-primary" type="button" onclick="location.href='/';">Home</button>
     </h4>
   </div>
 </body>
 
-<script src="/assets/js/main.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="/assets/js/main.js "></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js " integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="
+            anonymous "></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js "></script>
 
 </html>

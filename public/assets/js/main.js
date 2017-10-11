@@ -21,7 +21,7 @@ function ingredientAdd() {
   var newIngredientDiv = document.createElement("div");
   newIngredientDiv.setAttribute("id", "ingredient" + ingredient);
 
-  newIngredientDiv.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-7"><input type="text" class="form-control" id="ingredient' + ingredient + '" placeholder="Ingredient"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="removeIngredient(' + ingredient + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
+  newIngredientDiv.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-9"><input type="text" class="form-control" id="ingredient' + ingredient + '" placeholder="Ingredient"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="removeIngredient(' + ingredient + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
 
   objTo.appendChild(newIngredientDiv)
 
@@ -34,18 +34,19 @@ function removeIngredient(rid) {
 
 
 
+
 function findDrink() {
-  var drinkSearch = {
-    drink_name: $('#drinkName').val(),
-    ingredient_1: $('#ingredient[1]').val() || null,
-    ingredient_2: $('#ingredient[2]').val() || null,
-    ingredient_3: $('#ingredient[3]').val() || null,
-    ingredient_4: $('#ingredient[4]').val() || null,
-    ingredient_5: $('#ingredient[5]').val() || null
+  var drinkSearch = $("#drinkName").val();
+  console.log("search for drink: " + drinkSearch);
+  $.ajax({
+    method: "GET",
+    url: "/api/search"
+  }).then(function (results) {
 
-  };
+    console.log(results);
+  })
 
-  console.log(drinkSearch);
+
 };
 
 //    __          _   __                     _         ___                 
