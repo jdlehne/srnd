@@ -57,16 +57,16 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/api/search", function (req, res) {
+  // app.get("/api/search", function (req, res) {
 
-    db.Drinks.findOne({
-      where: {
-        drink_name: req.param.drink_name
-      }
-    }).then(function (results) {
-      res.json(results);
-      console.log(results);
-    })
-  })
+  //   db.Drinks.findOne({
+  //     where: {
+  //       drink_name: req.param.drink_name
+  //     }
+  //   }).then(function (results) {
+  //     res.json(results);
+  //     console.log(results);
+  //   })
+  // })
 
 };
