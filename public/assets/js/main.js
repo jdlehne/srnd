@@ -2,28 +2,43 @@ $(document).on("submit", "#addForm", addDrink); //----on click to grab drink in 
 var add_form = $("#addForm")[0] //-----grab addform for reset at end of addDrink function
 
 $(document).on("click", "#randomBtn", randomDrink);
-//$(document).on("click", "#searchBtn", searchDrinks);
+$(document).on("click", "#searchBtn", searchDrink);
 
-var ingredient = 0;
+
+var ingredient = 1;
 
 function ingredientAdd() {
 
   ingredient++;
   var objTo = document.getElementById('additionalIngredients');
   var newIngredientDiv = document.createElement("div");
-  // newIngredientDiv.setAttribute("class", "form-group");
   newIngredientDiv.setAttribute("id", "ingredient" + ingredient);
-  var rdiv = 'ingredient' + ingredient;
-  newIngredientDiv.innerHTML = '<div class="form-group"><input type="text" class="form-control" placeholder="Ingredient"></div><button class="btn btn-danger" type="button" onclick="removeIngredient(' + ingredient + ');"><span class="fa fa-minus" aria-hidden="true"> Remove Ingredient</span></button><br><br><div class="clear"></div';
+
+  newIngredientDiv.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-7"><input type="text" class="form-control" id="ingredient' + ingredient + '" placeholder="Ingredient"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="removeIngredient(' + ingredient + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
 
   objTo.appendChild(newIngredientDiv)
 
 }
 
 function removeIngredient(rid) {
+
+  $("#ingredient" + rid).remove();
   ingredient--;
-  $('#ingredient' + rid).remove();
 }
+
+function findDrink() {
+  var drinkSearch = {
+    drink_name: $('#drinkName').val(),
+    ingredient_1: $('#ingredient[1]').val() || null,
+    ingredient_2: $('#ingredient[2]').val() || null,
+    ingredient_3: $('#ingredient[3]').val() || null,
+    ingredient_4: $('#ingredient[4]').val() || null,
+    ingredient_5: $('#ingredient[5]').val() || null
+
+  };
+  //console.log("Client side JSON below");
+  //console.log(drinkSearch);
+};
 
 
 //------Add ingredient field-----///
@@ -35,7 +50,6 @@ function ingredient_field() {
     var objTo = document.getElementById('ingredient_field');
     var added_ingredient = document.createElement("div");
     added_ingredient.setAttribute("id", "addedIng" + ingred);
-    var rdiv = 'addedIng' + ingred;
     added_ingredient.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-5"><input type="text" class="form-control" id="ingredName' + ingred + '" name="ingredName[]" value="" placeholder="Ingredient"></div><div class="col-xs-2"><input type="text" class="form-control" id="qty' + ingred + '" name="qty[]" value="" placeholder="quantity in oz"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="remove_ingredient_field(' + ingred + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
 
     objTo.appendChild(added_ingredient);
@@ -87,7 +101,7 @@ function randomDrink() {
   $.ajax({
     method: "GET",
     url: "/api/random",
-  }).then(function(random) {
+  }).then(function (random) {
     console.log("random Drink: " + random.drink_name);
     console.log(JSON.stringify(random));
     $("#randomName").html("Drink: " + random.drink_name);
@@ -121,22 +135,21 @@ function randomDrink() {
     $("#randoDescription").html("Directions: " + random.description);
   });
 
+
 }
-//-------------------END RANDOM DRINK FUNCTION-------------------------///
+//-------------------END RANDOM DRINK FUNCTION--------------------------///
 
+//-------------------GET DRINK BY NAME-----------------------------------///
 
-//----------------SEARCH ROUTE----------------------//
-
-function searchDrinks() {
-  console.log("drink name search completed");
+function searchDrink() {
+  var drinkToFind = $("#drinkName").val();
+  console.log("searching for " + drinkToFind);
   $(".resultDump").empty();
-
- $.ajax({
+  $.ajax({
     method: "GET",
-    url: "/api/:drinks?",
+    url: "/api/"+ drinkToFind,
   }).then(function (result) {
-    console.log("random Drink: " + result.drink_name);
     console.log(JSON.stringify(result));
-  //  $("#drink_Name").html("Drink: " + result.drink_name);
   });
+
 }

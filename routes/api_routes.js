@@ -18,21 +18,21 @@ module.exports = function(app) {
     });
   });
 
-/*  app.get("/api/search", function(req, res){
-    console.log(req.body.drink_name);
-    console.log(req.params.drink_name);
-    console.log(req.params);
-    console.log(res.body);
-    //console.log(res);
-    db.Drinks.findAll({
-      where:{
-        drink_name: res.body
-      }
-    }).then(function(results){
-      res.json(results);
-      //console.log(results);
-    });
-  });*/
+  /*  app.get("/api/search", function(req, res){
+      console.log(req.body.drink_name);
+      console.log(req.params.drink_name);
+      console.log(req.params);
+      console.log(res.body);
+      //console.log(res);
+      db.Drinks.findAll({
+        where:{
+          drink_name: res.body
+        }
+      }).then(function(results){
+        res.json(results);
+        //console.log(results);
+      });
+    });*/
 
   // POST route for saving a new drink
   app.post("/api/drinks", function(req, res) {
@@ -69,5 +69,42 @@ module.exports = function(app) {
       });
     });
   });
+
+  app.get("/api/:drinks?", function(req, res) {
+    console.log(req.params);
+    //console.log(req.params.drink_name);
+    if (req.params.drink_name) {
+      db.Drinks.findAll({
+        where: {
+          drink_name: req.params.drink_name
+        }
+      }).then(function(result) {
+        return res.json(result.drink_name);
+      });
+    } else {
+      console.log("Showing all, didn't find request");
+      db.Drinks.findAll({})
+        .then(function(result) {
+          return res.json(result);
+        });
+    }
+  });
+
+  app.get("/api/search", function (req, res) {
+    db.Drinks.findAll({
+      where: {
+        drink_name: req.body.drink_name,
+        ingredient_1: req.body.ingredient_1,
+        ingredient_2: req.body.ingredient_2,
+        ingredient_3: req.body.ingredient_3,
+        ingredient_4: req.body.ingredient_4,
+        ingredient_5: req.body.ingredient_5
+
+      }
+    }).then(function (results) {
+      res.json(results);
+    });
+  });
+
 
 };
