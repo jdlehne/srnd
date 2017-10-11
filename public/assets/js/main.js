@@ -3,6 +3,7 @@ var add_form = $("#addForm")[0] //-----grab addform for reset at end of addDrink
 
 $(document).on("click", "#randomBtn", randomDrink);
 
+
 //  __                     _         ___
 // / _\ ___  __ _ _ __ ___| |__     / _ \__ _  __ _  ___
 // \ \ / _ \/ _` | '__/ __| '_ \   / /_)/ _` |/ _` |/ _ \
@@ -20,7 +21,7 @@ function ingredientAdd() {
     var newIngredientDiv = document.createElement("div");
     newIngredientDiv.setAttribute("id", "ingredient" + ingredient);
 
-    newIngredientDiv.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-5"><input type="text" class="form-control" id="ingredient' + ingredient + '" name=""ingredName[]"" value="" placeholder="Ingredient"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="removeIngredient(' + ingredient + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
+    newIngredientDiv.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-9"><input type="text" class="form-control" id="ingredient' + ingredient + '" name=""ingredName[]"" value="" placeholder="Ingredient"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="removeIngredient(' + ingredient + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
 
     objTo.appendChild(newIngredientDiv)
   }
@@ -101,7 +102,7 @@ function randomDrink() {
   $.ajax({
     method: "GET",
     url: "/api/random",
-  }).then(function(random) {
+  }).then(function (random) {
     console.log("random Drink: " + random.drink_name);
     console.log(JSON.stringify(random));
     $("#randomName").html("Drink: " + random.drink_name);
@@ -147,7 +148,7 @@ function searchDrink() {
   $.ajax({
     method: "GET",
     url: "/api/" + drinkToFind,
-  }).then(function(result) {
+  }).then(function (result) {
     console.log(JSON.stringify(result));
     console.log(result.drink_name);
   });
