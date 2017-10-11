@@ -144,7 +144,6 @@ function randomDrink() {
 function searchDrink() {
   var drinkToFind = $("#drinkName").val();
   console.log("searching for " + drinkToFind);
-  $(".resultDump").empty();
   $.ajax({
     method: "GET",
     url: "/api/"+ drinkToFind,
