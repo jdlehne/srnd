@@ -29,3 +29,28 @@ it won't hurt my feelings.
 
 INSERT INTO `drink_list`.`drinks` (`id`, `drink_name`, `added_by`, `ingredient_1`, `ing_qty_1`, `ingredient_2`, `ing_qty_2`, `ingredient_3`, `ing_qty_3`, `description`, `createdAt`, `updatedAt`) VALUES ('1', 'manhattan', 'drinkBot', 'bourbon', '3', 'sweet vermouth', '1', 'dash bitters', '3', 'combine all over ice, shake, strain into martini glass', '00:00:00:00', '00:00:00:00');
 INSERT INTO `drink_list`.`drinks` (`id`, `drink_name`, `added_by`, `ingredient_1`, `ing_qty_1`, `ingredient_2`, `ing_qty_2`, `ingredient_3`, `ing_qty_3`, `description`, `createdAt`, `updatedAt`) VALUES ('2', 'margarita', 'drinkbot', 'tequila', '2', 'triple sec', '1', 'sweet and sour', '3', 'combine all ingredients over ice, serve with or without salt and a lime', '00:00:00:00', '00:00:00:00');
+
+
+//--------------Post function to add to DB-----///
+function addDrink(event) {
+  console.log("Adding Drink");
+  event.preventDefault();
+  var drink = {
+     drink_name: $('#drinkName').val().trim(),
+     added_by: $('#addedBy').val().trim(),
+     ingredient_1: $('#ingredName').val().trim(),
+     ing_qty_1: $('#qty').val().trim(),
+     ingredient_2: $('#ingredName2').val().trim(),
+     ing_qty_2: $('#qty2').val().trim(),
+     ingredient_3: $('#ingredName3').val().trim(),
+     ing_qty_3: $('#qty3').val().trim(),
+     ingredient_4: $('#ingredName4').val().trim(),
+     ing_qty_4: $('#qty4').val().trim(),
+     ingredient_5: $('#ingredName5').val().trim(),
+     ing_qty_5: $('#qty5').val().trim(),
+     description: $('#description').val().trim(),
+  };
+
+  $.post("/api/drinks", drink);
+  console.log(drink);
+}
