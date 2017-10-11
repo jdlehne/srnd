@@ -33,19 +33,19 @@ function removeIngredient(rid) {
 }
 
 
-function findDrink() {
-  var drinkSearch = $("#drinkName").val();
-  console.log("search for drink: " + drinkSearch);
-  $.ajax({
-    method: "GET",
-    url: "/api/search"
-  }).then(function (results) {
+// function findDrink() {
+//   var drinkSearch = $("#drinkName").val();
+//   console.log("search for drink: " + drinkSearch);
+//   $.ajax({
+//     method: "GET",
+//     url: "/api/search"
+//   }).then(function (results) {
 
-    console.log(results);
-  })
+//     console.log(results);
+//   })
 
 
-};
+// };
 
 //    __          _   __                     _         ___                 
 //   /__\ __   __| | / _\ ___  __ _ _ __ ___| |__     / _ \__ _  __ _  ___ 
