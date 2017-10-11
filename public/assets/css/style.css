@@ -4,7 +4,7 @@ body {
   margin-top: 30px;
   padding-top: 20px;
   padding-bottom: 20px;
-  background: url("photo") no-repeat center;
+  background: url("../images/background.jpg") no-repeat center;
   /*bg image if we want*/
   background-size: cover;
   background-position: unset;
@@ -54,6 +54,23 @@ h4 {
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
+}
+
+#ageRow{
+  text-align:center;
+}
+
+.age{
+  text-align: center;
+  float:left
+}
+
+#homeLinks{
+  text-align: right;
+}
+
+#titleBox{
+  text-align: left;
 }
 
 

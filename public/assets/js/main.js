@@ -152,6 +152,5 @@ function searchDrink() {
     console.log(result.drink_name);
   });
 
-
 }
-//-------------------END RANDOM DRINK FUNCTION--------------------------///
+
