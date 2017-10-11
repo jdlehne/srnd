@@ -3,6 +3,14 @@ var add_form = $("#addForm")[0] //-----grab addform for reset at end of addDrink
 
 $(document).on("click", "#randomBtn", randomDrink);
 
+//  __                     _         ___                 
+// / _\ ___  __ _ _ __ ___| |__     / _ \__ _  __ _  ___ 
+// \ \ / _ \/ _` | '__/ __| '_ \   / /_)/ _` |/ _` |/ _ \
+// _\ \  __/ (_| | | | (__| | | | / ___/ (_| | (_| |  __/
+// \__/\___|\__,_|_|  \___|_| |_| \/    \__,_|\__, |\___|
+//                                            |___/      
+
+
 var ingredient = 1;
 
 function ingredientAdd() {
@@ -23,32 +31,6 @@ function removeIngredient(rid) {
   $("#ingredient" + rid).remove();
   ingredient--;
 }
-
-function findDrink() {
-  var drinkSearch = {
-    drink_name: $('#drinkName').val(),
-    ingredient_1: $('#ingredient[1]').val() || null,
-    ingredient_2: $('#ingredient[2]').val() || null,
-    ingredient_3: $('#ingredient[3]').val() || null,
-    ingredient_4: $('#ingredient[4]').val() || null,
-    ingredient_5: $('#ingredient[5]').val() || null
-
-  };
-  //console.log("Client side JSON below");
-  //console.log(drinkSearch);
-};
-
-
-function findDrink() {
-  var drinkSearch = $("#drinkName").val();
-  console.log("search for drink: " + drinkSearch);
-  $.ajax({
-    method: "GET",
-    url: "/api/search"
-  }).then(function (results) {
-
-    console.log(results);
-  })
 
 
 };
@@ -156,7 +138,6 @@ function randomDrink() {
   });
 
 
-
 }
 //-------------------END RANDOM DRINK FUNCTION--------------------------///
 
@@ -173,6 +154,7 @@ function searchDrink() {
     console.log(JSON.stringify(result));
     console.log(result.drink_name);
   });
+
 
 }
 //-------------------END RANDOM DRINK FUNCTION--------------------------///
