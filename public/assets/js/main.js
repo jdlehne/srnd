@@ -2,8 +2,6 @@ $(document).on("submit", "#addForm", addDrink); //----on click to grab drink in 
 var add_form = $("#addForm")[0] //-----grab addform for reset at end of addDrink function
 
 $(document).on("click", "#randomBtn", randomDrink);
-$(document).on("click", "#searchBtn", searchDrink);
-
 
 var ingredient = 1;
 
@@ -150,6 +148,7 @@ function searchDrink() {
     url: "/api/"+ drinkToFind,
   }).then(function (result) {
     console.log(JSON.stringify(result));
+    console.log(result.drink_name);
   });
 
 }
