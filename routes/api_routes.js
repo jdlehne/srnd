@@ -8,6 +8,7 @@ var db = require("../models");
 
 var randomDrinkID;
 
+var randomDrinkID;
 //----Count method to track total entries, that number to be applied to random drink generator--//
 
 module.exports = function (app) {
@@ -17,6 +18,7 @@ module.exports = function (app) {
       res.json(dbDrinks);
     });
   });
+
 
 
   // POST route for saving a new drink
@@ -43,7 +45,6 @@ module.exports = function (app) {
   app.get("/api/random/", function (req, res) {
     db.Drinks.count({}).then(function (count) {
       var totalEntries = count
-      //console.log("total entries = " + totalEntries);
       var randomDrinkID = Math.floor((Math.random() * totalEntries) + 1);
       db.Drinks.findOne({
         where: {
@@ -51,15 +52,13 @@ module.exports = function (app) {
         }
       }).then(function (random) {
         res.json(random);
-        //console.log(random);
       });
     });
   });
 
+
   app.get("/api/:drinks?", function(req, res) {
     console.log(req.params.drinks);
-    //console.log(req.params.drinkToFind);
-    //console.log(req.query);
     if (req.query) {
       db.Drinks.findAll({
         where: {
@@ -78,4 +77,3 @@ module.exports = function (app) {
   });
 
 };
-

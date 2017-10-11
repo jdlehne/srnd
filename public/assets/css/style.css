@@ -1,10 +1,9 @@
 /* Space out content a bit */
 
 body {
-  margin-top: 30px;
   padding-top: 20px;
   padding-bottom: 20px;
-  background: url("photo") no-repeat center;
+  background: url("../images/srnd2.jpg") no-repeat center;
   /*bg image if we want*/
   background-size: cover;
   background-position: unset;
@@ -18,9 +17,35 @@ body {
 }
 
 .container {
-  background-color: rgba(238, 238, 238, 0.95);
+  border-style: inset;
+  background-color: rgba(238, 238, 238, 0.65);
+  padding-left:50px;
+  padding-right:50px;
+  margin-top: 30px;
 }
 
+#ageRow {
+
+  height:110px;
+}
+
+#ageCheck{
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#yesBtn{
+  margin-right:30px;
+}
+
+#yesBtn, #noBtn{
+  background-color: rgba(36, 32, 32, 0.77);
+  color: whitesmoke;
+}
+
+.link{
+  font-size: 20px;
+}
 .header {
   border-bottom: 1px solid #e5e5e5;
 }
@@ -55,6 +80,124 @@ h4 {
   color: #777;
   border-top: 1px solid #e5e5e5;
 }
+
+#ageRow{
+  text-align:center;
+}
+
+.age{
+  text-align: center;
+  float:left
+}
+
+#homeLinks{
+  text-align: right;
+}
+
+#titleBox{
+  text-align: left;
+}
+
+#shake, #rattle, #drink {
+  font-family: 'Berkshire Swash', cursive;
+  font-size: 50px;
+   text-shadow: 2px 2px 4px white;
+}
+
+#shake {
+  margin-top: 40px;
+  left: 500px;
+  -webkit-animation: slideIn 0.5s forwards;
+  -moz-animation: slideIn 0.5s forwards;
+  animation: slideIn 0.5s forwards;
+}
+@-webkit-keyframes slideIn {
+  0% {
+    transform: translateX(-900px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@-moz-keyframes slideIn {
+  0% {
+    transform: translateX(-900px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes slideIn {
+  0% {
+    transform: translateX(-900px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+#rattle {
+  left: 500px;
+  -webkit-animation: slideIn 1s forwards;
+  -moz-animation: slideIn 1s forwards;
+  animation: slideIn 1s forwards;
+}
+@-webkit-keyframes slideIn {
+  0% {
+    transform: translateX(-900px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@-moz-keyframes slideIn {
+  0% {
+    transform: translateX(-900px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes slideIn {
+  0% {
+    transform: translateX(-900px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+#drink {
+  left: 500px;
+  -webkit-animation: slideIn 1.5s forwards;
+  -moz-animation: slideIn 1.5s forwards;
+  animation: slideIn 1.5s forwards;
+}
+@-webkit-keyframes slideIn {
+  0% {
+    transform: translateX(-900px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@-moz-keyframes slideIn {
+  0% {
+    transform: translateX(-900px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes slideIn {
+  0% {
+    transform: translateX(-900px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 
 
 /* Customize container */

@@ -3,19 +3,27 @@ var add_form = $("#addForm")[0] //-----grab addform for reset at end of addDrink
 
 $(document).on("click", "#randomBtn", randomDrink);
 
+//  __                     _         ___
+// / _\ ___  __ _ _ __ ___| |__     / _ \__ _  __ _  ___
+// \ \ / _ \/ _` | '__/ __| '_ \   / /_)/ _` |/ _` |/ _ \
+// _\ \  __/ (_| | | | (__| | | | / ___/ (_| | (_| |  __/
+// \__/\___|\__,_|_|  \___|_| |_| \/    \__,_|\__, |\___|
+//                                            |___/
+
 var ingredient = 1;
 
 function ingredientAdd() {
 
-  ingredient++;
-  var objTo = document.getElementById('additionalIngredients');
-  var newIngredientDiv = document.createElement("div");
-  newIngredientDiv.setAttribute("id", "ingredient" + ingredient);
+  if (ingredient < 5) {
+    ingredient++;
+    var objTo = document.getElementById('additionalIngredients');
+    var newIngredientDiv = document.createElement("div");
+    newIngredientDiv.setAttribute("id", "ingredient" + ingredient);
 
-  newIngredientDiv.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-9"><input type="text" class="form-control" id="ingredient' + ingredient + '" placeholder="Ingredient"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="removeIngredient(' + ingredient + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
+    newIngredientDiv.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-5"><input type="text" class="form-control" id="ingredient' + ingredient + '" name=""ingredName[]"" value="" placeholder="Ingredient"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="removeIngredient(' + ingredient + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
 
-  objTo.appendChild(newIngredientDiv)
-
+    objTo.appendChild(newIngredientDiv)
+  }
 }
 
 function removeIngredient(rid) {
@@ -24,41 +32,13 @@ function removeIngredient(rid) {
   ingredient--;
 }
 
-function findDrink() {
-  var drinkSearch = {
-    drink_name: $('#drinkName').val(),
-    ingredient_1: $('#ingredient[1]').val() || null,
-    ingredient_2: $('#ingredient[2]').val() || null,
-    ingredient_3: $('#ingredient[3]').val() || null,
-    ingredient_4: $('#ingredient[4]').val() || null,
-    ingredient_5: $('#ingredient[5]').val() || null
 
-  };
-  //console.log("Client side JSON below");
-  //console.log(drinkSearch);
-};
-
-
-function findDrink() {
-  var drinkSearch = $("#drinkName").val();
-  console.log("search for drink: " + drinkSearch);
-  $.ajax({
-    method: "GET",
-    url: "/api/search"
-  }).then(function (results) {
-
-    console.log(results);
-  })
-
-
-};
-
-//    __          _   __                     _         ___                 
-//   /__\ __   __| | / _\ ___  __ _ _ __ ___| |__     / _ \__ _  __ _  ___ 
+//    __          _   __                     _         ___
+//   /__\ __   __| | / _\ ___  __ _ _ __ ___| |__     / _ \__ _  __ _  ___
 //  /_\| '_ \ / _` | \ \ / _ \/ _` | '__/ __| '_ \   / /_)/ _` |/ _` |/ _ \
 // //__| | | | (_| | _\ \  __/ (_| | | | (__| | | | / ___/ (_| | (_| |  __/
 // \__/|_| |_|\__,_| \__/\___|\__,_|_|  \___|_| |_| \/    \__,_|\__, |\___|
-//                                                            |___/      
+//                                                            |___/
 
 
 //------Add ingredient field-----///
@@ -121,7 +101,7 @@ function randomDrink() {
   $.ajax({
     method: "GET",
     url: "/api/random",
-  }).then(function (random) {
+  }).then(function(random) {
     console.log("random Drink: " + random.drink_name);
     console.log(JSON.stringify(random));
     $("#randomName").html("Drink: " + random.drink_name);
@@ -156,7 +136,6 @@ function randomDrink() {
   });
 
 
-
 }
 //-------------------END RANDOM DRINK FUNCTION--------------------------///
 
@@ -165,14 +144,12 @@ function randomDrink() {
 function searchDrink() {
   var drinkToFind = $("#drinkName").val();
   console.log("searching for " + drinkToFind);
-  $(".resultDump").empty();
   $.ajax({
     method: "GET",
-    url: "/api/"+ drinkToFind,
-  }).then(function (result) {
+    url: "/api/" + drinkToFind,
+  }).then(function(result) {
     console.log(JSON.stringify(result));
     console.log(result.drink_name);
   });
 
 }
-//-------------------END RANDOM DRINK FUNCTION--------------------------///
