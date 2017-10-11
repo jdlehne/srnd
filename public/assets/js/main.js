@@ -5,12 +5,6 @@ $(document).on("click", "#randomBtn", randomDrink);
 //$(document).on("click", "#searchBtn", searchDrinks);
 
 
-//  __                     _         ___                 
-// / _\ ___  __ _ _ __ ___| |__     / _ \__ _  __ _  ___ 
-// \ \ / _ \/ _` | '__/ __| '_ \   / /_)/ _` |/ _` |/ _ \
-// _\ \  __/ (_| | | | (__| | | | / ___/ (_| | (_| |  __/
-// \__/\___|\__,_|_|  \___|_| |_| \/    \__,_|\__, |\___|
-//                                            |___/      
 
 var ingredient = 1;
 
@@ -28,12 +22,9 @@ function ingredientAdd() {
 }
 
 function removeIngredient(rid) {
-
   ingredient--;
   $('#ingredient' + rid).remove();
-
-
-
+}
 
 // function findDrink() {
 //   var drinkSearch = $("#drinkName").val();
@@ -48,13 +39,6 @@ function removeIngredient(rid) {
 
 
 // };
-
-//    __          _   __                     _         ___                 
-//   /__\ __   __| | / _\ ___  __ _ _ __ ___| |__     / _ \__ _  __ _  ___ 
-//  /_\| '_ \ / _` | \ \ / _ \/ _` | '__/ __| '_ \   / /_)/ _` |/ _` |/ _ \
-// //__| | | | (_| | _\ \  __/ (_| | | | (__| | | | / ___/ (_| | (_| |  __/
-// \__/|_| |_|\__,_| \__/\___|\__,_|_|  \___|_| |_| \/    \__,_|\__, |\___|
-//                                                            |___/      
 
 
 //------Add ingredient field-----///
@@ -171,6 +155,4 @@ function searchDrinks() {
   //  $("#drink_Name").html("Drink: " + result.drink_name);
   });
 }
-
 //-------------------END RANDOM DRINK FUNCTION--------------------------///
-
