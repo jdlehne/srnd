@@ -45,7 +45,6 @@ module.exports = function (app) {
   app.get("/api/random/", function (req, res) {
     db.Drinks.count({}).then(function (count) {
       var totalEntries = count
-      //console.log("total entries = " + totalEntries);
       var randomDrinkID = Math.floor((Math.random() * totalEntries) + 1);
       db.Drinks.findOne({
         where: {
@@ -53,7 +52,6 @@ module.exports = function (app) {
         }
       }).then(function (random) {
         res.json(random);
-        //console.log(random);
       });
     });
   });
@@ -61,8 +59,6 @@ module.exports = function (app) {
 
   app.get("/api/:drinks?", function(req, res) {
     console.log(req.params.drinks);
-    //console.log(req.params.drinkToFind);
-    //console.log(req.query);
     if (req.query) {
       db.Drinks.findAll({
         where: {
@@ -81,5 +77,3 @@ module.exports = function (app) {
   });
 
 };
-
-

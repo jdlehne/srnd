@@ -67,6 +67,10 @@ a{
   background-color: rgba(36, 32, 32, 0.77);
   color: whitesmoke;
 }
+
+#homeBtn{
+      border: solid #615f5f;
+}
 /*---------------------*/
 
 #searchBtnDiv{
@@ -150,6 +154,21 @@ a{
 
 #2a {
   padding: 20px;
+}
+
+#random_container{
+  font-family: 'Tangerine', cursive;
+font-size: 62px;
+margin: 50px;
+}
+
+.randoDump{
+  font-size:40px;
+  font-weight:bold;
+}
+
+#randoIngOne, #randoIngTwo, #randoIngFour,#randoQtyOne, #randoQtyTwo, #randoQtyFour{
+  border-right:solid #eee;
 }
 
 /*----END CREATE A DRINK TAB---*/
