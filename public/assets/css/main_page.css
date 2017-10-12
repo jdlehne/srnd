@@ -1,58 +1,60 @@
 body {
-/*  background: lightblue;
-  background: -webkit-linear-gradient(left, lightblue, white);
-  background: -o-linear-gradient(right, lightblue, white);
-  background: -moz-linear-gradient(right, lightblue, white);
-  background: linear-gradient(to right, lightblue, white);
-  */
   background: url("../images/srnd2.jpg") no-repeat center;
   /*bg image if we want*/
   background-size: cover;
   background-position: unset;
 }
 
-label{
+
+label {
+
   font-family: 'Holtwood One SC', serif;
 }
 
 
 /*-----TAB STYLES----*/
-.tab{
-   border-style: inset;
-    background-color: rgba(94, 134, 192, 0.65);
-   font-family: 'Berkshire Swash', cursive;
-   font-size: 20px;
-   text-shadow: 2px 2px 4px black;
+.tab {
+  border-style: inset;
+  background-color: rgba(94, 134, 192, 0.65);
+  font-family: 'Berkshire Swash', cursive;
+  font-size: 20px;
+  text-shadow: 2px 2px 4px black;
 }
 
-a{
-   color: #f3f9ff;
-   text-decoration: none;
+a {
+  color: #f3f9ff;
+  text-decoration: none;
 }
+
 /*----- END TAB STYLES----*/
 
 
 /*--- TAB/ TAB TITLE STYLE ---*/
-#addTop, #searchTop{
+
+#addTop,
+#searchTop {
   margin-left: 75px;
   margin-top: 35px;
   font-family: 'Holtwood One SC', serif;
   color: rgba(36, 32, 32, 1);
 }
 
-#randomTop{
-  margin-left:75px;
+
+#randomTop {
+  margin-left: 75px;
   font-family: 'Holtwood One SC', serif;
   color: rgba(36, 32, 32, 1);
 }
 
-#searchTop{
-  margin-bottom:35px;
+
+#searchTop {
+  margin-bottom: 35px;
 }
+
 
 /*--------------END TABS---------------*/
 
-#addForm{
+#addForm {
   margin-bottom: 20px;
   margin-top: 20px;
   color: rgba(36, 32, 32, 1);
@@ -60,52 +62,38 @@ a{
 
 /*--END ADD TAB--*/
 
+
 /*---BUTTONS BUTTONS BUTTONS---*/
 
-#randomBtn, #homeBtn, #searchBtn{
-  float:right;
+#randomBtn,
+#homeBtn {
+  float: right;
   background-color: rgba(36, 32, 32, 0.77);
   color: whitesmoke;
 }
 
-#homeBtn{
-      border: solid #615f5f;
-}
-/*---------------------*/
 
-#searchBtnDiv{
-  margin-bottom: 20px;
+#homeBtn {
+  border: solid #615f5f;
 }
+
+
+/*---------------------*/
 
 .tab-content {
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
 }
 
-.control-label{
-  text-align:right;
-}
 
-
-@keyframes titlechange {
-  0% {
-    text-shadow: 2px 2px #e90000;
-    text-align: left;
-  }
-  50% {
-    text-shadow: 2px 2px #e900ca;
-    text-align: center;
-  }
-  100% {
-    text-shadow: 2px 2px #18e029;
-    text-align: right;
-  }
+.control-label {
+  text-align: right;
 }
 
 .mainTitle {
-  animation: titlechange 1s infinite alternate;
-   font-family: 'Berkshire Swash', cursive;
-}
+  color: white;
+  text-shadow: 2px 2px black;
+  font-family: 'Berkshire Swash', cursive;
 
 #exTab1 .tab-content {
   color: black;
@@ -114,7 +102,8 @@ a{
 }
 
 #exTab2 h3 {
-  color:black;
+
+  color: black;
   background-color: rgba(238, 238, 238, 0.65);
   padding: 5px 15px;
 }
@@ -125,7 +114,6 @@ a{
 #exTab1 .nav-pills>li>a {
   border-radius: 0;
 }
-
 
 /* change border radius for the tab , apply corners on top*/
 
@@ -157,7 +145,7 @@ a{
 }
 
 #random_container{
-  font-family: 'Tangerine', cursive;
+font-family: 'Tangerine', cursive;
 font-size: 62px;
 margin: 50px;
 }
