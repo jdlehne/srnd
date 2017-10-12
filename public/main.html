@@ -66,7 +66,7 @@
           <div class="form-group">
             <label class="col-xs-2 control-label">Ingredient</label>
             <div class="col-xs-8">
-              <input type="text" class="form-control" id="ingredient[1]" placeholder="Ingredient" />
+              <input type="text" class="form-control" id="ingredient1" placeholder="Ingredient" />
             </div>
             <div class="input-group">
               <div class="input-group-btn">
@@ -81,6 +81,17 @@
             <button type="button" id="searchBtn" class="btn btnStyle btn-lg center-block" onclick="searchDrink();">Search</button>
           </div>
 
+          <div id="searchResultsArea" class="hidden">
+            <div class="form-group">
+              <hr>
+              <h3 class="text-center strong text">Results are below</h3>
+              <div class="col-offset-2"></div>
+              <div class="text" id="searchResults">
+
+
+              </div>
+            </div>
+          </div>
         </form>
       </div>
 

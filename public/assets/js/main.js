@@ -21,10 +21,12 @@ function ingredientAdd() {
     var newIngredientDiv = document.createElement("div");
     newIngredientDiv.setAttribute("id", "ingredient" + ingredient);
 
-    newIngredientDiv.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-8"><input type="text" class="form-control" id="ingredient' + ingredient + '" name=""ingredName[]"" value="" placeholder="Ingredient"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="removeIngredient(' + ingredient + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
+    newIngredientDiv.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-8"><input type="text" class="form-control" id="ingredient' + ingredient + '" name=""ingredName"" value="" placeholder="Ingredient"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="removeIngredient(' + ingredient + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
 
     objTo.appendChild(newIngredientDiv)
   }
+
+
 }
 
 function removeIngredient(rid) {
@@ -144,13 +146,18 @@ function randomDrink() {
 
 function searchDrink() {
   var drinkToFind = $("#drinkName").val();
+  var ingredient1 = $("#ingredient1").val();
   console.log("searching for " + drinkToFind);
+  console.log("ingredient to be included: " + ingredient1);
   $.ajax({
     method: "GET",
     url: "/api/" + drinkToFind,
   }).then(function (result) {
     console.log(JSON.stringify(result));
-    console.log(result.drink_name);
+    console.log(result[0].drink_name);
+    $("#searchResultsArea").removeClass('hidden');
+    $("#searchResults").html("Drink Name: " + result[0].drink_name + "<br>Drink Ingredient: " + result[0].ingredient_1 + "<br>Drink Ingredient: " + result[0].ingredient_2 + "<br>Drink Ingredient: " + result[0].ingredient_3 + "<br>Drink Ingredient: " + result[0].ingredient_4 + "<br>Drink Ingredient: " + result[0].ingredient_5 + "<br>Drink Added By: " + result[0].added_by + "<br>Description: " + result[0].description);
+
   });
 
 }

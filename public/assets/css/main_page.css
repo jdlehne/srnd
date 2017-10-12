@@ -68,6 +68,27 @@ a {
 /*--END ADD TAB--*/
 
 
+/* search area */
+
+.show {
+  display: block !important;
+}
+
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.text {
+  font-family: 'Holtwood One SC', serif;
+  color: rgba(36, 32, 32, 1);
+}
+
+
 /*---BUTTONS BUTTONS BUTTONS---*/
 
 #randomBtn {
