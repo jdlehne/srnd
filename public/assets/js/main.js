@@ -175,7 +175,7 @@ function callApi() {
   //var queryURL = "http://www.thecocktaildb.com/api/json/v1/1/all"
 
   //RANDOM//
-  var queryURL = "http://www.thecocktaildb.com/api/json/v1/1/random.php"
+  var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
 
   $.ajax({
     url: queryURL,
