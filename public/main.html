@@ -7,11 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>S R n Dr</title>
   <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Holtwood+One+SC|Tangerine" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main_page.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main_page.css">
+  <link rel="stylesheet" href="/assets/css/animate.css">
 </head>
 
 <body>
@@ -25,10 +26,10 @@
 
                                         -->
   <div class="container">
-    <h1 class="mainTitle">Shake, Rattle, and Drink!</h1>
+    <h1 class="mainTitle animated bounceInDown text-center">Shake, Rattle, and Drink!</h1>
   </div>
   <div id="exTab1" class="container">
-    <ul class="nav nav-pills nav-justified">
+    <ul class="nav nav-pills nav-justified animated bounceInRight">
       <li class="active">
         <a href="#1a" data-toggle="tab" class="tab">Search Drinks!</a>
       </li>
@@ -50,36 +51,50 @@
   ____) |  __/ (_| | | | (__| | | |  ____) |  __/ (__| |_| | (_) | | | |
  |_____/ \___|\__,_|_|  \___|_| |_| |_____/ \___|\___|\__|_|\___/|_| |_|
     -->
-    <div class="tab-content clearfix">
+    <div class="tab-content clearfix animated slideInUp">
       <div class="tab-pane active" id="1a">
-
         <h3 id="searchTop">Search for a drink by name, an ingredient, or any combo! </h3>
-        <form id="searchForm" action="/api/:drinks?" method="get" class="form-horiztonal">
+        <form id="searchForm" action="/api/:drinks?" method="get" class="form-horizontal">
           <div class="form-group">
             <label class="col-xs-2 control-label">Drink Name</label>
-            <div class="col-xs-10">
+            <div class="col-xs-8">
               <input type="text" class="form-control" id="drinkName" placeholder="Drink Name" />
-              <br>
+
             </div>
-            <div id="additionalIngredients"></div>
-            <div class="form-group">
-              <label class="col-xs-2 control-label">Ingredient</label>
-              <div class="col-xs-7">
-                <input type="text" class="form-control" id="ingredient[1]" placeholder="Ingredient" />
-              </div>
+          </div>
+          <div id="additionalIngredients"></div>
+          <div class="form-group">
+            <label class="col-xs-2 control-label">Ingredient</label>
+            <div class="col-xs-8">
+              <input type="text" class="form-control" id="ingredient1" placeholder="Ingredient" />
             </div>
             <div class="input-group">
               <div class="input-group-btn">
-                <button class="btn btn-success" type="button" onclick="ingredientAdd();">
-                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Ingredient</button>
+                <button class="btn btnStyle" type="button" onclick="ingredientAdd();">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
               </div>
             </div>
-            <div id="searchBtnDiv">
-              <button type="button" id="searchBtn" class="btn btn-outline-primary btn-lg active" onclick="searchDrink();">Search</button>
+          </div>
+
+          <div id="searchBtnDiv" class="form-group">
+            <button type="button" id="searchBtn" class="btn btnStyle btn-lg center-block" onclick="searchDrink();">Search</button>
+          </div>
+
+          <div id="searchResultsArea" class="hidden">
+            <div class="form-group">
+              <hr>
+              <h3 class="text-center strong text">Results are below</h3>
+              <div class="col-offset-2"></div>
+              <div class="text" id="searchResults">
+
+
+              </div>
             </div>
           </div>
         </form>
       </div>
+
 
       <!--
               _     _   _____       _       _
@@ -223,7 +238,7 @@
       </div>
     </div>
     <h4>
-      <button class="btn btn-outline-primary btn-lg active" type="button" onclick="location.href='/';"  id="homeBtn">Home</button>
+      <button class="btn btnStyle btn-lg center-block" type="button" onclick="location.href='/';" id="homeBtn">Home</button>
     </h4>
   </div>
 </body>
