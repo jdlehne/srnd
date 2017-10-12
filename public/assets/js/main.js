@@ -236,6 +236,3 @@ function callApi() {
 
   });
 }
-
-}
-
