@@ -29,7 +29,7 @@
     <h1 class="mainTitle animated bounceInDown text-center">Shake, Rattle, and Drink!</h1>
   </div>
   <div id="exTab1" class="container">
-    <ul class="nav nav-pills animated bounceInRight">
+    <ul class="nav nav-pills nav-justified animated bounceInRight">
       <li class="active">
         <a href="#1a" data-toggle="tab" class="tab">Search Drinks!</a>
       </li>
@@ -167,6 +167,7 @@
         <div class="input-group-btn">
           <p class="col-xs-2">Random Drink</p>
           <button class="btn btn-outline-primary btn-lg active" id="randomBtn">Random Drink Recipe</button>
+          <button class="btn btn-outline-primary btn-lg active" id="testBtn" onclick="callApi()">Call Cocktail API</button>
         </div>
         <div class="containter" id="random_container">
           <div class="row">
@@ -176,6 +177,9 @@
             <div class="col-md-6">
               <h3 class="randoDump" id="randomAuthor"></h3>
             </div>
+          </div>
+          <div class="row">
+            <img class="randoDump" id="randomImg"></img>
           </div>
           <hr>
           <div class="row">
