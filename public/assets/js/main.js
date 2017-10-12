@@ -98,9 +98,10 @@ function addDrink(event) {
 //---------Random Drink generator----------------///
 
 function randomDrink() {
-  console.log("random clicked");
+  //console.log("random clicked");
+  $("#randomImg").attr("class", "randoDump");
+    $("#randomImg").attr("src", "");
   $(".randoDump").empty();
-
   $.ajax({
     method: "GET",
     url: "/api/random",
@@ -110,30 +111,30 @@ function randomDrink() {
     $("#randomName").html("Drink: " + random.drink_name);
     $("#randomAuthor").html("Added By: " + random.added_by);
     $("#randoIngOne").html("Ingredient 1: " + random.ingredient_1);
-    $("#randoQtyOne").html("Quantity in (oz): " + random.ing_qty_1);
+    $("#randoQtyOne").html("Amount: " + random.ing_qty_1);
     if (random.ingredient_2 !== "" || null) {
       $("#randoIngTwo").html("Ingredient 2: " + random.ingredient_2);
     }
     if (random.ing_qty_2 !== 0 || null) {
-      $("#randoQtyTwo").html("Quantity in (oz): " + random.ing_qty_2);
+      $("#randoQtyTwo").html("Amount: " + random.ing_qty_2);
     }
     if (random.ingredient_3 !== "" || null) {
       $("#randoIngThree").html("Ingredient 3: " + random.ingredient_3);
     }
     if (random.ing_qty_3 !== 0 || null) {
-      $("#randoQtyThree").html("Quantity in (oz): " + random.ing_qty_3);
+      $("#randoQtyThree").html("Amount: " + random.ing_qty_3);
     }
     if (random.ingredient_4 !== "" || null) {
       $("#randoIngFour").html("Ingredient 4: " + random.ingredient_4);
     }
     if (random.ing_qty_4 !== 0 || null) {
-      $("#randoQtyFour").html("Quantity in (oz): " + random.ing_qty_4);
+      $("#randoQtyFour").html("Amount: " + random.ing_qty_4);
     }
     if (random.ingredient_5 !== "" || random.ingredient_5) {
       $("#randoIngFive").html("Ingredient 5: " + random.ingredient_5);
     }
     if (random.ing_qty_5 !== 0 || null) {
-      $("#randoQtyFive").html("Quantity in (oz): " + random.ing_qty_5);
+      $("#randoQtyFive").html("Amount: " + random.ing_qty_5);
     }
     $("#randoDescription").html("Directions: " + random.description);
   });
@@ -160,4 +161,78 @@ function searchDrink() {
 
   });
 
+
+}
+
+//---Cocktail APi TEST----//
+
+function callApi() {
+  console.log("calling...http://www.thecocktaildb.com/api.php");
+  //var itemTofind;
+  //var queryURL = "http://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + itemTofind;
+  //var queryURL = "http://www.thecocktaildb.com/api/json/v1/1/search.php?s=manhattan"
+  //var queryURL = "http://www.thecocktaildb.com/api/json/v1/1/search.php?s="
+  //var queryURL = "http://www.thecocktaildb.com/api/json/v1/1/all"
+
+  //RANDOM//
+  var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
+
+  $.ajax({
+    url: queryURL,
+    method: 'GET'
+  }).done(function(response) {
+    //  console.log(response);
+    $(".randoDump").empty();
+    $("#randomName").html("Drink Name: " + response.drinks[0].strDrink);
+    var imageaddress = response.drinks[0].strDrinkThumb;
+    $("#randomImg").attr("class", "randomImage");
+    $("#randomImg").attr("src", imageaddress);
+    $("#randoIngOne").html("Ingredient 1: " + response.drinks[0].strIngredient1);
+    $("#randoQtyOne").html("Amount: " + response.drinks[0].strMeasure1);
+    if (response.drinks[0].strIngredient2 !== "" || null) {
+      $("#randoIngTwo").html("Ingredient 2: " + response.drinks[0].strIngredient2);
+    }
+    if (response.drinks[0].strMeasure2 !== "" || null) {
+      $("#randoQtyTwo").html("Amount: " + response.drinks[0].strMeasure2);
+    }
+    if (response.drinks[0].strIngredient3 !== "" || null) {
+      $("#randoIngThree").html("Ingredient 3: " + response.drinks[0].strIngredient3);
+    }
+    if (response.drinks[0].strMeasure3 !== "" || null) {
+      $("#randoQtyThree").html("Amount: " + response.drinks[0].strMeasure3);
+    }
+    if (response.drinks[0].strIngredient4 !== "" || null) {
+      $("#randoIngFour").html("Ingredient 4: " + response.drinks[0].strIngredient4);
+    }
+    if (response.drinks[0].strMeasure4 !== "" || null) {
+      $("#randoQtyFour").html("Amount: " + response.drinks[0].strMeasure4);
+    }
+    if (response.drinks[0].strIngredient5 !== "" || null) {
+      $("#randoIngFive").html("Ingredient 2: " + response.drinks[0].strIngredient5);
+    }
+    if (response.drinks[0].strMeasure5 !== "" || null) {
+      $("#randoQtyFive").html("Amount: " + response.drinks[0].strMeasure5);
+    }
+    $("#randoDescription").html("Directions: " + response.drinks[0].strInstructions);
+
+    var drink = {
+      drink_name: response.drinks[0].strDrink,
+      added_by: "drinkBot",
+      ingredient_1: response.drinks[0].strIngredient1,
+      ing_qty_1: response.drinks[0].strMeasure1,
+      ingredient_2: response.drinks[0].strIngredient2 || null,
+      ing_qty_2: response.drinks[0].strMeasure2 || 0,
+      ingredient_3: response.drinks[0].strIngredient3 ||null,
+      ing_qty_3: response.drinks[0].strMeasure3 || 0,
+      ingredient_4: response.drinks[0].strIngredient4 || null,
+      ing_qty_4: response.drinks[0].strMeasure4 || 0,
+      ingredient_5: response.drinks[0].strIngredient5 || null,
+      ing_qty_5: response.drinks[0].strMeasure5 || 0,
+      description: response.drinks[0].strInstructions,
+    };
+
+    $.post("/api/drinks", drink);//----change db ing_qty from int to string to allow injection--//
+    console.log(drink);
+
+  });
 }

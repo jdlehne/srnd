@@ -29,7 +29,7 @@
     <h1 class="mainTitle animated bounceInDown text-center">Shake, Rattle, and Drink!</h1>
   </div>
   <div id="exTab1" class="container">
-    <ul class="nav nav-pills animated bounceInRight">
+    <ul class="nav nav-pills nav-justified animated bounceInRight">
       <li class="active">
         <a href="#1a" data-toggle="tab" class="tab">Search Drinks!</a>
       </li>
@@ -167,6 +167,7 @@
         <div class="input-group-btn">
           <p class="col-xs-2">Random Drink</p>
           <button class="btn btn-outline-primary btn-lg active" id="randomBtn">Random Drink Recipe</button>
+          <button class="btn btn-outline-primary btn-lg active" id="testBtn" onclick="callApi()">Call Cocktail API</button>
         </div>
         <div class="containter" id="random_container">
           <div class="row">
@@ -177,31 +178,55 @@
               <h3 class="randoDump" id="randomAuthor"></h3>
             </div>
           </div>
+          <div class="row">
+            <img class="randoDump" id="randomImg"></img>
+          </div>
           <hr>
           <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-6">
               <h4 class="randoDump" id="randoIngOne"></h4>
+            </div>
+            <div class="col-md-6">
               <h4 class="randoDump" id="randoQtyOne"></h4>
             </div>
-            <div class="col-md-3">
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
               <h4 class="randoDump" id="randoIngTwo"></h4>
+            </div>
+            <div class="col-md-6">
               <h4 class="randoDump" id="randoQtyTwo"></h4>
             </div>
-            <div class="col-md-3">
+          </div>
+
+          <div class="row">
+            <div class="col-md-16">
               <h4 class="randoDump" id="randoIngThree"></h4>
+            </div>
+            <div class="col-md-6">
               <h4 class="randoDump" id="randoQtyThree"></h4>
             </div>
           </div>
+
           <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-6">
               <h4 class="randoDump" id="randoIngFour"></h4>
+            </div>
+            <div class="col-md-6">
               <h4 class="randoDump" id="randoQtyFour"></h4>
             </div>
-            <div class="col-md-3">
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
               <h4 class="randoDump" id="randoIngFive"></h4>
+            </div>
+            <div class="col-md-6">
               <h4 class="randoDump" id="randoQtyFive"></h4>
             </div>
           </div>
+
           <hr>
           <div class="row">
             <div class="col-md-8">

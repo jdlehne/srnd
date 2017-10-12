@@ -7,8 +7,6 @@ var db = require("../models");
 // ======================================
 
 var randomDrinkID;
-
-var randomDrinkID;
 //----Count method to track total entries, that number to be applied to random drink generator--//
 
 module.exports = function (app) {

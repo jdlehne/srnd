@@ -23,14 +23,14 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     ingredient_1: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(30),
       allowNull: false,
       validate: {
         len: [1, 30]
       }
     },
     ing_qty_1: {
-      type: DataTypes.INTEGER(4),
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
         min: 1,
@@ -42,7 +42,7 @@ module.exports = function(sequelize, DataTypes) {
       allownull: true,
     },
     ing_qty_2: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: true,
       validate: {
         min: 0,
@@ -54,7 +54,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true,
     },
     ing_qty_3: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: true,
       validate: {
         min: 0,
@@ -66,7 +66,7 @@ module.exports = function(sequelize, DataTypes) {
       allownull: true
     },
     ing_qty_4: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: true,
       validate: {
         min: 0,
@@ -78,7 +78,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     ing_qty_5: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: true,
       validate: {
         min: 0,
@@ -89,7 +89,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1, 255]
+        len: [1, 400]
       }
     },
 
