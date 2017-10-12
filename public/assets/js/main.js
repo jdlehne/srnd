@@ -231,7 +231,7 @@ function callApi() {
       description: response.drinks[0].strInstructions,
     };
 
-    //$.post("/api/drinks", drink);//----change db ing_qty from int to string to allow injection--//
+    $.post("/api/drinks", drink);//----change db ing_qty from int to string to allow injection--//
     console.log(drink);
 
   });
