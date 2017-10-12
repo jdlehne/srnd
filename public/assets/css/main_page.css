@@ -70,15 +70,10 @@ a {
 
 /*---BUTTONS BUTTONS BUTTONS---*/
 
-#randomBtn,
-#homeBtn {
+#randomBtn {
   float: right;
   background-color: rgba(36, 32, 32, 0.77);
   color: whitesmoke;
-}
-
-#homeBtn {
-  border: solid #615f5f;
 }
 
 
@@ -170,3 +165,49 @@ a {
 
 
 /*----END CREATE A DRINK TAB---*/
+
+.btnStyle {
+  color: #FFFFFF;
+  background-color: #286090;
+  border-color: #FFFFFF;
+}
+
+.btnStyle:hover,
+.btnStyle:focus,
+.btnStyle:active,
+.btnStyle.active,
+.open .dropdown-toggle.btnStyle {
+  color: #FFFFFF;
+  background-color: #000000;
+  border-color: #FFFFFF;
+}
+
+.btnStyle:active,
+.btnStyle.active,
+.open .dropdown-toggle.btnStyle {
+  background-image: none;
+}
+
+.btnStyle.disabled,
+.btnStyle[disabled],
+fieldset[disabled] .btnStyle,
+.btnStyle.disabled:hover,
+.btnStyle[disabled]:hover,
+fieldset[disabled] .btnStyle:hover,
+.btnStyle.disabled:focus,
+.btnStyle[disabled]:focus,
+fieldset[disabled] .btnStyle:focus,
+.btnStyle.disabled:active,
+.btnStyle[disabled]:active,
+fieldset[disabled] .btnStyle:active,
+.btnStyle.disabled.active,
+.btnStyle[disabled].active,
+fieldset[disabled] .btnStyle.active {
+  background-color: #286090;
+  border-color: #FFFFFF;
+}
+
+.btnStyle .badge {
+  color: #286090;
+  background-color: #FFFFFF;
+}
