@@ -173,6 +173,7 @@ function callApi() {
   }).done(function(response) {
     //  console.log(response);
   populateFields(response);
+
     var drink = {
       drink_name: response.drinks[0].strDrink,
       added_by: "drinkBot",
