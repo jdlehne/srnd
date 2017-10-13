@@ -18,7 +18,7 @@ function searchDrink() {
   $.ajax({
     method: "GET",
     url: "/api/" + drinkToFind,
-  }).then(function (result) {
+  }).then(function(result) {
     console.log(result);
     console.log("Searching for " + result[0].drink_name);
     populateSearch(result);
@@ -31,9 +31,21 @@ function searchByIngredient() {
   $.ajax({
     method: "GET",
     url: "/api/drinks/" + ingredient1,
-  }).then(function (result) {
+  }).done(function(result) {
+    $(".randoDumpSearch").empty();
+    $("#searchResultsArea").removeClass('hidden');
     console.log(result);
-    populateSearch(result);
+    console.log(result.length);
+    for (var i = 0; i < result.length; i++) {
+      console.log(result[i]);
+      var objTo = document.getElementById('drinksFound');
+      var returnedDrink = document.createElement("li");
+      returnedDrink.innerHTML = ('<p id="foundDrink" onClick=searchRecipe();>' + result[i].drink_name + '</p>');
+      //returnedDrink.innerHTML = ('<p>' + result[i].drink_name + '</p>');
+      objTo.appendChild(returnedDrink);
+      //populateSearch(result);
+    }
+
   });
 }
 
@@ -125,7 +137,7 @@ function randomDrink() {
   $.ajax({
     method: "GET",
     url: "/api/random",
-  }).then(function (random) {
+  }).then(function(random) {
     console.log("random Drink: " + random.drink_name);
     console.log(JSON.stringify(random));
     console.log(random.added_by);
@@ -176,29 +188,12 @@ function callApi() {
     method: 'GET'
   }).done(function(response) {
     //  console.log(response);
-  populateFields(response);
-    var drink = {
-      drink_name: response.drinks[0].strDrink,
-      added_by: "drinkBot",
-      ingredient_1: response.drinks[0].strIngredient1,
-      ing_qty_1: response.drinks[0].strMeasure1,
-      ingredient_2: response.drinks[0].strIngredient2 || null,
-      ing_qty_2: response.drinks[0].strMeasure2 || 0 || '\r' || " ",
-      ingredient_3: response.drinks[0].strIngredient3 ||null,
-      ing_qty_3: response.drinks[0].strMeasure3 || 0 || '\r' || " ",
-      ingredient_4: response.drinks[0].strIngredient4 || null || '\r',
-      ing_qty_4: response.drinks[0].strMeasure4 || 0 || '\r' || " ",
-      ingredient_5: response.drinks[0].strIngredient5 || null || '\r',
-      ing_qty_5: response.drinks[0].strMeasure5 || 0 || '\r' || " ",
-      description: response.drinks[0].strInstructions,
-    };
-
-    $.post("/api/drinks", drink);//----change db ing_qty from int to string to allow injection--//
-    console.log(drink);
+    populateFields(response);
+    pushDrink(response); //----change db ing_qty from int to string to allow injection--//
   });
 }
 
-function randomVodka(){
+function randomVodka() {
   var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka"
   var queryURL2 = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
   $.ajax({
@@ -215,11 +210,12 @@ function randomVodka(){
     }).done(function(response) {
       //console.log(response);
       populateFields(response);
+      pushDrink(response);
+    });
   });
-});
 }
 
-function randomGin(){
+function randomGin() {
   var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin"
   var queryURL2 = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
   $.ajax({
@@ -236,11 +232,12 @@ function randomGin(){
     }).done(function(response) {
       //console.log(response);
       populateFields(response);
+      pushDrink(response)
+    });
   });
-});
 }
 
-function randomWhiskey(){
+function randomWhiskey() {
   var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=whiskey"
   var queryURL2 = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
   $.ajax({
@@ -257,12 +254,14 @@ function randomWhiskey(){
     }).done(function(response) {
       //console.log(response);
       populateFields(response);
+      pushDrink(response);
+    });
   });
-});
 }
 
 
-function populateSearch(result){
+function populateSearch(result) {
+  console.log("inside function" + result.length);
   $("#searchResultsArea").removeClass('hidden');
   $(".randoDumpSearch").empty();
   $("#randomNameSearch").html("Drink Name: " + result[0].drink_name);
@@ -275,7 +274,7 @@ function populateSearch(result){
     $("#randoQtyTwoSearch").html("Amount: " + result[0].ing_qty_2);
   }
   if (result[0].ingredient_3 !== "" || null) {
-    $("#randoIngThreeSearch").html("Ingredient 3: " + result[0].ingredient_3 );
+    $("#randoIngThreeSearch").html("Ingredient 3: " + result[0].ingredient_3);
   }
   if (result[0].ing_qty_3 !== 0 || '\r' || " ") {
     $("#randoQtyThreeSearch").html("Amount: " + result[0].ing_qty_3);
@@ -295,7 +294,7 @@ function populateSearch(result){
   $("#randoDescriptionSearch").html("Directions: " + result[0].description);
 }
 
-function populateFields(response){
+function populateFields(response) {
   $(".randoDump").empty();
   $("#randomName").html("Drink Name: " + response.drinks[0].strDrink);
   var imageaddress = response.drinks[0].strDrinkThumb;
@@ -306,26 +305,65 @@ function populateFields(response){
   if (response.drinks[0].strIngredient2 !== "" || null) {
     $("#randoIngTwo").html("Ingredient 2: " + response.drinks[0].strIngredient2);
   }
-  if (response.drinks[0].strMeasure2 !== 0 || '\r' || " ") {
+  if (response.drinks[0].strMeasure2 !== 0 || '\n' || " ") {
     $("#randoQtyTwo").html("Amount: " + response.drinks[0].strMeasure2);
   }
   if (response.drinks[0].strIngredient3 !== "" || null) {
     $("#randoIngThree").html("Ingredient 3: " + response.drinks[0].strIngredient3);
   }
-  if (response.drinks[0].strMeasure3 !== 0 || '\r' || " ") {
+  if (response.drinks[0].strMeasure3 !== 0 || '\n' || " ") {
     $("#randoQtyThree").html("Amount: " + response.drinks[0].strMeasure3);
   }
   if (response.drinks[0].strIngredient4 !== "" || null) {
     $("#randoIngFour").html("Ingredient 4: " + response.drinks[0].strIngredient4);
   }
-  if (response.drinks[0].strMeasure4 !== 0 || '\r' || " ") {
+  if (response.drinks[0].strMeasure4 !== 0 || '\n' || " ") {
     $("#randoQtyFour").html("Amount: " + response.drinks[0].strMeasure4);
   }
   if (response.drinks[0].strIngredient5 !== "" || null) {
     $("#randoIngFive").html("Ingredient 2: " + response.drinks[0].strIngredient5);
   }
-  if (response.drinks[0].strMeasure5 !== 0 || '\r' || " ") {
+  if (response.drinks[0].strMeasure5 !== 0 || '\n' || " ") {
     $("#randoQtyFive").html("Amount: " + response.drinks[0].strMeasure5);
   }
   $("#randoDescription").html("Directions: " + response.drinks[0].strInstructions);
+}
+
+
+function searchRecipe() {
+  $(".randoDumpSearch").empty();
+  console.log("searching for recipe");
+  $(".searchContainer").on('click', 'li', function() {
+    var drinkToFind = $(this).text();
+    console.log(drinkToFind);
+    $.ajax({
+      method: "GET",
+      url: "/api/" + drinkToFind,
+    }).then(function(result) {
+      console.log(result);
+      console.log("Searching for " + result[0].drink_name);
+      populateSearch(result);
+    });
+  });
+}
+
+function pushDrink(response) {
+  var drink = {
+    drink_name: response.drinks[0].strDrink,
+    added_by: "drinkBot",
+    ingredient_1: response.drinks[0].strIngredient1,
+    ing_qty_1: response.drinks[0].strMeasure1,
+    ingredient_2: response.drinks[0].strIngredient2 || null,
+    ing_qty_2: response.drinks[0].strMeasure2 || 0 || '\r' || " ",
+    ingredient_3: response.drinks[0].strIngredient3 || null,
+    ing_qty_3: response.drinks[0].strMeasure3 || 0 || '\r' || " ",
+    ingredient_4: response.drinks[0].strIngredient4 || null || '\r',
+    ing_qty_4: response.drinks[0].strMeasure4 || 0 || '\r' || " ",
+    ingredient_5: response.drinks[0].strIngredient5 || null || '\r',
+    ing_qty_5: response.drinks[0].strMeasure5 || 0 || '\r' || " ",
+    description: response.drinks[0].strInstructions,
+  };
+
+  $.post("/api/drinks", drink);
+  console.log(drink);
 }
