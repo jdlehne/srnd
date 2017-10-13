@@ -104,7 +104,6 @@ module.exports = function(app) {
           });
         } else {
           console.log("not empty");
-          //console.log(result);
           return res.json(result);
         }
       });

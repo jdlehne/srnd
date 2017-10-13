@@ -33,7 +33,6 @@ function searchByIngredient() {
     url: "/api/drinks/" + ingredient1,
   }).then(function (result) {
     console.log(result);
-    //console.log("Searching for " + result[0].drink_name);
     populateSearch(result);
   });
 }
@@ -129,6 +128,7 @@ function randomDrink() {
   }).then(function (random) {
     console.log("random Drink: " + random.drink_name);
     console.log(JSON.stringify(random));
+    console.log(random.added_by);
     $("#randomName").html("Drink: " + random.drink_name);
     $("#randomAuthor").html("Added By: " + random.added_by);
     $("#randomTest").html("Test");
@@ -264,35 +264,35 @@ function randomWhiskey(){
 
 function populateSearch(result){
   $("#searchResultsArea").removeClass('hidden');
-  $(".randoDump").empty();
-  $("#randomName").html("Drink Name: " + result[0].drink_name);
-  $("#randoIngOne").html("Ingredient 1: " + result[0].ingredient_1);
-  $("#randoQtyOne").html("Amount: " + result[0].ing_qty_1);
+  $(".randoDumpSearch").empty();
+  $("#randomNameSearch").html("Drink Name: " + result[0].drink_name);
+  $("#randoIngOneSearch").html("Ingredient 1: " + result[0].ingredient_1);
+  $("#randoQtyOneSearch").html("Amount: " + result[0].ing_qty_1);
   if (result[0].ingredient_2 !== "" || null) {
-    $("#randoIngTwo").html("Ingredient 2: " + result[0].ingredient_2);
+    $("#randoIngTwoSearch").html("Ingredient 2: " + result[0].ingredient_2);
   }
   if (result[0].ing_qty_2 !== 0 || '\r' || " ") {
-    $("#randoQtyTwo").html("Amount: " + result[0].ing_qty_2);
+    $("#randoQtyTwoSearch").html("Amount: " + result[0].ing_qty_2);
   }
   if (result[0].ingredient_3 !== "" || null) {
-    $("#randoIngThree").html("Ingredient 3: " + result[0].ingredient_3 );
+    $("#randoIngThreeSearch").html("Ingredient 3: " + result[0].ingredient_3 );
   }
   if (result[0].ing_qty_3 !== 0 || '\r' || " ") {
-    $("#randoQtyThree").html("Amount: " + result[0].ing_qty_3);
+    $("#randoQtyThreeSearch").html("Amount: " + result[0].ing_qty_3);
   }
   if (result[0].ingredient_4 !== "" || null) {
-    $("#randoIngFour").html("Ingredient 4: " + result[0].ingredient_4);
+    $("#randoIngFourSearch").html("Ingredient 4: " + result[0].ingredient_4);
   }
   if (result[0].ing_qty_4 !== 0 || '\r' || "") {
-    $("#randoQtyFour").html("Amount: " + result[0].ing_qty_4);
+    $("#randoQtyFourSearch").html("Amount: " + result[0].ing_qty_4);
   }
   if (result[0].ingredient_5 !== "" || null) {
-    $("#randoIngFive").html("Ingredient 2: " + result[0].ingredient_5);
+    $("#randoIngFiveSearch").html("Ingredient 2: " + result[0].ingredient_5);
   }
   if (result[0].ing_qty_5 !== 0 || '\r' || " ") {
-    $("#randoQtyFive").html("Amount: " + result[0].ing_qty_5);
+    $("#randoQtyFiveSearch").html("Amount: " + result[0].ing_qty_5);
   }
-  $("#randoDescription").html("Directions: " + result[0].description);
+  $("#randoDescriptionSearch").html("Directions: " + result[0].description);
 }
 
 function populateFields(response){
