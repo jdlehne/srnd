@@ -27,7 +27,6 @@ function ingredientAdd() {
 }
 
 function removeIngredient(rid) {
-
   $("#ingredient" + rid).remove();
   ingredient--;
 }
@@ -54,7 +53,6 @@ function ingredient_field() {
 
     objTo.appendChild(added_ingredient);
   }
-
 }
 
 function remove_ingredient_field(rid) {
@@ -158,8 +156,6 @@ function searchDrink() {
     $("#searchResults").html("Drink Name: " + result[0].drink_name + "<br>Drink Ingredient: " + result[0].ingredient_1 + "<br>Drink Ingredient: " + result[0].ingredient_2 + "<br>Drink Ingredient: " + result[0].ingredient_3 + "<br>Drink Ingredient: " + result[0].ingredient_4 + "<br>Drink Ingredient: " + result[0].ingredient_5 + "<br>Drink Added By: " + result[0].added_by + "<br>Description: " + result[0].description);
 
   });
-
-
 }
 
 //---Cocktail APi RANDOM---//
@@ -173,7 +169,6 @@ function callApi() {
   }).done(function(response) {
     //  console.log(response);
   populateFields(response);
-
     var drink = {
       drink_name: response.drinks[0].strDrink,
       added_by: "drinkBot",
