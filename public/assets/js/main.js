@@ -169,7 +169,7 @@ function randomDrink() {
 //---Cocktail APi RANDOM---//
 
 function callApi() {
-  console.log("calling...http://www.thecocktaildb.com/api.php");
+  console.log("calling...https://www.thecocktaildb.com/api.php");
   var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
   $.ajax({
     url: queryURL,
