@@ -156,14 +156,14 @@ a {
   padding: 20px;
 }
 
-#random_container {
+#random_container, #searchResults {
   /*font-family: 'Tangerine', cursive;*/
   font-family: 'Oswald', sans-serif;
   font-size: 30px;
   margin: 50px;
 }
 
-.randoDump {
+.randoDump, .randoDumpSearch {
   font-size: 30px;
   font-weight: bold;
 }
@@ -173,7 +173,12 @@ a {
 #randoIngThree,
 #randoIngFour,
 #randoIngFive,
-#randoQtyFour {
+#randoIngOneSearch,
+#randoIngTwoSearch,
+#randoIngThreeSearch,
+#randoIngFourSerach,
+#randoIngFiveSearch,
+ {
   text-align: right;
 }
 
@@ -181,7 +186,12 @@ a {
 #randoQtyTwo,
 #randoQtyThree,
 #randoQtyFour,
-#randoQtyFive
+#randoQtyFive,
+#randoQtyOneSearch,
+#randoQtyTwoSearch,
+#randoQtyThreeSearch,
+#randoQtyFourSearch,
+#randoQtyFiveSearch,
  {
 
   text-align: left;
