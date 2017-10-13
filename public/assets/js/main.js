@@ -100,7 +100,7 @@ function addDrink(event) {
 function randomDrink() {
   //console.log("random clicked");
   $("#randomImg").attr("class", "randoDump");
-    $("#randomImg").attr("src", "");
+  $("#randomImg").attr("src", "");
   $(".randoDump").empty();
   $.ajax({
     method: "GET",
@@ -168,8 +168,8 @@ function searchDrink() {
 //---Cocktail APi RANDOM---//
 
 function callApi() {
-  console.log("calling...http://www.thecocktaildb.com/api.php");
-  var queryURL = "http://www.thecocktaildb.com/api/json/v1/1/random.php"
+  console.log("calling...https://www.thecocktaildb.com/api.php");
+  var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
   $.ajax({
     url: queryURL,
     method: 'GET'
@@ -199,8 +199,8 @@ function callApi() {
 }
 
 function randomVodka(){
-  var queryURL = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka"
-  var queryURL2 = "http://www.thecocktaildb.com/api/json/v1/1/search.php?s="
+  var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka"
+  var queryURL2 = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
   $.ajax({
     url: queryURL,
     method: 'GET'
@@ -220,8 +220,8 @@ function randomVodka(){
 }
 
 function randomGin(){
-  var queryURL = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin"
-  var queryURL2 = "http://www.thecocktaildb.com/api/json/v1/1/search.php?s="
+  var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin"
+  var queryURL2 = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
   $.ajax({
     url: queryURL,
     method: 'GET'
@@ -241,8 +241,8 @@ function randomGin(){
 }
 
 function randomWhiskey(){
-  var queryURL = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?i=whiskey"
-  var queryURL2 = "http://www.thecocktaildb.com/api/json/v1/1/search.php?s="
+  var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=whiskey"
+  var queryURL2 = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
   $.ajax({
     url: queryURL,
     method: 'GET'
