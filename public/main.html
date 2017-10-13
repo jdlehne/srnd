@@ -9,7 +9,7 @@
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Holtwood+One+SC|Tangerine" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Holtwood+One+SC|Oswald|Tangerine" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <link rel="stylesheet" type="text/css" href="/assets/css/main_page.css">
   <link rel="stylesheet" href="/assets/css/animate.css">
@@ -163,24 +163,49 @@
                                                                       -->
       <div class="tab-pane" id="3a">
         <h3 id="randomTop">Not sure what you would like?</h3>
-        <h3 id="randomTop">Click the button to grab a random recipe from our database</h3>
-        <div class="input-group-btn">
-          <p class="col-xs-2">Random Drink</p>
-          <button class="btn btn-outline-primary btn-lg active" id="randomBtn">Random Drink Recipe</button>
-          <button class="btn btn-outline-primary btn-lg active" id="testBtn" onclick="callApi()">Call Cocktail API</button>
+        <hr>
+        <div class="row">
+          <div class="col-sm-5">
+            <h4 id="randomTop">Click the button to grab a random recipe from our database...</h4>
+          </div>
+          <div class="col-sm-5">
+            <button class="btn btnStyle btn-lg center-block" id="randomBtn" onClick="randomDrink()">Random Drink</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-5">
+            <h4 id="randomTop">...Or pull a random recipe from the Web..</h4>
+          </div>
+          <div class="col-sm-5">
+            <button class="btn btnStyle btn-lg center-block" id="randomApiBtn" onclick="callApi()">Call Cocktail API</button>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-5">
+            <h4 id="randomTop">Or you have a spirit in mind...</h4>
+          </div>
+          <div class="col-sm-5">
+            <div class="input-group-btn" id="randomButtons">
+              <button class="btn btnStyle btn-lg center-block" id="testBtn" onclick="randomVodka()">random vodka</button>
+              <button class="btn btnStyle btn-lg center-block" id="testBtn" onclick="randomGin()">random Gin</button>
+              <button class="btn btnStyle btn-lg center-block" id="testBtn" onclick="randomWhiskey()">random Whiskey</button>
+            </div>
+          </div>
         </div>
         <div class="containter" id="random_container">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <h3 class="randoDump" id="randomName"></h3>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
+               <img class="randoDump" id="randomImg"></img>
+            </div>
+            <div class="col-md-4">
               <h3 class="randoDump" id="randomAuthor"></h3>
             </div>
           </div>
-          <div class="row">
-            <img class="randoDump" id="randomImg"></img>
-          </div>
+
           <hr>
           <div class="row">
             <div class="col-md-6">
@@ -201,7 +226,7 @@
           </div>
 
           <div class="row">
-            <div class="col-md-16">
+            <div class="col-md-6">
               <h4 class="randoDump" id="randoIngThree"></h4>
             </div>
             <div class="col-md-6">
