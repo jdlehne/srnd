@@ -8,21 +8,47 @@ var add_form = $("#addForm")[0] //-----grab addform for reset at end of addDrink
 // \__/\___|\__,_|_|  \___|_| |_| \/    \__,_|\__, |\___|
 //                                            |___/
 
+//-------------------GET DRINK BY NAME-----------------------------------///
+
+function searchDrink() {
+  var drinkToFind = $("#drinkName").val();
+  var ingredient1 = $("#ingredient1").val();
+  console.log("searching for " + drinkToFind);
+  console.log("ingredient to be included: " + ingredient1);
+  $.ajax({
+    method: "GET",
+    url: "/api/" + drinkToFind,
+  }).then(function (result) {
+    console.log(result);
+    console.log("Searching for " + result[0].drink_name);
+    populateSearch(result);
+  });
+}
+
+function searchByIngredient() {
+  var ingredient1 = $("#ingredient1").val();
+  console.log("searching by ingredient: " + ingredient1);
+  $.ajax({
+    method: "GET",
+    url: "/api/drinks/" + ingredient1,
+  }).then(function (result) {
+    console.log(result);
+    //console.log("Searching for " + result[0].drink_name);
+    populateSearch(result);
+  });
+}
+
 var ingredient = 1;
 
 function ingredientAdd() {
-
   if (ingredient < 5) {
     ingredient++;
     var objTo = document.getElementById('additionalIngredients');
     var newIngredientDiv = document.createElement("div");
     newIngredientDiv.setAttribute("id", "ingredient" + ingredient);
-
     newIngredientDiv.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-8"><input type="text" class="form-control" id="ingredient' + ingredient + '" name=""ingredName"" value="" placeholder="Ingredient"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="removeIngredient(' + ingredient + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
-
     objTo.appendChild(newIngredientDiv)
   }
-
 
 }
 
@@ -139,24 +165,6 @@ function randomDrink() {
 }
 //-------------------END RANDOM DRINK FUNCTION--------------------------///
 
-//-------------------GET DRINK BY NAME-----------------------------------///
-
-function searchDrink() {
-  var drinkToFind = $("#drinkName").val();
-  var ingredient1 = $("#ingredient1").val();
-  console.log("searching for " + drinkToFind);
-  console.log("ingredient to be included: " + ingredient1);
-  $.ajax({
-    method: "GET",
-    url: "/api/" + drinkToFind,
-  }).then(function (result) {
-    console.log(JSON.stringify(result));
-    console.log(result[0].drink_name);
-    $("#searchResultsArea").removeClass('hidden');
-    $("#searchResults").html("Drink Name: " + result[0].drink_name + "<br>Drink Ingredient: " + result[0].ingredient_1 + "<br>Drink Ingredient: " + result[0].ingredient_2 + "<br>Drink Ingredient: " + result[0].ingredient_3 + "<br>Drink Ingredient: " + result[0].ingredient_4 + "<br>Drink Ingredient: " + result[0].ingredient_5 + "<br>Drink Added By: " + result[0].added_by + "<br>Description: " + result[0].description);
-
-  });
-}
 
 //---Cocktail APi RANDOM---//
 
@@ -251,6 +259,40 @@ function randomWhiskey(){
       populateFields(response);
   });
 });
+}
+
+
+function populateSearch(result){
+  $("#searchResultsArea").removeClass('hidden');
+  $(".randoDump").empty();
+  $("#randomName").html("Drink Name: " + result[0].drink_name);
+  $("#randoIngOne").html("Ingredient 1: " + result[0].ingredient_1);
+  $("#randoQtyOne").html("Amount: " + result[0].ing_qty_1);
+  if (result[0].ingredient_2 !== "" || null) {
+    $("#randoIngTwo").html("Ingredient 2: " + result[0].ingredient_2);
+  }
+  if (result[0].ing_qty_2 !== 0 || '\r' || " ") {
+    $("#randoQtyTwo").html("Amount: " + result[0].ing_qty_2);
+  }
+  if (result[0].ingredient_3 !== "" || null) {
+    $("#randoIngThree").html("Ingredient 3: " + result[0].ingredient_3 );
+  }
+  if (result[0].ing_qty_3 !== 0 || '\r' || " ") {
+    $("#randoQtyThree").html("Amount: " + result[0].ing_qty_3);
+  }
+  if (result[0].ingredient_4 !== "" || null) {
+    $("#randoIngFour").html("Ingredient 4: " + result[0].ingredient_4);
+  }
+  if (result[0].ing_qty_4 !== 0 || '\r' || "") {
+    $("#randoQtyFour").html("Amount: " + result[0].ing_qty_4);
+  }
+  if (result[0].ingredient_5 !== "" || null) {
+    $("#randoIngFive").html("Ingredient 2: " + result[0].ingredient_5);
+  }
+  if (result[0].ing_qty_5 !== 0 || '\r' || " ") {
+    $("#randoQtyFive").html("Amount: " + result[0].ing_qty_5);
+  }
+  $("#randoDescription").html("Directions: " + result[0].description);
 }
 
 function populateFields(response){

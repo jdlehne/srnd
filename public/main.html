@@ -55,30 +55,41 @@
       <div class="tab-pane active" id="1a">
         <h3 id="searchTop">Search for a drink by name, an ingredient, or any combo! </h3>
         <form id="searchForm" action="/api/:drinks?" method="get" class="form-horizontal">
-          <div class="form-group">
-            <label class="col-xs-2 control-label">Drink Name</label>
-            <div class="col-xs-8">
-              <input type="text" class="form-control" id="drinkName" placeholder="Drink Name" />
 
-            </div>
-          </div>
-          <div id="additionalIngredients"></div>
-          <div class="form-group">
-            <label class="col-xs-2 control-label">Ingredient</label>
-            <div class="col-xs-8">
-              <input type="text" class="form-control" id="ingredient1" placeholder="Ingredient" />
-            </div>
-            <div class="input-group">
-              <div class="input-group-btn">
-                <button class="btn btnStyle" type="button" onclick="ingredientAdd();">
-                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button>
+          <div class="row">
+            <div class="form-group">
+              <label class="col-xs-2 control-label">Drink Name</label>
+              <div class="col-xs-8">
+                <input type="text" class="form-control" id="drinkName" placeholder="Drink Name" />
+              </div>
+              <div class="col-sm-2">
+                <div id="searchBtnDiv" class="form-group">
+                  <button type="button" id="searchBtn" class="btn btnStyle btn-lg center-block" onclick="searchDrink();">Search</button>
+                </div>
               </div>
             </div>
           </div>
-
-          <div id="searchBtnDiv" class="form-group">
-            <button type="button" id="searchBtn" class="btn btnStyle btn-lg center-block" onclick="searchDrink();">Search</button>
+          <hr>
+          <div class="row">
+            <div id="additionalIngredients"></div>
+            <div class="form-group">
+              <label class="col-xs-2 control-label">Ingredient</label>
+              <div class="col-xs-8">
+                <input type="text" class="form-control" id="ingredient1" placeholder="Ingredient" />
+              </div>
+              <div class="input-group">
+                <div class="input-group-btn">
+                  <button class="btn btnStyle" type="button" onclick="ingredientAdd();">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
+                </div>
+                <div class="col-sm-2">
+                  <div id="searchBtnDiv" class="form-group">
+                    <button type="button" id="searchIngBtn" class="btn btnStyle btn-lg center-block" onclick="searchByIngredient();">Search</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div id="searchResultsArea" class="hidden">
@@ -86,9 +97,72 @@
               <hr>
               <h3 class="text-center strong text">Results are below</h3>
               <div class="col-offset-2"></div>
-              <div class="text" id="searchResults">
 
+              <div class="container" id="searchResults">
+                <div class="row">
+                  <div class="col-md-4">
+                    <h3 class="randoDump" id="randomName"></h3>
+                  </div>
+                  <div class="col-md-4">
+                    <img class="randoDump" id="randomImg"></img>
+                  </div>
+                  <div class="col-md-4">
+                    <h3 class="randoDump" id="randomAuthor"></h3>
+                  </div>
+                </div>
 
+                <hr>
+                <div class="row">
+                  <div class="col-md-6">
+                    <h4 class="randoDump" id="randoIngOne"></h4>
+                  </div>
+                  <div class="col-md-6">
+                    <h4 class="randoDump" id="randoQtyOne"></h4>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <h4 class="randoDump" id="randoIngTwo"></h4>
+                  </div>
+                  <div class="col-md-6">
+                    <h4 class="randoDump" id="randoQtyTwo"></h4>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <h4 class="randoDump" id="randoIngThree"></h4>
+                  </div>
+                  <div class="col-md-6">
+                    <h4 class="randoDump" id="randoQtyThree"></h4>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <h4 class="randoDump" id="randoIngFour"></h4>
+                  </div>
+                  <div class="col-md-6">
+                    <h4 class="randoDump" id="randoQtyFour"></h4>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <h4 class="randoDump" id="randoIngFive"></h4>
+                  </div>
+                  <div class="col-md-6">
+                    <h4 class="randoDump" id="randoQtyFive"></h4>
+                  </div>
+                </div>
+
+                <hr>
+                <div class="row">
+                  <div class="col-md-8">
+                    <h3 class="randoDump" id="randoDescription"></h3>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -199,7 +273,7 @@
               <h3 class="randoDump" id="randomName"></h3>
             </div>
             <div class="col-md-4">
-               <img class="randoDump" id="randomImg"></img>
+              <img class="randoDump" id="randomImg"></img>
             </div>
             <div class="col-md-4">
               <h3 class="randoDump" id="randomAuthor"></h3>
