@@ -82,4 +82,33 @@ module.exports = function(app) {
     };
   });
 
+  app.get("/api/drinks/:ingredient_1?", function(req, res) {
+    console.log(req.params.ingredient_1);
+    console.log(req.query);
+    if (req.query) {
+      db.Drinks.findAll({
+        where: {
+          ingredient_1: {
+            $like: '%' + req.params.ingredient_1 + '%'
+          }
+        }
+      }).then(function(result) {
+        if (result.length == 0) {
+          console.log("empty");
+          db.Drinks.findOne({
+            where: {
+              ingredient_1: "vodka"
+            }
+          }).then(function(result){
+            return res.json(result);
+          });
+        } else {
+          console.log("not empty");
+          //console.log(result);
+          return res.json(result);
+        }
+      });
+    };
+  });
+
 }
