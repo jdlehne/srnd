@@ -1,9 +1,6 @@
 $(document).on("submit", "#addForm", addDrink); //----on click to grab drink in create---
 var add_form = $("#addForm")[0] //-----grab addform for reset at end of addDrink function
 
-$(document).on("click", "#randomBtn", randomDrink);
-
-
 //  __                     _         ___
 // / _\ ___  __ _ _ __ ___| |__     / _ \__ _  __ _  ___
 // \ \ / _ \/ _` | '__/ __| '_ \   / /_)/ _` |/ _` |/ _ \
@@ -169,7 +166,7 @@ function searchDrink() {
 
 function callApi() {
   console.log("calling...http://www.thecocktaildb.com/api.php");
-  var queryURL = "http://www.thecocktaildb.com/api/json/v1/1/random.php"
+  var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
   $.ajax({
     url: queryURL,
     method: 'GET'
@@ -198,8 +195,8 @@ function callApi() {
 }
 
 function randomVodka(){
-  var queryURL = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka"
-  var queryURL2 = "http://www.thecocktaildb.com/api/json/v1/1/search.php?s="
+  var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka"
+  var queryURL2 = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
   $.ajax({
     url: queryURL,
     method: 'GET'
@@ -219,8 +216,8 @@ function randomVodka(){
 }
 
 function randomGin(){
-  var queryURL = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin"
-  var queryURL2 = "http://www.thecocktaildb.com/api/json/v1/1/search.php?s="
+  var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin"
+  var queryURL2 = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
   $.ajax({
     url: queryURL,
     method: 'GET'
@@ -240,8 +237,8 @@ function randomGin(){
 }
 
 function randomWhiskey(){
-  var queryURL = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?i=whiskey"
-  var queryURL2 = "http://www.thecocktaildb.com/api/json/v1/1/search.php?s="
+  var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=whiskey"
+  var queryURL2 = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
   $.ajax({
     url: queryURL,
     method: 'GET'
