@@ -120,7 +120,7 @@ function addDrink(event) {
 function randomDrink() {
   //console.log("random clicked");
   $("#randomImg").attr("class", "randoDump");
-    $("#randomImg").attr("src", "");
+  $("#randomImg").attr("src", "");
   $(".randoDump").empty();
   $.ajax({
     method: "GET",
