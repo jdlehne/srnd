@@ -41,6 +41,7 @@ module.exports = function(app) {
 
   app.get("/api/random/", function(req, res) {
     db.Drinks.count({}).then(function(count) {
+      //console.log("total entries: "+ count);
       var totalEntries = count
       var randomDrinkID = Math.floor((Math.random() * totalEntries) + 1);
       db.Drinks.findOne({
