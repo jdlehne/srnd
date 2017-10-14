@@ -100,7 +100,7 @@ function addDrink(event) {
 function randomDrink() {
   //console.log("random clicked");
   $("#randomImg").attr("class", "randoDump");
-    $("#randomImg").attr("src", "");
+  $("#randomImg").attr("src", "");
   $(".randoDump").empty();
   $.ajax({
     method: "GET",
@@ -180,7 +180,7 @@ function callApi() {
   $.ajax({
     url: queryURL,
     method: 'GET'
-  }).done(function(response) {
+  }).done(function (response) {
     //  console.log(response);
     $(".randoDump").empty();
     $("#randomName").html("Drink Name: " + response.drinks[0].strDrink);
@@ -222,7 +222,7 @@ function callApi() {
       ing_qty_1: response.drinks[0].strMeasure1,
       ingredient_2: response.drinks[0].strIngredient2 || null,
       ing_qty_2: response.drinks[0].strMeasure2 || 0,
-      ingredient_3: response.drinks[0].strIngredient3 ||null,
+      ingredient_3: response.drinks[0].strIngredient3 || null,
       ing_qty_3: response.drinks[0].strMeasure3 || 0,
       ingredient_4: response.drinks[0].strIngredient4 || null,
       ing_qty_4: response.drinks[0].strMeasure4 || 0,
@@ -231,7 +231,7 @@ function callApi() {
       description: response.drinks[0].strInstructions,
     };
 
-    $.post("/api/drinks", drink);//----change db ing_qty from int to string to allow injection--//
+    $.post("/api/drinks", drink); //----change db ing_qty from int to string to allow injection--//
     console.log(drink);
 
   });

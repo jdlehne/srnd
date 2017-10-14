@@ -88,6 +88,10 @@ a {
   color: rgba(36, 32, 32, 1);
 }
 
+.checked {
+  color: orange;
+}
+
 
 /*---BUTTONS BUTTONS BUTTONS---*/
 
@@ -184,36 +188,34 @@ a {
   border-right: solid #eee;
 }
 
-
-.randomImage{
-  height:200px;
+.randomImage {
+  height: 200px;
   border: 15px solid rgba(0, 0, 0, 0.3);
 }
 
+
 /*----END CREATE A DRINK TAB---*/
 
-
-
 @media (max-width: 560px) {
-  .nav-tabs > li {
-           float:none;
-           margin-bottom: 0px;
-       }
-       .nav-tabs > li.active > a {
-           border: 1px solid #dddddd;
-       }
-       .nav-tabs > li.active > a:hover {
-           border: 1px solid #dddddd;
-       }
-       .nav-tabs > li  > a {
-           border-bottom: 1px solid #dddddd;
-           border-left: 1px solid #dddddd;
-           border-right: 1px solid #dddddd;
-       }
-       .nav-tabs > li > a:hover {
-           border-color: #dddddd;
-       }
-   }
+  .nav-tabs>li {
+    float: none;
+    margin-bottom: 0px;
+  }
+  .nav-tabs>li.active>a {
+    border: 1px solid #dddddd;
+  }
+  .nav-tabs>li.active>a:hover {
+    border: 1px solid #dddddd;
+  }
+  .nav-tabs>li>a {
+    border-bottom: 1px solid #dddddd;
+    border-left: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+  }
+  .nav-tabs>li>a:hover {
+    border-color: #dddddd;
+  }
+}
 
 
 /*----END CREATE A DRINK TAB---*/
