@@ -247,6 +247,7 @@ a {
   color: #FFFFFF;
   background-color: #286090;
   border-color: #FFFFFF;
+  height: 34px;
 }
 
 .btnStyle:hover,
@@ -287,4 +288,8 @@ fieldset[disabled] .btnStyle.active {
 .btnStyle .badge {
   color: #286090;
   background-color: #FFFFFF;
+}
+
+#plus-button {
+  margin-right: -10px;
 }
