@@ -369,3 +369,26 @@ function pushDrink(response) {
   $.post("/api/drinks", drink);
   console.log(drink);
 }
+
+function whiskeyTest(){
+  var queryURL = "http://mixopedia.me/api/cocktail"
+  //var queryURL2 = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
+  $.ajax({
+    url: queryURL,
+    method: 'GET'
+  }).done(function(response) {
+    console.log(response);
+    //var randomNum = Math.floor(Math.random() * response.drinks.length);
+    //console.log(randomNum);
+    //console.log(response.drinks[randomNum].strDrink);
+  //  $.ajax({
+    //  url: queryURL2 + response.drinks[randomNum].strDrink,
+    //  method: 'GET'
+  //  }).done(function(response) {
+      //console.log(response);
+    //  populateFields(response);
+    //  pushDrink(response);
+  //  });
+  });
+
+}

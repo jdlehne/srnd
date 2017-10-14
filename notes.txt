@@ -89,3 +89,6 @@ function populateSearch(result) {
     $("#randoDescriptionSearch").html("Directions: " + result[i].description);
   }
 }
+
+to show dupes:
+SELECT drink_name FROM crp7bh3rej8nwllj.Drinks group by drink_name having count(*) >= 2;
