@@ -12,28 +12,34 @@ var add_form = $("#addForm")[0] //-----grab addform for reset at end of addDrink
 
 function searchDrink() {
   $("#drinksFound").empty();
+  $("#resultTop").empty();
   var drinkToFind = $("#drinkName").val();
-  var ingredient1 = $("#ingredient1").val();
   console.log("searching for " + drinkToFind);
-  console.log("ingredient to be included: " + ingredient1);
   $.ajax({
     method: "GET",
     url: "/api/" + drinkToFind,
   }).then(function(result) {
+    if(result.length !==0){
     console.log(result);
-    console.log("Searching for " + result[0].drink_name);
+    console.log("Returning " + result[0].drink_name);
     populateSearch(result);
+  }else {
+    console.log("nothing");
+    noResult();
+  }
   });
 }
 
 function searchByIngredient() {
   $("#drinksFound").empty();
+  $("#resultTop").empty();
   var ingredient1 = $("#ingredient1").val();
   console.log("searching by ingredient: " + ingredient1);
   $.ajax({
     method: "GET",
     url: "/api/drinks/" + ingredient1,
   }).done(function(result) {
+    if(result.length !==0){
     $(".randoDumpSearch").empty();
     $("#searchResultsArea").removeClass('hidden');
     console.log(result);
@@ -43,10 +49,12 @@ function searchByIngredient() {
       var objTo = document.getElementById('drinksFound');
       var returnedDrink = document.createElement("li");
       returnedDrink.innerHTML = ('<p id="foundDrink" onClick=searchRecipe();>' + result[i].drink_name + '</p>');
-      //returnedDrink.innerHTML = ('<p>' + result[i].drink_name + '</p>');
       objTo.appendChild(returnedDrink);
-      //populateSearch(result);
     }
+  }else{
+    console.log("nothing");
+    noResult();
+  }
 
   });
 }
@@ -88,7 +96,7 @@ function ingredient_field() {
     var objTo = document.getElementById('ingredient_field');
     var added_ingredient = document.createElement("div");
     added_ingredient.setAttribute("id", "addedIng" + ingred);
-    added_ingredient.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-5"><input type="text" class="form-control" id="ingredName' + ingred + '" name="ingredName[]" value="" placeholder="Ingredient"></div><div class="col-xs-2"><input type="text" class="form-control" id="qty' + ingred + '" name="qty[]" value="" placeholder="quantity in oz"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="remove_ingredient_field(' + ingred + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
+    added_ingredient.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-5"><input type="text" class="form-control" id="ingredName' + ingred + '" name="ingredName[]" value="" placeholder="Ingredient"></div><div class="col-xs-2"><input type="text" class="form-control" id="qty' + ingred + '" name="qty[]" value="" placeholder="amount"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="remove_ingredient_field(' + ingred + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
 
     objTo.appendChild(added_ingredient);
   }
@@ -183,15 +191,14 @@ function randomDrink() {
 //---Cocktail APi RANDOM---//
 
 function callApi() {
-  console.log("calling...https://www.thecocktaildb.com/api.php");
+  console.log("calling...http://www.thecocktaildb.com/api.php");
   var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
   $.ajax({
     url: queryURL,
     method: 'GET'
   }).done(function(response) {
-    //  console.log(response);
     populateFields(response);
-    pushDrink(response); //----change db ing_qty from int to string to allow injection--//
+    //pushDrink(response); //----change db ing_qty from int to string to allow injection--//
   });
 }
 
@@ -210,9 +217,8 @@ function randomVodka() {
       url: queryURL2 + response.drinks[randomNum].strDrink,
       method: 'GET'
     }).done(function(response) {
-      //console.log(response);
       populateFields(response);
-      pushDrink(response);
+      //pushDrink(response);
     });
   });
 }
@@ -232,9 +238,8 @@ function randomGin() {
       url: queryURL2 + response.drinks[randomNum].strDrink,
       method: 'GET'
     }).done(function(response) {
-      //console.log(response);
       populateFields(response);
-      pushDrink(response)
+      //pushDrink(response)
     });
   });
 }
@@ -254,16 +259,15 @@ function randomWhiskey() {
       url: queryURL2 + response.drinks[randomNum].strDrink,
       method: 'GET'
     }).done(function(response) {
-      //console.log(response);
       populateFields(response);
-      pushDrink(response);
+      //pushDrink(response);
     });
   });
 }
 
 
 function populateSearch(result) {
-  console.log("inside function" + result.length);
+  console.log(result);
   $("#searchResultsArea").removeClass('hidden');
   $(".randoDumpSearch").empty();
   $("#randomNameSearch").html("Drink Name: " + result[0].drink_name);
@@ -349,6 +353,16 @@ function searchRecipe() {
   });
 }
 
+function drinkCount(){
+  console.log("Counting...");
+  $.ajax({
+    method: "GET",
+    url: "/api/count/"
+  }).then(function(count) {
+    console.log(count)
+  });
+}
+
 function pushDrink(response) {
   var drink = {
     drink_name: response.drinks[0].strDrink,
@@ -368,4 +382,13 @@ function pushDrink(response) {
 
   $.post("/api/drinks", drink);
   console.log(drink);
+}
+
+
+function noResult(){
+  $("#drinksFound").empty();
+  $("#drinkName").empty();
+  $("#searchResultsArea").removeClass('hidden');
+  $(".randoDumpSearch").empty();
+  $("#resultTop").html("Sorry, we couldn't find any drink matching that name...please try another drink/ingredient.");
 }
