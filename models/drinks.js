@@ -1,7 +1,7 @@
 // ---DB duilt out for 3 ingredient for testing, should probably be 5?
 
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var Drinks = sequelize.define("Drinks", {
     id: {
       type: DataTypes.INTEGER,
@@ -94,5 +94,11 @@ module.exports = function(sequelize, DataTypes) {
     },
 
   });
+
+  Drinks.associate = function (models) {
+    Drinks.hasMany(models.DrinkRatings, {
+      onDelete: "cascade"
+    });
+  };
   return Drinks;
 };
