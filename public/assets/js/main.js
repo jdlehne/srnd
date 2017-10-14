@@ -390,10 +390,12 @@ function pushDrink(response) {
   console.log(drink);
 }
 
+
 function noResult(){
   $("#drinksFound").empty();
   $("#drinkName").empty();
   $("#searchResultsArea").removeClass('hidden');
   $(".randoDumpSearch").empty();
   $("#resultTop").html("Sorry, we couldn't find any drink matching that name...please try another drink/ingredient.");
+
 }
