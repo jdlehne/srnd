@@ -90,13 +90,7 @@ module.exports = function(app) {
       }).then(function(result) {
         if (result.length == 0) {
           console.log("empty");
-          db.Drinks.findOne({
-            where: {
-              ingredient_1: "vodka"
-            }
-          }).then(function(result){
-            return res.json(result);
-          });
+          return res.json(result);
         } else {
           console.log("not empty");
           return res.json(result);
