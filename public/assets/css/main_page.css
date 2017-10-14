@@ -1,8 +1,18 @@
-body {
+#bg {
+   position: fixed;
+   top: 0;
+   left: 0;
+
+   /* Preserve aspet ratio */
+   min-width: 100%;
+   min-height: 100%;
+}
+
+/*body {
   background: url("../images/srnd2.jpg") no-repeat center;
   background-size: cover;
   background-position: unset;
-}
+}*/
 
 label {
   font-family: 'Holtwood One SC', serif;
