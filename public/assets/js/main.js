@@ -393,3 +393,30 @@ function noResult(){
   $(".randoDumpSearch").empty();
   $("#resultTop").html("Sorry, we couldn't find any drink matching that name...please try another drink/ingredient.");
 }
+
+
+
+function whiskeyTest(){
+
+
+  var queryURL = "https://api.chucknorris.io/jokes/random"
+  //var queryURL2 = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
+  $.ajax({
+    url: queryURL,
+    method: 'GET'
+  }).done(function(response) {
+    console.log(response.value);
+    //var randomNum = Math.floor(Math.random() * response.drinks.length);
+    //console.log(randomNum);
+    //console.log(response.drinks[randomNum].strDrink);
+  //  $.ajax({
+    //  url: queryURL2 + response.drinks[randomNum].strDrink,
+    //  method: 'GET'
+  //  }).done(function(response) {
+      //console.log(response);
+    //  populateFields(response);
+    //  pushDrink(response);
+  //  });
+  });
+
+}

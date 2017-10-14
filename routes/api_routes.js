@@ -85,8 +85,9 @@ module.exports = function(app) {
         where: {
           ingredient_1: {
             $like: '%' + req.params.ingredient_1 + '%'
-          }
-        }
+          },
+        },
+        order: [['drink_name', 'ASC']]
       }).then(function(result) {
         if (result.length == 0) {
           console.log("empty");
