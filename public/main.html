@@ -9,7 +9,7 @@
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Holtwood+One+SC|Tangerine" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Holtwood+One+SC|Oswald|Tangerine" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <link rel="stylesheet" type="text/css" href="/assets/css/main_page.css">
   <link rel="stylesheet" href="/assets/css/animate.css">
@@ -26,21 +26,22 @@
 
                                         -->
   <div class="container">
-    <h1 class="mainTitle animated bounceInDown text-center">Shake, Rattle, and Drink!</h1>
+    <h1 class="mainTitle animated bounceInDown text-center">Shake, Rattle, and Drink</h1>
   </div>
   <div id="exTab1" class="container">
     <ul class="nav nav-pills nav-justified animated bounceInRight">
       <li class="active">
-        <a href="#1a" data-toggle="tab" class="tab">Search Drinks!</a>
+        <a href="#1a" data-toggle="tab" class="tab">Search Drinks</a>
       </li>
       <li>
-        <a href="#2a" data-toggle="tab" class="tab">Add Drink!</a>
+        <a href="#2a" data-toggle="tab" class="tab">Add Drink</a>
       </li>
       <li>
-        <a href="#3a" data-toggle="tab" class="tab">Random Drink!</a>
+
+        <a href="#3a" data-toggle="tab" class="tab">Random Recipes</a>
       </li>
       <li>
-        <a href="#4a" data-toggle="tab" class="tab">About Section!</a>
+        <a href="#4a" data-toggle="tab" class="tab">About Section</a>
       </li>
     </ul>
     <!--
@@ -55,38 +56,119 @@
       <div class="tab-pane active" id="1a">
         <h3 id="searchTop">Search for a drink by name, an ingredient, or any combo! </h3>
         <form id="searchForm" action="/api/:drinks?" method="get" class="form-horizontal">
-          <div class="form-group">
-            <label class="col-xs-2 control-label">Drink Name</label>
-            <div class="col-xs-8">
-              <input type="text" class="form-control" id="drinkName" placeholder="Drink Name" />
 
-            </div>
-          </div>
-          <div id="additionalIngredients"></div>
-          <div class="form-group">
-            <label class="col-xs-2 control-label">Ingredient</label>
-            <div class="col-xs-8">
-              <input type="text" class="form-control" id="ingredient1" placeholder="Ingredient" />
-            </div>
-            <div class="input-group">
-              <div class="input-group-btn">
-                <button class="btn btnStyle" type="button" onclick="ingredientAdd();">
-                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button>
+          <div class="row">
+            <div class="form-group">
+              <label class="col-xs-2 control-label">Drink Name</label>
+              <div class="col-xs-8">
+                <input type="text" class="form-control" id="drinkName" placeholder="Drink Name" />
+              </div>
+              <div class="col-sm-2">
+                <div id="searchBtnDiv" class="form-group">
+                  <button type="button" id="searchBtn" class="btn btnStyle btn-lg center-block" onclick="searchDrink();">Search</button>
+                </div>
               </div>
             </div>
           </div>
-
-          <div id="searchBtnDiv" class="form-group">
-            <button type="button" id="searchBtn" class="btn btnStyle btn-lg center-block" onclick="searchDrink();">Search</button>
+          <hr>
+          <div class="row">
+            <div id="additionalIngredients"></div>
+            <div class="form-group">
+              <label class="col-xs-2 control-label">Ingredient</label>
+              <div class="col-xs-8">
+                <input type="text" class="form-control" id="ingredient1" placeholder="Ingredient" />
+              </div>
+              <div class="input-group">
+                <div class="input-group-btn">
+                  <button class="btn btnStyle" type="button" onclick="ingredientAdd();">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
+                </div>
+                <div class="col-sm-2">
+                  <div id="searchBtnDiv" class="form-group">
+                    <button type="button" id="searchIngBtn" class="btn btnStyle btn-lg center-block" onclick="searchByIngredient();">Search</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div id="searchResultsArea" class="hidden">
             <div class="form-group">
               <hr>
-              <h3 class="text-center strong text">Results are below</h3>
+              <h3 class="text-center strong text">Search Results</h3>
               <div class="col-offset-2"></div>
-              <div class="text" id="searchResults">
+              <div class="searchContainer" id="searchResults">
+                <div class="row">
+                  <h3 class="text-center strong text">Drinks with requested ingredient</h3>
+                  <ul id="drinksFound">
+                  </ul>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4">
+                    <h3 class="randoDumpSearch" id="randomNameSearch"></h3>
+                  </div>
+                  <div class="col-md-4">
+                    <img class="randoDumpSearch" id="randomImgSearch"></img>
+                  </div>
+                  <div class="col-md-4">
+                    <h3 class="randoDumpSearch" id="randomAuthorSearch"></h3>
+                  </div>
+                </div>
+
+                <hr>
+                <div class="row">
+                  <div class="col-md-6">
+                    <h4 class="randoDumpSearch" id="randoIngOneSearch"></h4>
+                  </div>
+                  <div class="col-md-6">
+                    <h4 class="randoDumpSearch" id="randoQtyOneSearch"></h4>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <h4 class="randoDumpSearch" id="randoIngTwoSearch"></h4>
+                  </div>
+                  <div class="col-md-6">
+                    <h4 class="randoDumpSearch" id="randoQtyTwoSearch"></h4>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <h4 class="randoDumpSearch" id="randoIngThreeSearch"></h4>
+                  </div>
+                  <div class="col-md-6">
+                    <h4 class="randoDumpSearch" id="randoQtyThreeSearch"></h4>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <h4 class="randoDumpSearch" id="randoIngFourSearch"></h4>
+                  </div>
+                  <div class="col-md-6">
+                    <h4 class="randoDumpSearch" id="randoQtyFourSearch"></h4>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <h4 class="randoDumpSearch" id="randoIngFiveSearch"></h4>
+                  </div>
+                  <div class="col-md-6">
+                    <h4 class="randoDumpSearch" id="randoQtyFiveSearch"></h4>
+                  </div>
+                </div>
+
+                <hr>
+                <div class="row">
+                  <div class="col-md-8">
+                    <h3 class="randoDumpSearch" id="randoDescriptionSearch"></h3>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -161,29 +243,47 @@
                                                                       -->
       <div class="tab-pane" id="3a">
         <h3 id="randomTop">Not sure what you would like?</h3>
-        <h3 id="randomTop">Click the button to grab a random recipe from our database</h3>
-        <div class="input-group-btn">
-          <p class="col-xs-2">Random Drink</p>
-          <button class="btn btn-outline-primary btn-lg active" id="randomBtn">Random Drink Recipe</button>
-          <button class="btn btn-outline-primary btn-lg active" id="testBtn" onclick="callApi()">Call Cocktail API</button>
+        <hr>
+        <div class="row">
+          <div class="col-sm-5">
+            <h4 id="randomTop">Click the button to grab a random recipe from our database...</h4>
+          </div>
+          <div class="col-sm-5">
+            <button class="btn btnStyle btn-lg center-block" id="randomBtn" onClick="randomDrink()">Random Drink</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-5">
+            <h4 id="randomTop">...Or pull a random recipe from the Web..</h4>
+          </div>
+          <div class="col-sm-5">
+            <button class="btn btnStyle btn-lg center-block" id="randomApiBtn" onclick="callApi()">Call Cocktail API</button>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-5">
+            <h4 id="randomTop">Or you have a spirit in mind...</h4>
+          </div>
+          <div class="col-sm-5">
+            <div class="input-group-btn" id="randomButtons">
+              <button class="btn btnStyle btn-lg center-block" id="testBtn" onclick="randomVodka()">random vodka</button>
+              <button class="btn btnStyle btn-lg center-block" id="testBtn" onclick="randomGin()">random Gin</button>
+              <button class="btn btnStyle btn-lg center-block" id="testBtn" onclick="randomWhiskey()">random Whiskey</button>
+            </div>
+          </div>
         </div>
         <div class="containter" id="random_container">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <h3 class="randoDump" id="randomName"></h3>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
+              <img class="randoDump" id="randomImg"></img>
+            </div>
+            <div class="col-md-4">
               <h3 class="randoDump" id="randomAuthor"></h3>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <h3 class="randoDump" id="starRating"></h3>
-            </div>
-          </div>
-
-          <div class="row">
-            <img class="randoDump" id="randomImg"></img>
           </div>
           <hr>
           <div class="row">
@@ -205,7 +305,7 @@
           </div>
 
           <div class="row">
-            <div class="col-md-16">
+            <div class="col-md-6">
               <h4 class="randoDump" id="randoIngThree"></h4>
             </div>
             <div class="col-md-6">

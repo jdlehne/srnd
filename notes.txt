@@ -54,3 +54,38 @@ function addDrink(event) {
   $.post("/api/drinks", drink);
   console.log(drink);
 }
+
+function populateSearch(result) {
+  for (var i = 0; i < result.length; i++) {
+    $("#searchResultsArea").removeClass('hidden');
+    $(".randoDumpSearch").empty();
+    $("#randomNameSearch").html("Drink Name: " + result[i].drink_name);
+    $("#randoIngOneSearch").html("Ingredient 1: " + result[i].ingredient_1);
+    $("#randoQtyOneSearch").html("Amount: " + result[i].ing_qty_1);
+    if (result[i].ingredient_2 !== "" || null) {
+      $("#randoIngTwoSearch").html("Ingredient 2: " + result[i].ingredient_2);
+    }
+    if (result[i].ing_qty_2 !== 0 || '\r' || " ") {
+      $("#randoQtyTwoSearch").html("Amount: " + result[i].ing_qty_2);
+    }
+    if (result[i].ingredient_3 !== "" || null) {
+      $("#randoIngThreeSearch").html("Ingredient 3: " + result[i].ingredient_3);
+    }
+    if (result[i].ing_qty_3 !== 0 || '\r' || " ") {
+      $("#randoQtyThreeSearch").html("Amount: " + result[i].ing_qty_3);
+    }
+    if (result[i].ingredient_4 !== "" || null) {
+      $("#randoIngFourSearch").html("Ingredient 4: " + result[i].ingredient_4);
+    }
+    if (result[i].ing_qty_4 !== 0 || '\r' || "") {
+      $("#randoQtyFourSearch").html("Amount: " + result[i].ing_qty_4);
+    }
+    if (result[i].ingredient_5 !== "" || null) {
+      $("#randoIngFiveSearch").html("Ingredient 2: " + result[i].ingredient_5);
+    }
+    if (result[i].ing_qty_5 !== 0 || '\r' || " ") {
+      $("#randoQtyFiveSearch").html("Amount: " + result[i].ing_qty_5);
+    }
+    $("#randoDescriptionSearch").html("Directions: " + result[i].description);
+  }
+}

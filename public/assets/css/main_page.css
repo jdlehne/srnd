@@ -1,12 +1,5 @@
 body {
-  /*  background: lightblue;
-  background: -webkit-linear-gradient(left, lightblue, white);
-  background: -o-linear-gradient(right, lightblue, white);
-  background: -moz-linear-gradient(right, lightblue, white);
-  background: linear-gradient(to right, lightblue, white);
-  */
   background: url("../images/srnd2.jpg") no-repeat center;
-  /*bg image if we want*/
   background-size: cover;
   background-position: unset;
 }
@@ -14,7 +7,6 @@ body {
 label {
   font-family: 'Holtwood One SC', serif;
 }
-
 
 /*-----TAB STYLES----*/
 
@@ -91,10 +83,20 @@ a {
 
 /*---BUTTONS BUTTONS BUTTONS---*/
 
-#randomBtn {
-  float: right;
-  background-color: rgba(36, 32, 32, 0.77);
-  color: whitesmoke;
+#testBtn {
+  float: left;
+}
+
+#randomButtons{
+  text-align: center;
+}
+
+#randomApiBtn, #randomBtn{
+  float:left;
+}
+
+#searchIngBtn{
+  margin-right: 10px;
 }
 
 
@@ -148,40 +150,51 @@ a {
 }
 
 
-/*-----CREATE A DRINK TAB----*/
-
-#2a {
-  padding: 20px;
-}
-
-
-/*----END CREATE A DRINK TAB---*/
-
-
 /*-----RANDOM DRINK TAB----*/
 
 #2a {
   padding: 20px;
 }
 
-#random_container {
-  font-family: 'Tangerine', cursive;
-  font-size: 62px;
+#random_container, #searchResults {
+  /*font-family: 'Tangerine', cursive;*/
+  font-family: 'Oswald', sans-serif;
+  font-size: 30px;
   margin: 50px;
 }
 
-.randoDump {
-  font-size: 40px;
+.randoDump, .randoDumpSearch {
+  font-size: 30px;
   font-weight: bold;
 }
 
 #randoIngOne,
 #randoIngTwo,
+#randoIngThree,
 #randoIngFour,
+#randoIngFive,
+#randoIngOneSearch,
+#randoIngTwoSearch,
+#randoIngThreeSearch,
+#randoIngFourSerach,
+#randoIngFiveSearch,
+ {
+  text-align: right;
+}
+
 #randoQtyOne,
 #randoQtyTwo,
-#randoQtyFour {
-  border-right: solid #eee;
+#randoQtyThree,
+#randoQtyFour,
+#randoQtyFive,
+#randoQtyOneSearch,
+#randoQtyTwoSearch,
+#randoQtyThreeSearch,
+#randoQtyFourSearch,
+#randoQtyFiveSearch,
+ {
+
+  text-align: left;
 }
 
 .randomImage {
@@ -190,7 +203,10 @@ a {
 }
 
 
-/*----END CREATE A DRINK TAB---*/
+#randoDescription{
+  margin-left:50px;
+}
+
 
 @media (max-width: 560px) {
   .nav-tabs>li {
