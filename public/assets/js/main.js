@@ -49,9 +49,7 @@ function searchByIngredient() {
       var objTo = document.getElementById('drinksFound');
       var returnedDrink = document.createElement("li");
       returnedDrink.innerHTML = ('<p id="foundDrink" onClick=searchRecipe();>' + result[i].drink_name + '</p>');
-      //returnedDrink.innerHTML = ('<p>' + result[i].drink_name + '</p>');
       objTo.appendChild(returnedDrink);
-      //populateSearch(result);
     }
   }else{
     console.log("nothing");
@@ -199,7 +197,6 @@ function callApi() {
     url: queryURL,
     method: 'GET'
   }).done(function(response) {
-    //  console.log(response);
     populateFields(response);
     //pushDrink(response); //----change db ing_qty from int to string to allow injection--//
   });
@@ -220,7 +217,6 @@ function randomVodka() {
       url: queryURL2 + response.drinks[randomNum].strDrink,
       method: 'GET'
     }).done(function(response) {
-      //console.log(response);
       populateFields(response);
       //pushDrink(response);
     });
@@ -242,7 +238,6 @@ function randomGin() {
       url: queryURL2 + response.drinks[randomNum].strDrink,
       method: 'GET'
     }).done(function(response) {
-      //console.log(response);
       populateFields(response);
       //pushDrink(response)
     });
@@ -264,7 +259,6 @@ function randomWhiskey() {
       url: queryURL2 + response.drinks[randomNum].strDrink,
       method: 'GET'
     }).done(function(response) {
-      //console.log(response);
       populateFields(response);
       //pushDrink(response);
     });
@@ -397,5 +391,4 @@ function noResult(){
   $("#searchResultsArea").removeClass('hidden');
   $(".randoDumpSearch").empty();
   $("#resultTop").html("Sorry, we couldn't find any drink matching that name...please try another drink/ingredient.");
-
 }
