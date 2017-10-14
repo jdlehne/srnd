@@ -12,13 +12,14 @@ var add_form = $("#addForm")[0] //-----grab addform for reset at end of addDrink
 
 function searchDrink() {
   $("#drinksFound").empty();
+  $("#resultTop").empty();
   var drinkToFind = $("#drinkName").val();
   console.log("searching for " + drinkToFind);
   $.ajax({
     method: "GET",
     url: "/api/" + drinkToFind,
   }).then(function(result) {
-    if(result.success){
+    if(result.length !==0){
     console.log(result);
     console.log("Returning " + result[0].drink_name);
     populateSearch(result);
@@ -31,13 +32,14 @@ function searchDrink() {
 
 function searchByIngredient() {
   $("#drinksFound").empty();
+  $("#resultTop").empty();
   var ingredient1 = $("#ingredient1").val();
   console.log("searching by ingredient: " + ingredient1);
   $.ajax({
     method: "GET",
     url: "/api/drinks/" + ingredient1,
   }).done(function(result) {
-    if(result.success){
+    if(result.length !==0){
     $(".randoDumpSearch").empty();
     $("#searchResultsArea").removeClass('hidden');
     console.log(result);
