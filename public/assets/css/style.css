@@ -6,7 +6,7 @@ body {
   background: url("../images/srnd2.jpg") no-repeat center;
   /*bg image if we want*/
   background-size: cover;
-  background-position: unset;
+  /*background-position: unset;*/
 }
 
 .header,
