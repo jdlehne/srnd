@@ -148,12 +148,14 @@ function randomDrink() {
 function searchDrink() {
   var drinkToFind = $("#drinkName").val();
   var ingredient1 = $("#ingredient1").val();
+
   console.log("searching for " + drinkToFind);
   console.log("ingredient to be included: " + ingredient1);
   $.ajax({
     method: "GET",
     url: "/api/" + drinkToFind,
   }).then(function (result) {
+
     console.log(JSON.stringify(result));
     console.log(result[0].drink_name);
     $("#searchResultsArea").removeClass('hidden');
@@ -163,6 +165,9 @@ function searchDrink() {
 
 
 }
+
+
+
 
 //---Cocktail APi TEST----//
 
@@ -183,6 +188,7 @@ function callApi() {
   }).done(function (response) {
     //  console.log(response);
     $(".randoDump").empty();
+    starRating;
     $("#randomName").html("Drink Name: " + response.drinks[0].strDrink);
     var imageaddress = response.drinks[0].strDrinkThumb;
     $("#randomImg").attr("class", "randomImage");
