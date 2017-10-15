@@ -198,7 +198,7 @@ function callApi() {
     method: 'GET'
   }).done(function(response) {
     populateFields(response);
-    //pushDrink(response); //----change db ing_qty from int to string to allow injection--//
+    pushDrink(response); //----change db ing_qty from int to string to allow injection--//
   });
 }
 
@@ -218,7 +218,7 @@ function randomVodka() {
       method: 'GET'
     }).done(function(response) {
       populateFields(response);
-      //pushDrink(response);
+      pushDrink(response);
     });
   });
 }
@@ -240,7 +240,7 @@ function randomGin() {
     }).done(function(response) {
       console.log(response);
       populateFields(response);
-      //pushDrink(response)
+      pushDrink(response)
     });
   });
 }
@@ -261,7 +261,7 @@ function randomWhiskey() {
       method: 'GET'
     }).done(function(response) {
       populateFields(response);
-      //pushDrink(response);
+      pushDrink(response);
     });
   });
 }
@@ -404,4 +404,18 @@ function whiskeyTest(){
   }).done(function(response) {
     console.log(response.value);
   });
+}
+
+function totalById() {
+    $.ajax({
+    method: "GET",
+    url: "/api/count",
+  }).then(function(count) {
+        console.log(count);
+    $(".randoDumpSearch").empty();
+    $("#archivedResultsArea").removeClass('hidden');
+        console.log("total number of archived drinks: " + count);
+        document.getElementById("aPlace").innerHTML = "Database contains " + count + " drink recipes as of: ";
+        document.getElementById("bPlace").innerHTML = Date();
+    });
 }
