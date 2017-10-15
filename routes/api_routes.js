@@ -41,6 +41,7 @@ module.exports = function(app) {
 
   app.get("/api/random/", function(req, res) {
     db.Drinks.count({}).then(function(count) {
+      console.log("total entries: "+ count);
       var totalEntries = count
       var randomDrinkID = Math.floor((Math.random() * totalEntries) + 1);
       db.Drinks.findOne({
@@ -66,13 +67,7 @@ module.exports = function(app) {
       }).then(function(result) {
         if (result.length == 0) {
           console.log("empty");
-          db.Drinks.findOne({
-            where: {
-              drink_name: "buccaneer"
-            }
-          }).then(function(result){
-            return res.json(result);
-          });
+          return res.json(result);
         } else {
           console.log("not empty");
           //console.log(result);
@@ -90,24 +85,26 @@ module.exports = function(app) {
         where: {
           ingredient_1: {
             $like: '%' + req.params.ingredient_1 + '%'
-          }
-        }
+          },
+        },
+        order: [['drink_name', 'ASC']]
       }).then(function(result) {
         if (result.length == 0) {
           console.log("empty");
-          db.Drinks.findOne({
-            where: {
-              ingredient_1: "vodka"
-            }
-          }).then(function(result){
-            return res.json(result);
-          });
+          return res.json(result);
         } else {
           console.log("not empty");
           return res.json(result);
         }
       });
     };
+  });
+
+  app.get("/api/count/", function(req, res) {
+    db.Drinks.count({}).then(function(count) {
+      console.log("total entries: "+ count);
+        res.json(count);
+      });
   });
 
 }

@@ -1,11 +1,21 @@
-body {
-  background: url("../images/srnd2.jpg") no-repeat center;
-  background-size: cover;
-  background-position: unset;
+#bg {
+   position: fixed;
+   top: 0;
+   left: 0;
+
+   /* Preserve aspet ratio */
+   min-width: 100%;
+   min-height: 100%;
 }
+
 
 label {
   font-family: 'Holtwood One SC', serif;
+}
+
+#aboutContainer{
+  font-family: 'Holtwood One SC', serif;
+  padding:30px
 }
 
 /*-----TAB STYLES----*/
@@ -38,7 +48,7 @@ a {
 }
 
 #randomTop {
-  margin-left: 75px;
+  margin-left: 50px;
   font-family: 'Holtwood One SC', serif;
   color: rgba(36, 32, 32, 1);
 }
@@ -80,6 +90,10 @@ a {
   color: rgba(36, 32, 32, 1);
 }
 
+#qtyBox{
+  margin-right: 50px;
+}
+
 
 /*---BUTTONS BUTTONS BUTTONS---*/
 
@@ -91,12 +105,16 @@ a {
   text-align: center;
 }
 
+#randomBtn{
+    margin-right: 70px;
+}
 #randomApiBtn, #randomBtn{
   float:left;
 }
 
 #searchIngBtn{
   margin-right: 10px;
+  margin-left: 15px;
 }
 
 
@@ -236,6 +254,7 @@ a {
   color: #FFFFFF;
   background-color: #286090;
   border-color: #FFFFFF;
+  height: 34px;
 }
 
 .btnStyle:hover,
@@ -276,4 +295,27 @@ fieldset[disabled] .btnStyle.active {
 .btnStyle .badge {
   color: #286090;
   background-color: #FFFFFF;
+
+}
+
+#plus-button {
+  margin-left: -50px;
+  margin-top: -14px;
+}
+
+input-group-btn:first-child {
+  margin-top: -14px;
+}
+
+.input-group-btn:last-child>.btn {
+  margin-left: -50px;
+}
+
+.btn-danger {
+  margin-top: 0px;
+  margin-left: -50px;
+}
+
+.form-control {
+  width: 90%
 }
