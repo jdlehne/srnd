@@ -238,6 +238,7 @@ function randomGin() {
       url: queryURL2 + response.drinks[randomNum].strDrink,
       method: 'GET'
     }).done(function(response) {
+      console.log(response);
       populateFields(response);
       //pushDrink(response)
     });
@@ -311,25 +312,25 @@ function populateFields(response) {
   if (response.drinks[0].strIngredient2 !== "" || null) {
     $("#randoIngTwo").html("Ingredient 2: " + response.drinks[0].strIngredient2);
   }
-  if (response.drinks[0].strMeasure2 !== 0 || '\n' || " ") {
+  if (response.drinks[0].strMeasure2 !== 0 || '\u000D' || "") {
     $("#randoQtyTwo").html("Amount: " + response.drinks[0].strMeasure2);
   }
   if (response.drinks[0].strIngredient3 !== "" || null) {
     $("#randoIngThree").html("Ingredient 3: " + response.drinks[0].strIngredient3);
   }
-  if (response.drinks[0].strMeasure3 !== 0 || '\n' || " ") {
+  if (response.drinks[0].strMeasure3 !== 0 || '\u000D' || "") {
     $("#randoQtyThree").html("Amount: " + response.drinks[0].strMeasure3);
   }
   if (response.drinks[0].strIngredient4 !== "" || null) {
     $("#randoIngFour").html("Ingredient 4: " + response.drinks[0].strIngredient4);
   }
-  if (response.drinks[0].strMeasure4 !== 0 || '\n' || " ") {
+  if (response.drinks[0].strMeasure4 !== 0 || '\u000D' || "") {
     $("#randoQtyFour").html("Amount: " + response.drinks[0].strMeasure4);
   }
   if (response.drinks[0].strIngredient5 !== "" || null) {
     $("#randoIngFive").html("Ingredient 2: " + response.drinks[0].strIngredient5);
   }
-  if (response.drinks[0].strMeasure5 !== 0 || '\n' || " ") {
+  if (response.drinks[0].strMeasure5 !== 0 || '\u000D' || "") {
     $("#randoQtyFive").html("Amount: " + response.drinks[0].strMeasure5);
   }
   $("#randoDescription").html("Directions: " + response.drinks[0].strInstructions);
@@ -391,4 +392,19 @@ function noResult(){
   $("#searchResultsArea").removeClass('hidden');
   $(".randoDumpSearch").empty();
   $("#resultTop").html("Sorry, we couldn't find any drink matching that name...please try another drink/ingredient.");
+}
+
+
+
+function whiskeyTest(){
+
+  var queryURL = "https://api.chucknorris.io/jokes/random";
+  //var queryURL2 = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
+  $.ajax({
+    url: queryURL,
+    method: 'GET'
+  }).done(function(response) {
+    console.log(response.value);
+  });
+
 }
