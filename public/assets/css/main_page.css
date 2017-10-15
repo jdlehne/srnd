@@ -11,9 +11,9 @@ label {
   font-family: 'Holtwood One SC', serif;
 }
 
-#aboutContainer {
+.fontChange {
   font-family: 'Holtwood One SC', serif;
-  padding: 30px
+  /* padding: 30px */
 }
 
 
