@@ -55,7 +55,7 @@
     -->
     <div class="tab-content clearfix animated slideInUp">
       <div class="tab-pane active" id="1a">
-        <h3 id="searchTop">Search for a drink by name, an ingredient, or any combo! </h3>
+        <h3 id="searchTop">Search for a drink in the database by name or ingredient</h3>
         <form id="searchForm" action="/api/:drinks?" method="get" class="form-horizontal">
 
           <div class="row">
@@ -360,10 +360,13 @@
           <br \> Chris McFall
           <br \> Julian French</h3>
         <h4>
-          <button class="btn btn-primary" type="button" onclick="location.href='https://github.com/jdlehne/srnd';">GitHub</button>
+          <button class="btn btnStyle btn-lg center-block" type="button" onclick="location.href='https://github.com/jdlehne/srnd';">GitHub</button>
         </h4>
         <h4>
-          <button class="btn btn-primary" type="button" onclick="location.href='/api/drinks';">API List</button>
+          <button class="btn btnStyle btn-lg center-block" type="button" onclick="location.href='/api/drinks';">API List</button>
+        </h4>
+        <h4>
+          <button class="btn btnStyle btn-lg center-block" id="testBtn" onclick="whiskeyTest()">console</button>
         </h4>
       </div>
     </div>

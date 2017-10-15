@@ -397,14 +397,11 @@ function noResult(){
 
 
 function whiskeyTest(){
-
-  var queryURL = "https://api.chucknorris.io/jokes/random";
-  //var queryURL2 = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
+  var queryURL = "https://api.chucknorris.io/jokes/random"
   $.ajax({
     url: queryURL,
     method: 'GET'
   }).done(function(response) {
     console.log(response.value);
   });
-
 }
