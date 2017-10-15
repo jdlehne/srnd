@@ -33,7 +33,6 @@ function searchDrink() {
 function searchByIngredient() {
   $("#drinksFound").empty();
   $("#resultTop").empty();
-  
   var ingredient1 = $("#ingredient1").val();
   console.log("searching by ingredient: " + ingredient1);
   $.ajax({
@@ -404,7 +403,5 @@ function whiskeyTest(){
     method: 'GET'
   }).done(function(response) {
     console.log(response.value);
-
   });
-
 }
