@@ -291,5 +291,14 @@ fieldset[disabled] .btnStyle.active {
 }
 
 #plus-button {
-  margin-right: -5px;
+  /*margin-right: -5px;*/
+  margin-top: -14px;
+}
+
+input-group-btn:first-child {
+  margin-top: -14px;
+}
+
+.btn-danger {
+  margin-top: 0px;
 }
