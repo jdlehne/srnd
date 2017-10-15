@@ -48,7 +48,7 @@ a {
 }
 
 #randomTop {
-  margin-left: 75px;
+  margin-left: 50px;
   font-family: 'Holtwood One SC', serif;
   color: rgba(36, 32, 32, 1);
 }
@@ -90,6 +90,10 @@ a {
   color: rgba(36, 32, 32, 1);
 }
 
+#qtyBox{
+  margin-right: 50px;
+}
+
 
 /*---BUTTONS BUTTONS BUTTONS---*/
 
@@ -101,6 +105,9 @@ a {
   text-align: center;
 }
 
+#randomBtn{
+    margin-right: 70px;
+}
 #randomApiBtn, #randomBtn{
   float:left;
 }

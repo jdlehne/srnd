@@ -55,7 +55,7 @@
     -->
     <div class="tab-content clearfix animated slideInUp">
       <div class="tab-pane active" id="1a">
-        <h3 id="searchTop">Search for a drink by name, an ingredient, or any combo! </h3>
+        <h3 id="searchTop">Search the database for a drink or find one by an ingredient</h3>
         <form id="searchForm" action="/api/:drinks?" method="get" class="form-horizontal">
 
           <div class="row">
@@ -210,11 +210,11 @@
           </div>
           <div class="form-group">
             <label class="col-xs-2 control-label">Ingredient</label>
-            <div class="col-xs-5">
+            <div class="col-xs-4">
               <input type="text" class="form-control" id="ingredName" name="ingredName[]" value="" placeholder="Ingredient">
             </div>
-            <div class="col-xs-2">
-              <input type="text" class="form-control" id="qty" name="qty[]" value="" placeholder="quantity in oz">
+            <div class="col-xs-2" id="qtyBox">
+              <input type="text" class="form-control" id="qty" name="qty[]" value="" placeholder="amount">
             </div>
             <div class="input-group">
               <div class="input-group-btn">
@@ -268,12 +268,11 @@
           <div class="col-sm-5">
             <h4 id="randomTop">Or you have a spirit in mind...</h4>
           </div>
-          <div class="col-sm-5">
+          <div class="col-sm-7">
             <div class="input-group-btn" id="randomButtons">
-              <button class="btn btnStyle btn-lg center-block" id="testBtn" onclick="randomVodka()">random vodka</button>
-              <button class="btn btnStyle btn-lg center-block" id="testBtn" onclick="randomGin()">random Gin</button>
-              <button class="btn btnStyle btn-lg center-block" id="testBtn" onclick="randomWhiskey()">random Whiskey</button>
-
+              <button class="btn btnStyle btn-lg center-block" id="randomBtn" onclick="randomVodka()">random vodka</button>
+              <button class="btn btnStyle btn-lg center-block" id="randomBtn" onclick="randomGin()">random Gin</button>
+              <button class="btn btnStyle btn-lg center-block" id="randomBtn" onclick="randomWhiskey()">random Whiskey</button>
             </div>
           </div>
         </div>
