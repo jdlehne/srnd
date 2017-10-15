@@ -39,7 +39,6 @@
         <a href="#2a" data-toggle="tab" class="tab">Add Drink</a>
       </li>
       <li>
-
         <a href="#3a" data-toggle="tab" class="tab">Random Recipes</a>
       </li>
       <li>
@@ -76,20 +75,20 @@
             <div class="form-group">
               <label class="col-xs-2 control-label">Ingredient</label>
               <div class="col-xs-8">
-                <input type="text" class="form-control" id="ingredient1" placeholder="ex: vodka, gin, malibu, baileys etc..." />
+                <input type="text" class="form-control" id="ingredient1" placeholder="Ingredient" />
               </div>
               <div class="input-group">
                 <div class="input-group-btn">
 
-                  <button class="btn btnStyle" type="button" onclick="ingredientAdd();">
-                  <span id="plus-button" class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                  <button id="plus-button" class="btn btnStyle" type="button" onclick="ingredientAdd();">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </button>
 
                 </div>
 
                 <div>
                   <div id="searchBtnDiv" class="form-group">
-                    <button type="button" id="searchIngBtn" class="btn btnStyle btn-lg center-block" onclick="searchByIngredient();">Search</button>
+                    <button type="button" id="searchIngBtn" class="btn btnStyle btn-lg" onclick="searchByIngredient();">Search</button>
                   </div>
                 </div>
               </div>
@@ -101,9 +100,10 @@
               <hr>
               <h3 class="text-center strong text">Search Results</h3>
               <div class="col-offset-2"></div>
+
               <div class="searchContainer" id="searchResults">
                 <div class="row">
-                  <h3 class="text-center strong text" id="resultTop">Drinks Found</h3>
+                  <h3 class="text-center strong text">Drinks with requested ingredient</h3>
                   <ul id="drinksFound">
                   </ul>
                 </div>
@@ -214,7 +214,7 @@
               <input type="text" class="form-control" id="ingredName" name="ingredName[]" value="" placeholder="Ingredient">
             </div>
             <div class="col-xs-2">
-              <input type="text" class="form-control" id="qty" name="qty[]" value="" placeholder="amount">
+              <input type="text" class="form-control" id="qty" name="qty[]" value="" placeholder="quantity in oz">
             </div>
             <div class="input-group">
               <div class="input-group-btn">
@@ -273,7 +273,7 @@
               <button class="btn btnStyle btn-lg center-block" id="testBtn" onclick="randomVodka()">random vodka</button>
               <button class="btn btnStyle btn-lg center-block" id="testBtn" onclick="randomGin()">random Gin</button>
               <button class="btn btnStyle btn-lg center-block" id="testBtn" onclick="randomWhiskey()">random Whiskey</button>
-              <button class="btn btnStyle btn-lg center-block" id="testBtn" onclick="whiskeyTest()">test</button>
+
             </div>
           </div>
         </div>
@@ -289,6 +289,7 @@
               <h3 class="randoDump" id="randomAuthor"></h3>
             </div>
           </div>
+
           <hr>
           <div class="row">
             <div class="col-md-6">
@@ -341,7 +342,6 @@
               <h3 class="randoDump" id="randoDescription"></h3>
             </div>
           </div>
-
         </div>
       </div>
       <!--
@@ -369,7 +369,6 @@
     </div>
     <h4>
       <button class="btn btnStyle btn-lg center-block" type="button" onclick="location.href='/';" id="homeBtn">Home</button>
-      <!--<button class="btn btnStyle btn-lg center-block" onclick="drinkCount()">test</button>-->
     </h4>
   </div>
 </body>
