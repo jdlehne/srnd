@@ -107,6 +107,7 @@ a {
 
 #searchIngBtn{
   margin-right: 10px;
+  margin-left: 15px;
 }
 
 
@@ -291,7 +292,7 @@ fieldset[disabled] .btnStyle.active {
 }
 
 #plus-button {
-  /*margin-right: -5px;*/
+  margin-left: -50px;
   margin-top: -14px;
 }
 
@@ -299,6 +300,15 @@ input-group-btn:first-child {
   margin-top: -14px;
 }
 
+.input-group-btn:last-child>.btn {
+  margin-left: -50px;
+}
+
 .btn-danger {
   margin-top: 0px;
+  margin-left: -50px;
+}
+
+.form-control {
+  width: 90%
 }
