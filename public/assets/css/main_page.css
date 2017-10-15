@@ -8,13 +8,12 @@
    min-height: 100%;
 }
 
-/*body {
-  background: url("../images/srnd2.jpg") no-repeat center;
-  background-size: cover;
-  background-position: unset;
-}*/
 
 label {
+  font-family: 'Holtwood One SC', serif;
+}
+
+#aboutContainer{
   font-family: 'Holtwood One SC', serif;
 }
 
