@@ -116,3 +116,11 @@ function whiskeyTest(){
   });
 
 }
+
+select * from Drinks
+ where  (drink_name, ingredient_1) in (
+  select drink_name, ingredient_1
+from   Drinks
+group  by drink_name, ingredient_1
+having count(*) > 1
+ )
