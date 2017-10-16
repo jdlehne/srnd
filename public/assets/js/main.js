@@ -13,6 +13,7 @@ var add_form = $("#addForm")[0] //-----grab addform for reset at end of addDrink
 function searchDrink() {
   $("#drinksFound").empty();
   $("#resultTop").empty();
+  $("#showResults").empty();
   var drinkToFind = $("#drinkName").val();
   console.log("searching for " + drinkToFind);
   $.ajax({
@@ -393,8 +394,6 @@ function noResult(){
   $(".randoDumpSearch").empty();
   $("#resultTop").html("Sorry, we couldn't find any drink matching that name...please try another drink/ingredient.");
 }
-
-
 
 function whiskeyTest(){
   var queryURL = "https://api.chucknorris.io/jokes/random"
