@@ -54,6 +54,12 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/count/", function(req, res) {
+    db.Drinks.count({}).then(function(count) {
+      console.log("total entries: "+ count);
+     res.json(count);
+    });
+  });
 
   app.get("/api/:drinks?", function(req, res) {
     console.log(req.params.drinks);
@@ -101,10 +107,12 @@ module.exports = function(app) {
   });
 
   app.get("/api/count/", function(req, res) {
-    db.Drinks.count({}).then(function(count) {
-      console.log("total entries: "+ count);
-        res.json(count);
+      db.Drinks.count({}).then(function(count) {
+      var totalEntries = count
+      console.log("total entries: "+ totalEntries);
+      res.json(count);
       });
   });
+
 
 }

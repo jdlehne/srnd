@@ -405,3 +405,18 @@ function whiskeyTest(){
     console.log(response.value);
   });
 }
+
+function totalById() {
+  $("#drinksFound").empty();
+  var archivedCount = $("#archivedCount").val();
+    $.ajax({
+    method: "GET",
+    url: "/api/count/",
+      }).done(function(result) {
+    $(".randoDumpSearch").empty();
+    $("#archivedResultsArea").removeClass('hidden');
+        console.log("total number of archived drinks: " + result);
+        document.getElementById("aPlace").innerHTML = "Database contains " + result + " drink recipes as of: ";
+        document.getElementById("bPlace").innerHTML = Date();
+    });
+}
