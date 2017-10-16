@@ -1,22 +1,21 @@
 #bg {
-   position: fixed;
-   top: 0;
-   left: 0;
-
-   /* Preserve aspet ratio */
-   min-width: 100%;
-   min-height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
 }
-
-/*body {
-  background: url("../images/srnd2.jpg") no-repeat center;
-  background-size: cover;
-  background-position: unset;
-}*/
 
 label {
   font-family: 'Holtwood One SC', serif;
 }
+
+.fontChange {
+  font-family: 'Holtwood One SC', serif;
+  /* padding: 30px */
+}
+
 
 /*-----TAB STYLES----*/
 
@@ -48,7 +47,7 @@ a {
 }
 
 #randomTop {
-  margin-left: 75px;
+  margin-left: 50px;
   font-family: 'Holtwood One SC', serif;
   color: rgba(36, 32, 32, 1);
 }
@@ -90,6 +89,10 @@ a {
   color: rgba(36, 32, 32, 1);
 }
 
+#qtyBox {
+  margin-right: 50px;
+}
+
 
 /*---BUTTONS BUTTONS BUTTONS---*/
 
@@ -97,15 +100,20 @@ a {
   float: left;
 }
 
-#randomButtons{
+#randomButtons {
   text-align: center;
 }
 
-#randomApiBtn, #randomBtn{
-  float:left;
+#randomBtn {
+  margin-right: 70px;
 }
 
-#searchIngBtn{
+#randomApiBtn,
+#randomBtn {
+  float: left;
+}
+
+#searchIngBtn {
   margin-right: 10px;
   margin-left: 15px;
 }
@@ -167,14 +175,16 @@ a {
   padding: 20px;
 }
 
-#random_container, #searchResults {
+#random_container,
+#searchResults {
   /*font-family: 'Tangerine', cursive;*/
   font-family: 'Oswald', sans-serif;
   font-size: 30px;
   margin: 50px;
 }
 
-.randoDump, .randoDumpSearch {
+.randoDump,
+.randoDumpSearch {
   font-size: 30px;
   font-weight: bold;
 }
@@ -189,7 +199,7 @@ a {
 #randoIngThreeSearch,
 #randoIngFourSerach,
 #randoIngFiveSearch,
- {
+{
   text-align: right;
 }
 
@@ -203,8 +213,7 @@ a {
 #randoQtyThreeSearch,
 #randoQtyFourSearch,
 #randoQtyFiveSearch,
- {
-
+{
   text-align: left;
 }
 
@@ -213,11 +222,9 @@ a {
   border: 15px solid rgba(0, 0, 0, 0.3);
 }
 
-
-#randoDescription{
-  margin-left:50px;
+#randoDescription {
+  margin-left: 50px;
 }
-
 
 @media (max-width: 560px) {
   .nav-tabs>li {
@@ -247,7 +254,6 @@ a {
   color: #FFFFFF;
   background-color: #286090;
   border-color: #FFFFFF;
-  height: 34px;
 }
 
 .btnStyle:hover,
@@ -288,7 +294,6 @@ fieldset[disabled] .btnStyle.active {
 .btnStyle .badge {
   color: #286090;
   background-color: #FFFFFF;
-
 }
 
 #plus-button {

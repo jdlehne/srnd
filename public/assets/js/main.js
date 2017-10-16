@@ -96,7 +96,7 @@ function ingredient_field() {
     var objTo = document.getElementById('ingredient_field');
     var added_ingredient = document.createElement("div");
     added_ingredient.setAttribute("id", "addedIng" + ingred);
-    added_ingredient.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-5"><input type="text" class="form-control" id="ingredName' + ingred + '" name="ingredName[]" value="" placeholder="Ingredient"></div><div class="col-xs-2"><input type="text" class="form-control" id="qty' + ingred + '" name="qty[]" value="" placeholder="amount"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="remove_ingredient_field(' + ingred + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
+    added_ingredient.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-4"><input type="text" class="form-control" id="ingredName' + ingred + '" name="ingredName[]" value="" placeholder="Ingredient"></div><div class="col-xs-2"><input type="text" class="form-control" id="qty' + ingred + '" name="qty[]" value="" placeholder="amount"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="remove_ingredient_field(' + ingred + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
 
     objTo.appendChild(added_ingredient);
   }
