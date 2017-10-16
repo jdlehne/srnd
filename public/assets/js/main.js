@@ -12,50 +12,50 @@ var add_form = $("#addForm")[0] //-----grab addform for reset at end of addDrink
 
 function searchDrink() {
   $("#drinksFound").empty();
-  $("#resultTop").empty();
   $("#showResults").empty();
+  $("#resultTop").html("Click on a drink name to see the recipe below");
   var drinkToFind = $("#drinkName").val();
   console.log("searching for " + drinkToFind);
   $.ajax({
     method: "GET",
     url: "/api/" + drinkToFind,
   }).then(function(result) {
-    if(result.length !==0){
-    console.log(result);
-    console.log("Returning " + result[0].drink_name);
-    populateSearch(result);
-  }else {
-    console.log("nothing");
-    noResult();
-  }
+    if (result.length !== 0) {
+      console.log(result);
+      console.log("Returning " + result[0].drink_name);
+      populateSearch(result);
+    } else {
+      console.log("nothing");
+      noResult();
+    }
   });
 }
 
 function searchByIngredient() {
   $("#drinksFound").empty();
-  $("#resultTop").empty();
+  $("#resultTop").html("Click on a drink name to see the recipe below");
   var ingredient1 = $("#ingredient1").val();
   console.log("searching by ingredient: " + ingredient1);
   $.ajax({
     method: "GET",
     url: "/api/drinks/" + ingredient1,
   }).done(function(result) {
-    if(result.length !==0){
-    $(".randoDumpSearch").empty();
-    $("#searchResultsArea").removeClass('hidden');
-    console.log(result);
-    console.log(result.length);
-    for (var i = 0; i < result.length; i++) {
-      console.log(result[i]);
-      var objTo = document.getElementById('drinksFound');
-      var returnedDrink = document.createElement("li");
-      returnedDrink.innerHTML = ('<p id="foundDrink" onClick=searchRecipe();>' + result[i].drink_name + '</p>');
-      objTo.appendChild(returnedDrink);
+    if (result.length !== 0) {
+      $(".randoDumpSearch").empty();
+      $("#searchResultsArea").removeClass('hidden');
+      console.log(result);
+      console.log(result.length);
+      for (var i = 0; i < result.length; i++) {
+        console.log(result[i]);
+        var objTo = document.getElementById('drinksFound');
+        var returnedDrink = document.createElement("li");
+        returnedDrink.innerHTML = ('<p id="foundDrink" onClick=searchRecipe();>' + result[i].drink_name + '</p>');
+        objTo.appendChild(returnedDrink);
+      }
+    } else {
+      console.log("nothing");
+      noResult();
     }
-  }else{
-    console.log("nothing");
-    noResult();
-  }
 
   });
 }
@@ -134,6 +134,7 @@ function addDrink(event) {
   $.post("/api/drinks", drink);
   console.log(drink);
   add_form.reset();
+  showAdded();
 }
 //-----------end Post function------------------///
 
@@ -355,7 +356,7 @@ function searchRecipe() {
   });
 }
 
-function drinkCount(){
+function drinkCount() {
   console.log("Counting...");
   $.ajax({
     method: "GET",
@@ -387,7 +388,7 @@ function pushDrink(response) {
 }
 
 
-function noResult(){
+function noResult() {
   $("#drinksFound").empty();
   $("#drinkName").empty();
   $("#searchResultsArea").removeClass('hidden');
@@ -395,7 +396,7 @@ function noResult(){
   $("#resultTop").html("Sorry, we couldn't find any drink matching the search criteria...please try another drink/ingredient.");
 }
 
-function whiskeyTest(){
+function whiskeyTest() {
   var queryURL = "https://api.chucknorris.io/jokes/random"
   $.ajax({
     url: queryURL,
@@ -408,14 +409,26 @@ function whiskeyTest(){
 function totalById() {
   $("#drinksFound").empty();
   var archivedCount = $("#archivedCount").val();
-    $.ajax({
+  $.ajax({
     method: "GET",
     url: "/api/count/",
-      }).done(function(result) {
+  }).done(function(result) {
     $(".randoDumpSearch").empty();
     $("#archivedResultsArea").removeClass('hidden');
-        console.log("total number of archived drinks: " + result);
-        document.getElementById("aPlace").innerHTML = "Database contains " + result + " drink recipes as of: ";
-        document.getElementById("bPlace").innerHTML = Date();
-    });
+    console.log("total number of archived drinks: " + result);
+    document.getElementById("aPlace").innerHTML = "Database contains " + result + " drink recipes as of: ";
+    document.getElementById("bPlace").innerHTML = Date();
+  });
+}
+
+
+function showAdded() {
+  $.ajax({
+    method: "GET",
+    url: "/api/count/",
+  }).done(function(result) {
+    console.log(result);
+    $("#addedInfo").html("Drink added; updated Database with total of: " + result+ " drinks.");
+  });
+
 }

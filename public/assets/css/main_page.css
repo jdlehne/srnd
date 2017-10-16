@@ -20,6 +20,11 @@ label {
   margin-top:10px;
 }
 
+#addedInfo{
+  text-align: center;
+  color:blue;
+}
+
 /*-----TAB STYLES----*/
 
 .tab {

@@ -204,6 +204,9 @@
       <div class="tab-pane" id="2a">
         <h3 id="addTop">Add your own recipe to our database</h3>
         <br>
+        <div>
+          <h4 id="addedInfo"></h4>
+        </div>
         <form id="addForm" method="post" class="form-horizontal">
           <div class="form-group">
             <label class="col-xs-2 control-label">Drink Name</label>
@@ -246,6 +249,7 @@
             <button type="submit" class="btn btnStyle btn-lg center-block" id="addBtn">Add Drink</button>
           </div>
         </form>
+
       </div>
       <!--
   _____                 _                   _____       _       _
@@ -280,7 +284,7 @@
           <div class="col-sm-5">
             <h4 id="randomTop">Or you have a spirit in mind...</h4>
           </div>
-          <div class="col-sm-7">
+          <div class="col-sm-7 col-xs-12">
             <div class="input-group-btn" id="randomButtons">
               <button class="btn btnStyle btn-lg center-block" id="randomBtn" onclick="randomVodka()">random vodka</button>
               <button class="btn btnStyle btn-lg center-block" id="randomBtn" onclick="randomGin()">random Gin</button>
@@ -377,8 +381,12 @@
           <button class="btn btn-primary btnStyle" type="button" onclick="whiskeyTest();">Console Fun</button>
           <button class="btn btn-primary btnStyle" type="button" id="searchTotalBtn" onclick="totalById();">Archived Drinks</button>
           <br>
-          <font color="RoyalBlue"><p id="aPlace"></p></font>
-          <font color="RoyalBlue"><p id="bPlace"></p></font>
+          <font color="RoyalBlue">
+            <p id="aPlace"></p>
+          </font>
+          <font color="RoyalBlue">
+            <p id="bPlace"></p>
+          </font>
         </div>
       </div>
       <div>
