@@ -392,7 +392,7 @@ function noResult(){
   $("#drinkName").empty();
   $("#searchResultsArea").removeClass('hidden');
   $(".randoDumpSearch").empty();
-  $("#resultTop").html("Sorry, we couldn't find any drink matching that name...please try another drink/ingredient.");
+  $("#resultTop").html("Sorry, we couldn't find any drink matching the search criteria...please try another drink/ingredient.");
 }
 
 function whiskeyTest(){

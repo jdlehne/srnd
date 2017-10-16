@@ -8,7 +8,7 @@
   <title>S R n Dr</title>
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.js " integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
   <link rel="shortcut icon" href="assets/images/icon.ico" type="image/x-icon">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Holtwood+One+SC|Oswald|Tangerine" rel="stylesheet">
@@ -63,11 +63,10 @@
             <div class="form-group">
               <label class="col-xs-2 control-label">Drink Name</label>
               <div class="col-xs-8">
-                <input type="text" class="form-control" id="drinkName" placeholder="Drink Name" ng-model="name"/>
+                <input type="text" class="form-control" id="drinkName" placeholder="Drink Name" />
               </div>
               <button type="button" id="searchBtn" class="form-group btn btnStyle center-block" onclick="searchDrink();">Search</button>
             </div>
-            <p ng-bind="name"></p>
           </div>
           <hr>
           <div class="row">
@@ -103,9 +102,22 @@
 
               <div class="searchContainer" id="searchResults">
                 <div class="row">
-                  <h3 class="text-center strong text">Drinks with requested ingredient</h3>
+                  <h3 class="text-center strong text" id="resultTop"></h3>
                   <ul id="drinksFound">
                   </ul>
+                  <!--Angular Testing
+                  <div ng-app="myApp" ng-controller="drinksReturned">
+
+                    <p>Looping with objects:</p>
+                    <ul>
+                      <li ng-repeat="x in names | orderBy:'country'">
+                        {{ x.name + ', ' + x.country }}
+                      </li>
+                    </ul>
+
+                  </div>
+
+                  End Angular Test-->
                 </div>
 
                 <div class="row">
@@ -365,13 +377,8 @@
           <button class="btn btn-primary btnStyle" type="button" onclick="whiskeyTest();">Console Fun</button>
           <button class="btn btn-primary btnStyle" type="button" id="searchTotalBtn" onclick="totalById();">Archived Drinks</button>
           <br>
-          <font color="RoyalBlue">
-            <p id="aPlace"></p>
-          </font>
-          <font color="RoyalBlue">
-            <p id="bPlace"></p>
-          </font>
-
+          <font color="RoyalBlue"><p id="aPlace"></p></font>
+          <font color="RoyalBlue"><p id="bPlace"></p></font>
         </div>
       </div>
       <div>
@@ -384,6 +391,9 @@
 </body>
 
 <script src="/assets/js/main.js "></script>
+<script src="/angularJS/app.js "></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js " integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="
+            anonymous "></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js "></script>
 
 </html>
