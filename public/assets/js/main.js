@@ -13,6 +13,7 @@ var add_form = $("#addForm")[0] //-----grab addform for reset at end of addDrink
 function searchDrink() {
   $("#drinksFound").empty();
   $("#resultTop").empty();
+  $("#showResults").empty();
   var drinkToFind = $("#drinkName").val();
   console.log("searching for " + drinkToFind);
   $.ajax({

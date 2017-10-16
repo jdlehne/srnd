@@ -101,7 +101,7 @@
 
               <div class="searchContainer" id="searchResults">
                 <div class="row">
-                  <h3 class="text-center strong text">Drinks with requested ingredient</h3>
+                  <h3 class="text-center strong text" id="resultTop"></h3>
                   <ul id="drinksFound">
                   </ul>
                 </div>
@@ -361,6 +361,9 @@
           <button class="btn btn-primary btnStyle" type="button" onclick="location.href='https://github.com/jdlehne/srnd';">GitHub</button>
           <button class="btn btn-primary btnStyle" type="button" onclick="location.href='/api/drinks';">API List</button>
           <button class="btn btn-primary btnStyle" type="button" onclick="whiskeyTest();">Console Fun</button>
+          <button class="btn btn-primary btnStyle" type="button" id="searchTotalBtn" onclick="totalById();">Archived Drinks</button>
+          <font color="RoyalBlue"><p id="aPlace"></p></font>
+          <font color="RoyalBlue"><p id="bPlace"></p></font>
 
         </div>
       </div>
@@ -368,11 +371,7 @@
         <h4>
           <button class="btn btnStyle center-block" type="button" onclick="location.href='/';" id="homeBtn">Home</button>
         </h4>
-        <h4>
-          <button type="button" id="searchTotalBtn" class="btn btnStyle btn-md center-block" onclick="totalById();">Archived Drinks</button>
-          <font color="RoyalBlue"><p id="aPlace"></p></font>
-          <font color="RoyalBlue"><p id="bPlace"></p></font>
-        </h4>
+
       </div>
 
 </body>
