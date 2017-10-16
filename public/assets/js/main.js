@@ -407,15 +407,16 @@ function whiskeyTest(){
 }
 
 function totalById() {
+  $("#drinksFound").empty();
+  var archivedCount = $("#archivedCount").val();
     $.ajax({
     method: "GET",
-    url: "/api/count",
-  }).then(function(count) {
-        console.log(count);
+    url: "/api/count/",
+      }).done(function(result) {
     $(".randoDumpSearch").empty();
     $("#archivedResultsArea").removeClass('hidden');
-        console.log("total number of archived drinks: " + count);
-        document.getElementById("aPlace").innerHTML = "Database contains " + count + " drink recipes as of: ";
+        console.log("total number of archived drinks: " + result);
+        document.getElementById("aPlace").innerHTML = "Database contains " + result + " drink recipes as of: ";
         document.getElementById("bPlace").innerHTML = Date();
     });
 }
