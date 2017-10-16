@@ -12,8 +12,8 @@ var add_form = $("#addForm")[0] //-----grab addform for reset at end of addDrink
 
 function searchDrink() {
   $("#drinksFound").empty();
-  $("#resultTop").empty();
   $("#showResults").empty();
+    $("#resultTop").html("Click on a drink name to see the recipe below");
   var drinkToFind = $("#drinkName").val();
   console.log("searching for " + drinkToFind);
   $.ajax({
@@ -33,7 +33,7 @@ function searchDrink() {
 
 function searchByIngredient() {
   $("#drinksFound").empty();
-  $("#resultTop").empty();
+  $("#resultTop").html("Click on a drink name to see the recipe below");
   var ingredient1 = $("#ingredient1").val();
   console.log("searching by ingredient: " + ingredient1);
   $.ajax({
