@@ -232,10 +232,10 @@ function randomGin() {
     url: queryURL,
     method: 'GET'
   }).done(function(response) {
-    console.log(response);
+    //console.log(response);
     var randomNum = Math.floor(Math.random() * response.drinks.length);
-    console.log(randomNum);
-    console.log(response.drinks[randomNum].strDrink);
+    //console.log(randomNum);
+  //  console.log(response.drinks[randomNum].strDrink);
     $.ajax({
       url: queryURL2 + response.drinks[randomNum].strDrink,
       method: 'GET'
@@ -254,10 +254,10 @@ function randomWhiskey() {
     url: queryURL,
     method: 'GET'
   }).done(function(response) {
-    console.log(response);
+    //console.log(response);
     var randomNum = Math.floor(Math.random() * response.drinks.length);
-    console.log(randomNum);
-    console.log(response.drinks[randomNum].strDrink);
+    //console.log(randomNum);
+    //console.log(response.drinks[randomNum].strDrink);
     $.ajax({
       url: queryURL2 + response.drinks[randomNum].strDrink,
       method: 'GET'
@@ -270,7 +270,7 @@ function randomWhiskey() {
 
 
 function populateSearch(result) {
-  console.log(result);
+  //console.log(result);
   $("#searchResultsArea").removeClass('hidden');
   $(".randoDumpSearch").empty();
   $("#randomNameSearch").html("Drink Name: " + result[0].drink_name);
@@ -341,7 +341,7 @@ function populateFields(response) {
 
 function searchRecipe() {
   $(".randoDumpSearch").empty();
-  console.log("searching for recipe");
+  //console.log("searching for recipe");
   $(".searchContainer").on('click', 'li', function() {
     var drinkToFind = $(this).text();
     console.log(drinkToFind);
@@ -349,7 +349,7 @@ function searchRecipe() {
       method: "GET",
       url: "/api/" + drinkToFind,
     }).then(function(result) {
-      console.log(result);
+      //console.log(result);
       console.log("Searching for " + result[0].drink_name);
       populateSearch(result);
     });
@@ -362,7 +362,7 @@ function drinkCount() {
     method: "GET",
     url: "/api/count/"
   }).then(function(count) {
-    console.log(count)
+    //console.log(count)
   });
 }
 
@@ -402,7 +402,7 @@ function whiskeyTest() {
     url: queryURL,
     method: 'GET'
   }).done(function(response) {
-    console.log(response.value);
+    console.log(response.value);//----do not edit out or loses console magic
   });
 }
 
