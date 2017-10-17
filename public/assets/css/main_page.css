@@ -77,17 +77,17 @@ a {
 /*--END ADD TAB--*/
 
 input.ng-invalid {
-    background-color: pink;
+    background-color: white;
 }
 input.ng-valid {
-    background-color: lightgreen;
+    background-color: lightblue;
 }
 
 textarea.ng-invalid {
-    background-color: pink;
+    background-color: white;
 }
 textarea.ng-valid {
-    background-color: lightgreen;
+    background-color: lightblue;
 }
 
 /* search area */
