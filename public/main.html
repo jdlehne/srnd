@@ -8,6 +8,7 @@
   <title>S R n Dr</title>
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
   <link rel="shortcut icon" href="assets/images/icon.ico" type="image/x-icon">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Holtwood+One+SC|Oswald|Tangerine" rel="stylesheet">
@@ -64,11 +65,7 @@
               <div class="col-xs-8">
                 <input type="text" class="form-control" id="drinkName" placeholder="Drink Name" />
               </div>
-
-
               <button type="button" id="searchBtn" class="form-group btn btnStyle center-block" onclick="searchDrink();">Search</button>
-
-
             </div>
           </div>
           <hr>
@@ -105,9 +102,22 @@
 
               <div class="searchContainer" id="searchResults">
                 <div class="row">
-                  <h3 class="text-center strong text">Drinks with requested ingredient</h3>
+                  <h3 class="text-center strong text" id="resultTop"></h3>
                   <ul id="drinksFound">
                   </ul>
+                  <!--Angular Testing
+                  <div ng-app="myApp" ng-controller="drinksReturned">
+
+                    <p>Looping with objects:</p>
+                    <ul>
+                      <li ng-repeat="x in names | orderBy:'country'">
+                        {{ x.name + ', ' + x.country }}
+                      </li>
+                    </ul>
+
+                  </div>
+
+                  End Angular Test-->
                 </div>
 
                 <div class="row">
@@ -194,17 +204,20 @@
       <div class="tab-pane" id="2a">
         <h3 id="addTop">Add your own recipe to our database</h3>
         <br>
-        <form id="addForm" method="post" class="form-horizontal">
+        <div>
+          <h4 id="addedInfo"></h4>
+        </div>
+        <form id="addForm" method="post" class="form-horizontal" ng-app="">
           <div class="form-group">
             <label class="col-xs-2 control-label">Drink Name</label>
             <div class="col-xs-9">
-              <input type="text" id="drink_Name" class="form-control" name="question" placeholder="What is you drink called?" />
+              <input type="text" id="drink_Name" class="form-control" name="question" placeholder="What is you drink called?"  ng-model="drink_Name" required/>
             </div>
           </div>
           <div class="form-group">
             <label class="col-xs-2 control-label">Added By</label>
             <div class="col-xs-9">
-              <input type="text" id="addedBy" class="form-control" name="question" placeholder="you are?" />
+              <input type="text" id="addedBy" class="form-control" name="question" placeholder="you are?" ng-model="addedBy" required/>
             </div>
           </div>
           <!-- Add ingredient in create field -->
@@ -213,10 +226,10 @@
           <div class="form-group">
             <label class="col-xs-2 control-label">Ingredient</label>
             <div class="col-xs-4">
-              <input type="text" class="form-control" id="ingredName" name="ingredName[]" value="" placeholder="Ingredient">
+              <input type="text" class="form-control" id="ingredName" name="ingredName[]" value="" placeholder="Ingredient" ng-model="ingredName" required>
             </div>
             <div class="col-xs-2" id="qtyBox">
-              <input type="text" class="form-control" id="qty" name="qty[]" value="" placeholder="amount">
+              <input type="text" class="form-control" id="qty" name="qty[]" value="" placeholder="amount" ng-model="qty" required>
             </div>
             <div class="input-group">
               <div class="input-group-btn">
@@ -228,14 +241,15 @@
           <div class="form-group">
             <label class="col-xs-2 control-label">Directions</label>
             <div class="col-lg-9">
-              <textarea class="form-control" rows="3" id="description" placeholder="Describe how to make your beverage in 255 characters or less."></textarea>
+              <textarea class="form-control" rows="3" id="description" name="description" placeholder="Describe how to make your beverage in 255 characters or less." ng-model="description" required></textarea>
             </div>
           </div>
           <div class="input-group-btn">
             <p class="col-xs-2" id="addBtnCol">Add Drink</p>
-            <button type="submit" class="btn btnStyle btn-lg center-block" id="addBtn">Add Drink</button>
+            <button type="submit" ng-disabled="addForm.$invalid" class="btn btnStyle btn-lg center-block" id="addBtn">Add Drink</button>
           </div>
         </form>
+
       </div>
       <!--
   _____                 _                   _____       _       _
@@ -270,7 +284,7 @@
           <div class="col-sm-5">
             <h4 id="randomTop">Or you have a spirit in mind...</h4>
           </div>
-          <div class="col-sm-7">
+          <div class="col-sm-7 col-xs-12">
             <div class="input-group-btn" id="randomButtons">
               <button class="btn btnStyle btn-lg center-block" id="randomBtn" onclick="randomVodka()">random vodka</button>
               <button class="btn btnStyle btn-lg center-block" id="randomBtn" onclick="randomGin()">random Gin</button>
@@ -365,17 +379,27 @@
           <button class="btn btn-primary btnStyle" type="button" onclick="location.href='https://github.com/jdlehne/srnd';">GitHub</button>
           <button class="btn btn-primary btnStyle" type="button" onclick="location.href='/api/drinks';">API List</button>
           <button class="btn btn-primary btnStyle" type="button" onclick="whiskeyTest();">Console Fun</button>
-
+          <button class="btn btn-primary btnStyle" type="button" id="searchTotalBtn" onclick="totalById();">Archived Drinks</button>
+          <br>
+          <font color="RoyalBlue">
+            <p id="aPlace"></p>
+          </font>
+          <font color="RoyalBlue">
+            <p id="bPlace"></p>
+          </font>
         </div>
       </div>
       <div>
         <h4>
           <button class="btn btnStyle center-block" type="button" onclick="location.href='/';" id="homeBtn">Home</button>
         </h4>
+
       </div>
+
 </body>
 
 <script src="/assets/js/main.js "></script>
+<script src="/angularJS/app.js "></script>
 <script src="https://code.jquery.com/jquery-3.2.1.js " integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="
             anonymous "></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js "></script>

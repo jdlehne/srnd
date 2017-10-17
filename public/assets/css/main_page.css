@@ -16,6 +16,14 @@ label {
   /* padding: 30px */
 }
 
+#aPlace{
+  margin-top:10px;
+}
+
+#addedInfo{
+  text-align: center;
+  color:blue;
+}
 
 /*-----TAB STYLES----*/
 
@@ -68,6 +76,19 @@ a {
 
 /*--END ADD TAB--*/
 
+input.ng-invalid {
+    background-color: white;
+}
+input.ng-valid {
+    background-color: lightblue;
+}
+
+textarea.ng-invalid {
+    background-color: white;
+}
+textarea.ng-valid {
+    background-color: lightblue;
+}
 
 /* search area */
 

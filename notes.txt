@@ -116,3 +116,21 @@ function whiskeyTest(){
   });
 
 }
+
+select * from Drinks
+ where  (drink_name, ingredient_1) in (
+  select drink_name, ingredient_1
+from   Drinks
+group  by drink_name, ingredient_1
+having count(*) > 1
+ )
+
+ $or: [{ingredient_2: req.params.ingredient_1}, {ingredient_3: req.params.ingredient_1}]
+
+ ({
+   where: {
+     ingredient_1: {$like: '%' + req.params.ingredient_1 + '%'},
+      $or: [{ingredient_2: req.params.ingredient_1}, {ingredient_3: req.params.ingredient_1}]
+   },
+   order: [['drink_name', 'ASC']]
+ })
