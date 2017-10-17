@@ -396,7 +396,7 @@ function noResult() {
   $("#resultTop").html("Sorry, we couldn't find any drink matching the search criteria...please try another drink/ingredient.");
 }
 
-function whiskeyTest() {
+function whiskeyTest(){
   var queryURL = "https://api.chucknorris.io/jokes/random"
   $.ajax({
     url: queryURL,
@@ -420,7 +420,6 @@ function totalById() {
     document.getElementById("bPlace").innerHTML = Date();
   });
 }
-
 
 function showAdded() {
   $.ajax({
