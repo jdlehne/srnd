@@ -20,6 +20,11 @@ label {
   margin-top:10px;
 }
 
+#addedInfo{
+  text-align: center;
+  color:blue;
+}
+
 /*-----TAB STYLES----*/
 
 .tab {
@@ -71,6 +76,19 @@ a {
 
 /*--END ADD TAB--*/
 
+input.ng-invalid {
+    background-color: pink;
+}
+input.ng-valid {
+    background-color: lightgreen;
+}
+
+textarea.ng-invalid {
+    background-color: pink;
+}
+textarea.ng-valid {
+    background-color: lightgreen;
+}
 
 /* search area */
 

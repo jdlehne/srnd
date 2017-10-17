@@ -204,17 +204,20 @@
       <div class="tab-pane" id="2a">
         <h3 id="addTop">Add your own recipe to our database</h3>
         <br>
-        <form id="addForm" method="post" class="form-horizontal">
+        <div>
+          <h4 id="addedInfo"></h4>
+        </div>
+        <form id="addForm" method="post" class="form-horizontal" ng-app="">
           <div class="form-group">
             <label class="col-xs-2 control-label">Drink Name</label>
             <div class="col-xs-9">
-              <input type="text" id="drink_Name" class="form-control" name="question" placeholder="What is you drink called?" />
+              <input type="text" id="drink_Name" class="form-control" name="question" placeholder="What is you drink called?"  ng-model="drink_Name" required/>
             </div>
           </div>
           <div class="form-group">
             <label class="col-xs-2 control-label">Added By</label>
             <div class="col-xs-9">
-              <input type="text" id="addedBy" class="form-control" name="question" placeholder="you are?" />
+              <input type="text" id="addedBy" class="form-control" name="question" placeholder="you are?" ng-model="addedBy" required/>
             </div>
           </div>
           <!-- Add ingredient in create field -->
@@ -223,10 +226,10 @@
           <div class="form-group">
             <label class="col-xs-2 control-label">Ingredient</label>
             <div class="col-xs-4">
-              <input type="text" class="form-control" id="ingredName" name="ingredName[]" value="" placeholder="Ingredient">
+              <input type="text" class="form-control" id="ingredName" name="ingredName[]" value="" placeholder="Ingredient" ng-model="ingredName" required>
             </div>
             <div class="col-xs-2" id="qtyBox">
-              <input type="text" class="form-control" id="qty" name="qty[]" value="" placeholder="amount">
+              <input type="text" class="form-control" id="qty" name="qty[]" value="" placeholder="amount" ng-model="qty" required>
             </div>
             <div class="input-group">
               <div class="input-group-btn">
@@ -238,7 +241,7 @@
           <div class="form-group">
             <label class="col-xs-2 control-label">Directions</label>
             <div class="col-lg-9">
-              <textarea class="form-control" rows="3" id="description" placeholder="Describe how to make your beverage in 255 characters or less."></textarea>
+              <textarea class="form-control" rows="3" id="description" name="description" placeholder="Describe how to make your beverage in 255 characters or less." ng-model="description" required></textarea>
             </div>
           </div>
           <div class="input-group-btn">
@@ -246,6 +249,7 @@
             <button type="submit" class="btn btnStyle btn-lg center-block" id="addBtn">Add Drink</button>
           </div>
         </form>
+
       </div>
       <!--
   _____                 _                   _____       _       _
@@ -280,7 +284,7 @@
           <div class="col-sm-5">
             <h4 id="randomTop">Or you have a spirit in mind...</h4>
           </div>
-          <div class="col-sm-7">
+          <div class="col-sm-7 col-xs-12">
             <div class="input-group-btn" id="randomButtons">
               <button class="btn btnStyle btn-lg center-block" id="randomBtn" onclick="randomVodka()">random vodka</button>
               <button class="btn btnStyle btn-lg center-block" id="randomBtn" onclick="randomGin()">random Gin</button>

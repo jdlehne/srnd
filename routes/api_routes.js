@@ -17,7 +17,6 @@ module.exports = function(app) {
     });
   });
 
-
   // POST route for saving a new drink
   app.post("/api/drinks", function(req, res) {
     db.Drinks.create({
@@ -89,9 +88,7 @@ module.exports = function(app) {
     if (req.query) {
       db.Drinks.findAll({
         where: {
-          ingredient_1: {
-            $like: '%' + req.params.ingredient_1 + '%'
-          },
+            $or: [{ingredient_1: {$like: '%' + req.params.ingredient_1 + '%'}}, {ingredient_2: {$like: '%' + req.params.ingredient_1 + '%'}}, {ingredient_3: {$like: '%' + req.params.ingredient_1 + '%'}}, {ingredient_4: {$like: '%' + req.params.ingredient_1 + '%'}}, {ingredient_5: {$like: '%' + req.params.ingredient_1 + '%'}}]
         },
         order: [['drink_name', 'ASC']]
       }).then(function(result) {
