@@ -430,5 +430,4 @@ function showAdded() {
     console.log(result);
     $("#addedInfo").html("Drink added; updated Database with total of: " + result+ " drinks.");
   });
-
 }
