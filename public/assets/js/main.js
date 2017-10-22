@@ -9,19 +9,14 @@ var add_form = $("#addForm")[0] //-----grab addform for reset at end of addDrink
 //                                            |___/
 
 //-------------------GET DRINK BY NAME-----------------------------------///
-
-function searchDrink() {
+$("#searchBtn").on("click", function() {
   $("#drinksFound").empty();
   $("#showResults").empty();
   $("#resultTop").html("Click on a drink name to see the recipe below");
   var drinkToFind = $("#drinkName").val();
   console.log("searching for " + drinkToFind);
-  $.ajax({
-    method: "GET",
-    url: "/api/" + drinkToFind,
-  }).then(function(result) {
+  $.get("/api/" + drinkToFind, function(result) {
     if (result.length !== 0) {
-      console.log(result);
       console.log("Returning " + result[0].drink_name);
       populateSearch(result);
     } else {
@@ -29,17 +24,14 @@ function searchDrink() {
       noResult();
     }
   });
-}
+});
 
-function searchByIngredient() {
+$("#searchIngBtn").on("click", function() {
   $("#drinksFound").empty();
   $("#resultTop").html("Click on a drink name to see the recipe below");
   var ingredient1 = $("#ingredient1").val();
   console.log("searching by ingredient: " + ingredient1);
-  $.ajax({
-    method: "GET",
-    url: "/api/drinks/" + ingredient1,
-  }).done(function(result) {
+  $.get("/api/drinks/" + ingredient1, function(result) {
     if (result.length !== 0) {
       $(".randoDumpSearch").empty();
       $("#searchResultsArea").removeClass('hidden');
@@ -56,12 +48,10 @@ function searchByIngredient() {
       console.log("nothing");
       noResult();
     }
-
   });
-}
+});
 
 var ingredient = 1;
-
 function ingredientAdd() {
   if (ingredient < 5) {
     ingredient++;
@@ -71,7 +61,6 @@ function ingredientAdd() {
     newIngredientDiv.innerHTML = '<div class="col-offset-2"></div><div class="form-group"><label class="col-xs-2 control-label">Ingredient</label><div class="col-xs-8"><input type="text" class="form-control" id="ingredient' + ingredient + '" name=""ingredName"" value="" placeholder="Ingredient"></div><div class="input-group"><div class="input-group-btn"><button class="btn btn-danger" type="button" onclick="removeIngredient(' + ingredient + ');"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></div></div></div>';
     objTo.appendChild(newIngredientDiv)
   }
-
 }
 
 function removeIngredient(rid) {
@@ -90,8 +79,7 @@ function removeIngredient(rid) {
 
 //------Add ingredient field-----///
 var ingred = 1;
-
-function ingredient_field() {
+$("#addIngBtn").on("click", function() {
   if (ingred < 5) {
     ingred++;
     var objTo = document.getElementById('ingredient_field');
@@ -101,7 +89,7 @@ function ingredient_field() {
 
     objTo.appendChild(added_ingredient);
   }
-}
+});
 
 function remove_ingredient_field(rid) {
   ingred--;
@@ -114,7 +102,6 @@ function remove_ingredient_field(rid) {
 function addDrink(event) {
   console.log("Adding Drink");
   event.preventDefault();
-
   var drink = {
     drink_name: $('#drink_Name').val().trim(),
     added_by: $('#addedBy').val().trim(),
@@ -140,19 +127,12 @@ function addDrink(event) {
 
 
 //---------Random Drink generator----------------///
-
-function randomDrink() {
-  //console.log("random clicked");
+$("#randomBtn").on("click", function() {
   $("#randomImg").attr("class", "randoDump");
   $("#randomImg").attr("src", "");
   $(".randoDump").empty();
-  $.ajax({
-    method: "GET",
-    url: "/api/random",
-  }).then(function(random) {
-    console.log("random Drink: " + random.drink_name);
-    console.log(JSON.stringify(random));
-    console.log(random.added_by);
+  $.get("api/random", function(random) {
+    console.log("2.0 random Drink: " + random.drink_name);
     $("#randomName").html("Drink: " + random.drink_name);
     $("#randomAuthor").html("Added By: " + random.added_by);
     $("#randomTest").html("Test");
@@ -184,89 +164,55 @@ function randomDrink() {
     }
     $("#randoDescription").html("Directions: " + random.description);
   });
+});
 
-
-}
-//-------------------END RANDOM DRINK FUNCTION--------------------------///
-
+//-------------------END RANDOM DRINK FUNCTIONS--------------------------///
 
 //---Cocktail APi RANDOM---//
 
-function callApi() {
-  console.log("calling...http://www.thecocktaildb.com/api.php");
+$("#randomApiBtn").on("click", function() {
   var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
-  $.ajax({
-    url: queryURL,
-    method: 'GET'
-  }).done(function(response) {
+  $.get(queryURL, function(response) {
     populateFields(response);
     //pushDrink(response); //----change db ing_qty from int to string to allow injection--//
   });
-}
+});
 
-function randomVodka() {
+$("#randomVodkaBtn").on("click", function() {
   var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka"
   var queryURL2 = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
-  $.ajax({
-    url: queryURL,
-    method: 'GET'
-  }).done(function(response) {
-    console.log(response);
+  $.get(queryURL, function(response) {
     var randomNum = Math.floor(Math.random() * response.drinks.length);
-    console.log(randomNum);
-    console.log(response.drinks[randomNum].strDrink);
-    $.ajax({
-      url: queryURL2 + response.drinks[randomNum].strDrink,
-      method: 'GET'
-    }).done(function(response) {
-      populateFields(response);
-      //pushDrink(response);
-    });
-  });
-}
-
-function randomGin() {
-  var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin"
-  var queryURL2 = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
-  $.ajax({
-    url: queryURL,
-    method: 'GET'
-  }).done(function(response) {
-    //console.log(response);
-    var randomNum = Math.floor(Math.random() * response.drinks.length);
-    //console.log(randomNum);
-  //  console.log(response.drinks[randomNum].strDrink);
-    $.ajax({
-      url: queryURL2 + response.drinks[randomNum].strDrink,
-      method: 'GET'
-    }).done(function(response) {
-      console.log(response);
+    $.get(queryURL2 + response.drinks[randomNum].strDrink, function(response) {
       populateFields(response);
       //pushDrink(response)
     });
   });
-}
+});
 
-function randomWhiskey() {
-  var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=whiskey"
+$("#randomGinBtn").on("click", function() {
+  var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin"
   var queryURL2 = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
-  $.ajax({
-    url: queryURL,
-    method: 'GET'
-  }).done(function(response) {
-    //console.log(response);
+  $.get(queryURL, function(response) {
     var randomNum = Math.floor(Math.random() * response.drinks.length);
-    //console.log(randomNum);
-    //console.log(response.drinks[randomNum].strDrink);
-    $.ajax({
-      url: queryURL2 + response.drinks[randomNum].strDrink,
-      method: 'GET'
-    }).done(function(response) {
+    $.get(queryURL2 + response.drinks[randomNum].strDrink, function(response) {
       populateFields(response);
-      //pushDrink(response);
+      //pushDrink(response)
     });
   });
-}
+});
+
+$("#randomWhiskeyBtn").on("click", function() {
+  var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=whiskey"
+  var queryURL2 = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
+  $.get(queryURL, function(response) {
+    var randomNum = Math.floor(Math.random() * response.drinks.length);
+    $.get(queryURL2 + response.drinks[randomNum].strDrink, function(response) {
+      populateFields(response);
+      //pushDrink(response)
+    });
+  });
+});
 
 
 function populateSearch(result) {
@@ -338,31 +284,15 @@ function populateFields(response) {
   $("#randoDescription").html("Directions: " + response.drinks[0].strInstructions);
 }
 
-
 function searchRecipe() {
   $(".randoDumpSearch").empty();
-  //console.log("searching for recipe");
   $(".searchContainer").on('click', 'li', function() {
     var drinkToFind = $(this).text();
     console.log(drinkToFind);
-    $.ajax({
-      method: "GET",
-      url: "/api/" + drinkToFind,
-    }).then(function(result) {
-      //console.log(result);
+    $.get("/api/" + drinkToFind, function(result) {
       console.log("Searching for " + result[0].drink_name);
       populateSearch(result);
     });
-  });
-}
-
-function drinkCount() {
-  console.log("Counting...");
-  $.ajax({
-    method: "GET",
-    url: "/api/count/"
-  }).then(function(count) {
-    //console.log(count)
   });
 }
 
@@ -387,7 +317,6 @@ function pushDrink(response) {
   console.log(drink);
 }
 
-
 function noResult() {
   $("#drinksFound").empty();
   $("#drinkName").empty();
@@ -396,30 +325,24 @@ function noResult() {
   $("#resultTop").html("Sorry, we couldn't find any drink matching the search criteria...please try another drink/ingredient.");
 }
 
-function whiskeyTest() {
-  var queryURL = "https://api.chucknorris.io/jokes/random"
-  $.ajax({
-    url: queryURL,
-    method: 'GET'
-  }).done(function(response) {
-    console.log(response.value);//----do not edit out or loses console magic
+$("#consoleFunBtn").on("click", function() {
+  var queryURL = "https://api.chucknorris.io/jokes/random";
+  $.get(queryURL, function(response) {
+    console.log(response.value); //----do not edit out or loses console magic
   });
-}
+});
 
-function totalById() {
+$("#searchTotalBtn").on("click", function() {
   $("#drinksFound").empty();
   var archivedCount = $("#archivedCount").val();
-  $.ajax({
-    method: "GET",
-    url: "/api/count/",
-  }).done(function(result) {
+  $.get("/api/count/", function(result) {
     $(".randoDumpSearch").empty();
     $("#archivedResultsArea").removeClass('hidden');
     console.log("total number of archived drinks: " + result);
     document.getElementById("aPlace").innerHTML = "Database contains " + result + " drink recipes as of: ";
     document.getElementById("bPlace").innerHTML = Date();
   });
-}
+});
 
 
 function showAdded() {
@@ -428,6 +351,6 @@ function showAdded() {
     url: "/api/count/",
   }).done(function(result) {
     console.log(result);
-    $("#addedInfo").html("Drink added; updated Database with total of: " + result+ " drinks.");
+    $("#addedInfo").html("Drink added; updated Database with total of: " + result + " drinks.");
   });
 }
