@@ -125,12 +125,17 @@ textarea.ng-valid {
   text-align: center;
 }
 
-#randomBtn {
+#randomVodkaBtn {
   margin-right: 70px;
 }
 
+#randomGinBtn{
+  margin-right: 20px;
+}
+
 #randomApiBtn,
-#randomBtn {
+#randomVodkaBtn,
+#randomGinBtn {
   float: left;
 }
 
